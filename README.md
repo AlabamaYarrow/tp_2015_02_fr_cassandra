@@ -9,4 +9,4 @@ From project directory:
   $npm install grunt-contrib-watch --save-dev
   $npm install grunt-concurrent --save-dev
 Run (at 8100):
->grunt
+$grunt
