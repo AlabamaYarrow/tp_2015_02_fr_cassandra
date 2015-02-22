@@ -1,4 +1,4 @@
-### tp_2015_02_fr_cassandra
+### tp_2015_02_fr_cassandra  
 Install Node.js
 From project directory:  
   $npm init  
