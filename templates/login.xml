@@ -1,0 +1,10 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+	<div align="center">
+		<h1 style="">Cassandra</h1>
+		<h2>Login</h2>
+		<div><input value="Email"></input></div>
+		<div><input value="Password"></input></div>
+		<div><button class="js-back">Submit</button></div>
+		<div><button class="js-back">Back</button></div>
+	</div>
+</fest:template>
