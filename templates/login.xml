@@ -4,7 +4,8 @@
 		<h2>Login</h2>
 		<div><input value="Email"></input></div>
 		<div><input value="Password"></input></div>
-		<div><button class="js-back">Submit</button></div>
-		<div><button class="js-back">Back</button></div>
+		<p></p>
+		<a id="menu__button" class="js-back">Submit</a>
+		<a id="menu__button" class="js-back">Back</a>
 	</div>
 </fest:template>

@@ -1,1 +1,11 @@
 /* TODO */
+#menu__button {
+	margin: 4px;
+	display: block;
+	height: 35px;
+	line-height: 35px;
+	width: 140px;
+	color: white;
+	background-color: purple;
+	text-align: center;
+}

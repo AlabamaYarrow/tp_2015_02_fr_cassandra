@@ -39,6 +39,7 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
+                	'templates/*.xml',
                     'public_html/js/**/*.js',
                     'public_html/css/**/*.css'
                 ],
