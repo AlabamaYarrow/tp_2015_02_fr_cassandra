@@ -19,9 +19,8 @@ module.exports = function (grunt) {
                 }],
                 options: {
                     template: function (data) {
-                    	return grunt.template.process(
-                            //'define(function () { return <%= contents %> ; });',
-                            'var <%= name %>Tmpl = <%= contents %> ;',
+                        return grunt.template.process(
+                            'define(function () { return <%= contents %> ; });',
                             {data: data}
                         );
                     }
@@ -39,7 +38,6 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
-                	'templates/*.xml',
                     'public_html/js/**/*.js',
                     'public_html/css/**/*.css'
                 ],
@@ -49,7 +47,7 @@ module.exports = function (grunt) {
             }
         },
         concurrent: {
-        	target: ['watch', 'shell'],
+            target: ['watch', 'shell'],
             options: {
                 logConcurrentOutput: true
             }
@@ -66,4 +64,3 @@ module.exports = function (grunt) {
 
 	
 };
-
