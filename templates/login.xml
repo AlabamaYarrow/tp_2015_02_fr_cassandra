@@ -5,7 +5,7 @@
 		<div><input value="Email"></input></div>
 		<div><input value="Password"></input></div>
 		<p></p>
-		<a id="menu__button" class="js-back">Submit</a>
-		<a id="menu__button" class="js-back">Back</a>
+		<a href="#" id="menu__button" class="js-back">Submit</a>
+		<a href="#" id="menu__button" class="js-back">Back</a>
 	</div>
 </fest:template>

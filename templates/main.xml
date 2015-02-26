@@ -2,8 +2,8 @@
 	<div align="center">
 		<h1 style="">Cassandra</h1>		
 		<h2>Main Menu</h2>
-		<a id="menu__button" class="js-scoreboard">Scoreboard</a>
-		<a id="menu__button" class="js-start-game">Start game</a>
-		<a id="menu__button" class="js-login">Login</a>
+		<a href="#scoreboard" id="menu__button" class="js-scoreboard">Scoreboard</a>
+		<a href="#game" id="menu__button" class="js-start-game">Start game</a>
+		<a href="#login" id="menu__button" class="js-login">Login</a>
 	</div>
 </fest:template>

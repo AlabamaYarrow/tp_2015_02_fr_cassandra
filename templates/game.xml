@@ -3,6 +3,6 @@
 		<h1 style="">Cassandra</h1>
 		<h2>Game</h2>
 		<h3>No game, just kidding</h3>
-		<a id="menu__button" class="js-back">Back</a>
+		<a href="#" id="menu__button" class="js-back">Back</a>
 	</div>
 </fest:template>

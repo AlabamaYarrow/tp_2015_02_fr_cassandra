@@ -1,8 +1,18 @@
 define([
-    'backbone'
+    'backbone',
+    'views/main',
+    'views/game',
+    'views/login',
+    'views/scoreboard'
 ], function(
-    Backbone
+    Backbone,
+    mainView,
+    gameView,
+    loginView,
+    scoreboardView
 ){
+
+    $('#page').append(mainView.el);
 
     var Router = Backbone.Router.extend({
         routes: {
@@ -12,16 +22,28 @@ define([
             '*default': 'defaultActions'
         },
         defaultActions: function () {
-            // TODO
+            loginView.hide();
+            scoreboardView.hide();
+            gameView.hide();
+            
+            mainView.show();
+
         },
         scoreboardAction: function () {
-            // TODO
+            mainView.hide();
+            $('#page').append(scoreboardView.el);
+            scoreboardView.show();
+
         },
         gameAction: function () {
-            // TODO
+            mainView.hide();
+            $('#page').append(gameView.el);
+            gameView.show();
         },
         loginAction: function () {
-            // TODO
+            mainView.hide();
+            $('#page').append(loginView.el);
+            loginView.show();
         }
     });
 

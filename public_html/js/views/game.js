@@ -9,17 +9,17 @@ define([
     var View = Backbone.View.extend({
 
         template: tmpl,
-        initialize: function () {
-            // TODO
+        initialize: function () {        
+            this.$el.html( this.template() );
         },
         render: function () {
-            // TODO
+            
         },
         show: function () {
-            // TODO
+            $(this.el).show();
         },
         hide: function () {
-            // TODO
+            $(this.el).hide();
         }
 
     });
