@@ -1,4 +1,4 @@
-#menu__button {
+.menu__button {
 	margin: 4px;
 	display: block;
 	border-radius: 10px;
@@ -11,22 +11,21 @@
 	text-decoration: none;
 }
 
-#game__button {
+.game__button {
 	background-color: purple;
 	border-radius: 5px;
 	border: solid 1px purple;
 	color: white;
 }
 
-#game__wrapper {
+.game {
 	/* width: 100%; */
 	overflow: hidden;
 	width: 800px;
-	position: relative;
-	
+	position: relative;	
 }
 
-#game__draw {	
+.paintarea {	
 	position: absolute;
 	height: 98%;
 	left: 0;
@@ -37,21 +36,20 @@
 	float: left;
 }
 
-#game__chat {
+.userschat {
 	padding: 3px;
 	display: inline-block;
 	width: 30%;
 	float: right;
-
 }
 
-#game__chat__area {
+.chat__area {
 	height: 100px;
 	width: 201px;
 	border: solid 1px #8B8989;
 	border-radius: 5px;
 }
 
-#game__chat__input {
+.chat__input {
 	width: 140px;
 }

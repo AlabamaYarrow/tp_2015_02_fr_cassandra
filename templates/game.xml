@@ -2,34 +2,32 @@
 	<div align="center">
 		<h1>Cassandra</h1>
 		<h3>Current word: Ajax</h3>
-		<div id="game__wrapper">
-
-			<div id="game__draw">				
-				
+		<div class="game">
+			<div class="paintarea">
 				<img style="width: 200px; height: 200px;" src="ajax.jpg"></img>
 			</div>
-			<div id="game__chat">
-				<div align="left">
+			<div class="userschat">
+				<div align="left" class="users">
 					<h3> Users: </h3>
 					<p> 
 						Ivan <b>: Artist</b> <br/> 
 						Petr <br/> Vladislav <b>: Cassandra</b>
 					</p>			
 				</div>
-				<div align="left">
+				<div align="left" class="chat">
 					<h3>Chat:</h3>
-					<div id="game__chat__area">						
+					<div class="chat__area">						
 						Vladislav: It's Ajax!						
 					</div>
-					<input id="game__chat__input"></input>
-					<button id="game__button">Send</button>
+					<input class="chat__input"></input>
+					<button class="game__button">Send</button>
 				</div>
 			</div>			
 		</div>
 		<br/>
-		<button id="game__button">Cassandra guessed!</button>
+		<button class="game__button">Cassandra guessed!</button>
 		<h3>Time left: 00:07</h3>
-		<a href="#" id="menu__button" class="js-back">Back</a>
+		<a href="#" class="menu__button">Back</a>
 	</div>
 	
 </fest:template>

@@ -2,7 +2,7 @@
 	<div align="center">
 		<h1 style="">Cassandra</h1>
 		<h2>Scoreboard</h2>
-		<h3>No scoreboard, just kidding</h3>
-		<a href="#" id="menu__button" class="js-back">Back</a>
+		
+		<a href="#" class="menu__button">Back</a>
 	</div>
 </fest:template>
