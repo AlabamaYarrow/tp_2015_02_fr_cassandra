@@ -11,4 +11,47 @@
 	text-decoration: none;
 }
 
+#game__button {
+	background-color: purple;
+	border-radius: 5px;
+	border: solid 1px purple;
+	color: white;
+}
 
+#game__wrapper {
+	/* width: 100%; */
+	overflow: hidden;
+	width: 800px;
+	position: relative;
+	
+}
+
+#game__draw {	
+	position: absolute;
+	height: 98%;
+	left: 0;
+	display: inline-block;
+	width: 60%;
+	border: solid 3px purple; 
+	border-radius: 5px;
+	float: left;
+}
+
+#game__chat {
+	padding: 3px;
+	display: inline-block;
+	width: 30%;
+	float: right;
+
+}
+
+#game__chat__area {
+	height: 100px;
+	width: 201px;
+	border: solid 1px #8B8989;
+	border-radius: 5px;
+}
+
+#game__chat__input {
+	width: 140px;
+}
