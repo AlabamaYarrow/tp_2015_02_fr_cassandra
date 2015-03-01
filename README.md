@@ -2,8 +2,8 @@
 Install Node.js
 From project directory:  
   $npm init
-  $sudo npm install
-Or:   
+  $sudo npm install  
+Or:     
   $sudo npm install -g grunt-cli  
   $npm install grunt --save-dev  
   $npm install grunt-shell --save-dev  
