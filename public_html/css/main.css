@@ -53,3 +53,32 @@
 .chat__input {
 	width: 140px;
 }
+
+.loginform {
+	display: table;
+	margin: 25px;
+}
+.loginform__row {
+	display: table-row;
+}
+
+.loginform__label {
+	display: table-cell;
+}
+
+.loginform__input {
+	display: table-cell;
+}
+
+.loginform__button {
+	margin: 4px;
+	display: block;
+	border-radius: 10px;
+	border: solid 1px purple;
+	height: 35px;	
+	width: 140px;
+	color: white;
+	background-color: purple;
+	text-align: center;
+	text-decoration: none;
+}

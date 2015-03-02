@@ -3,12 +3,14 @@ define([
     'views/main',
     'views/game',
     'views/login',
+    'views/signup',
     'views/scoreboard'
 ], function(
     Backbone,
     mainView,
     gameView,
     loginView,
+    signupView,
     scoreboardView
 ){
 
@@ -19,9 +21,11 @@ define([
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
+            'signup': 'signupAction',
             '*default': 'defaultActions'
         },
         defaultActions: function () {
+            signupView.hide();
             loginView.hide();
             scoreboardView.hide();
             gameView.hide();
@@ -44,6 +48,11 @@ define([
             mainView.hide();
             $('#page').append(loginView.el);
             loginView.show();
+        },
+        signupAction: function () {
+            mainView.hide();
+            $('#page').append(signupView.el);
+            signupView.show();  
         }
     });
 

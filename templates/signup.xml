@@ -6,10 +6,18 @@
 
 	<div align="center">
 		<h1 style="">Cassandra</h1>
-		<h2>Login</h2>
+		<h2>Sign up</h2>
 		
 		<form id="idForm" method="post" action="/api/v1/auth/login">
 			<div class="loginform">
+				<p class="loginform__row">
+					<label class="loginform__label" for="username">
+						Username:</label> 
+					<input type="text" class="loginform__input" 
+						id="username" required="required"
+						pattern="^[A-z0-9]*$" title="No special characters">
+					</input>
+				</p>
 				<p class="loginform__row">
 					<label class="loginform__label" for="email">
 						Email:</label> 
@@ -19,6 +27,12 @@
 				<p class="loginform__row">	
 					<label class="loginform__label" for="passw">
 						Password:</label> 
+					<input type="password" class="loginform__input" 
+						id="passw" required="required"></input>
+				</p>
+				<p class="loginform__row">	
+					<label class="loginform__label" for="passw">
+						Confirm password:</label> 
 					<input type="password" class="loginform__input" 
 						id="passw" required="required"></input>
 				</p>			

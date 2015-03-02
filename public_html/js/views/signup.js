@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/signup'
 ], function(
     Backbone,
     tmpl
@@ -9,7 +9,7 @@ define([
     var View = Backbone.View.extend({
 
         events: {
-            'submit form#idForm': 'submitLoginForm'
+            'submit form#idForm': 'submitSignupForm',
         },
 
         template: tmpl,
@@ -25,8 +25,8 @@ define([
         hide: function () {
             $(this.el).hide();
         },
-        submitLoginForm: function(event) {
-            var url = '/api/v1/auth/login';
+        submitSignupForm: function(event) {
+            var url = '/api/v1/auth/signup';
             event.preventDefault();            
             $.ajax({
                 type: "POST",
@@ -39,7 +39,7 @@ define([
                     alert("So sorry :(");
                 }
             });            
-        }
+        },
 
     });
 
