@@ -2,7 +2,11 @@
 	<div align="center">
 		<h1 style="">Cassandra</h1>
 		<h2>Scoreboard</h2>
-		
+		<h3>Players:</h3>
+		<button id="show">Show board</button>
+		<button id="hide">Hide board</button>
+		<div style="display: none;"	align="center" id="scoreboard">
+		</div>			
 		<a href="#" class="menu__button">Back</a>
 	</div>
 </fest:template>

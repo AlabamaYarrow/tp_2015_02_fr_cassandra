@@ -26,7 +26,5 @@ define([
 
     });
 
-    //global = new View({el: "#page"});
-    //return global;
     return new View();
 });
