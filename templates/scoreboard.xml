@@ -7,6 +7,8 @@
 		<button id="hide">Hide board</button>
 		<div style="display: none;"	align="center" id="scoreboard">
 		</div>			
-		<a href="#" class="menu__button">Back</a>
+		<div class="menu">
+			<a href="#" class="menu__button">Back</a>
+		</div>
 	</div>
 </fest:template>

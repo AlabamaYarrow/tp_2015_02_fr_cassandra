@@ -27,7 +27,9 @@
 		<br/>
 		<button class="game__button">Cassandra guessed!</button>
 		<h3>Time left: 00:07</h3>
-		<a href="#" class="menu__button">Back</a>
+		<div class="menu">
+			<a href="#" class="menu__button">Back</a>
+		</div>
 	</div>
 	
 </fest:template>
