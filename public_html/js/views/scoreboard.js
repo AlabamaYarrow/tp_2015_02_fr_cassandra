@@ -27,13 +27,11 @@ define([
             this.collection.models = _.sortBy(this.collection.models, function(item) {
                 return -item.get('score');
             })
-            
-
-            this.$el.html( this.template() );                           
+            this.render();
         },
 
         render: function () {
-                  
+            this.$el.html(this.template());
         },
 
         show: function () {
