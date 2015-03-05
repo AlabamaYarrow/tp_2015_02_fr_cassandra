@@ -25,34 +25,25 @@ define([
             '*default': 'defaultActions'
         },
         defaultActions: function () {
-            signupView.hide();
-            loginView.hide();
-            scoreboardView.hide();
-            gameView.hide();
-            
-            mainView.show();
-
-        },
-        scoreboardAction: function () {
-            mainView.hide();
-            $('#page').append(scoreboardView.el);
-            scoreboardView.show();
-
+            this.setCurrentView(mainView);
         },
         gameAction: function () {
-            mainView.hide();
-            $('#page').append(gameView.el);
-            gameView.show();
+            this.setCurrentView(gameView);
         },
         loginAction: function () {
-            mainView.hide();
-            $('#page').append(loginView.el);
-            loginView.show();
+            this.setCurrentView(loginView);
+        },
+        scoreboardAction: function () {
+            this.setCurrentView(scoreboardView);
+        },
+        setCurrentView: function (view) {
+            this.currentView && this.currentView.hide();
+            this.currentView = view;
+            $('#page').append(view.el);
+            view.show();
         },
         signupAction: function () {
-            mainView.hide();
-            $('#page').append(signupView.el);
-            signupView.show();  
+            this.setCurrentView(signupView);
         }
     });
 
