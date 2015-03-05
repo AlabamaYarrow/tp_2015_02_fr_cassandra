@@ -13,9 +13,6 @@ define([
     signupView,
     scoreboardView
 ){
-
-    $('#page').append(mainView.el);
-
     var Router = Backbone.Router.extend({
         routes: {
             'scoreboard': 'scoreboardAction',
