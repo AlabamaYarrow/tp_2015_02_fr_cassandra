@@ -8,6 +8,13 @@ define([
 	    defaults: {
 	    	name: '',
 	    	score: 0
+	    },
+
+	    initialize: function () {
+	    	this.set({
+	    		name: 'player' + this.cid,
+	    		score: Math.floor(Math.random() * (100)+ 1)
+	    	});
 	    }
     });
 

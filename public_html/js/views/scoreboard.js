@@ -22,12 +22,7 @@ define([
             _.bindAll(this, 'showScoreboard');
             this.collection = new ScoresCollection();
             for (var i = 0; i < 10; i++) {
-                var scoreItem = new Score();
-                scoreItem.set({
-                    name: 'player' + i.toString(),
-                    score: Math.floor(Math.random() * (100)+ 1)
-                });
-                this.collection.add(scoreItem);                
+                this.collection.add(new Score());
             }
             this.collection.models = _.sortBy(this.collection.models, function(item) {
                 return -item.get('score');
@@ -53,7 +48,6 @@ define([
                     '</li>');                        
                 }
             );
-            hideScoreboard();
         },
 
         hide: function () {
