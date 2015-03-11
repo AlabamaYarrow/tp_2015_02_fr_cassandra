@@ -1,48 +1,34 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-
-	<style>
-
-	</style>
-
-	<div align="center">
-		<h1 style="">Cassandra</h1>
+	<div class="signup">
+		<h1>Cassandra</h1>
 		<h2>Sign up</h2>
 		
-		<form class="signupform" method="post">
-			<div class="formtable">
-				<p class="formtable__row">
-					<label class="formtable__label" for="username">
-						Username:</label> 
-					<input type="text" class="formtable__input" 
-						id="username" required="required"
-						pattern="^[A-z0-9]*$" title="No special characters">
-					</input>
-				</p>
-				<p class="formtable__row">
-					<label class="formtable__label" for="email">
-						Email:</label> 
-					<input type="email" class="formtable__input" 
-						id="email" required="required"></input>
-				</p>
-				<p class="formtable__row">
-					<label class="formtable__label" for="passw">
-						Password:</label> 
-					<input type="password" class="formtable__input" 
-						id="passw" required="required"></input>
-				</p>
-				<p class="formtable__row">
-					<label class="formtable__label" for="passw">
-						Confirm password:</label> 
-					<input type="password" class="formtable__input" 
-						id="passw" required="required"></input>
-				</p>
-			</div>
-			<button type="submit" class="signupform__button">Submit</button>
+		<form class="signup__form" method="post">
+			<p>
+				<label for="username">
+					Username:</label> 
+				<input type="text"
+					id="username" required="required"
+					pattern="^[A-z0-9]*$" title="No special characters">
+				</input>
+			</p>
+			<p>
+				<label for="email">Email:</label> 
+				<input type="email" id="email" required="required" />
+			</p>
+			<p>
+				<label for="passw">Password:</label>
+				<input type="password" id="passw" required="required" />
+			</p>
+			<p>
+				<label for="passw">Confirm password:</label> 
+				<input type="password" id="passw" required="required" />
+			</p>
+			<button type="submit" class="signup__form-submit">Submit</button>
 		</form>
 		
 		<div class="menu">
 			<a href="#" class="menu__button">Back</a>
 		</div>
 	</div>
-
 </fest:template>

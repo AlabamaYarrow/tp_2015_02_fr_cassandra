@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-	<div align="center" class="menu">
-		<h1 style="">Cassandra</h1>		
+	<div class="menu">
+		<h1>Cassandra</h1>		
 		<h2>Main Menu</h2>
 		<a href="#scoreboard" class="menu__button">Scoreboard</a>
 		<a href="#game" class="menu__button">Start game</a>

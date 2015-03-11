@@ -9,7 +9,7 @@ define([
     var LoginView = Backbone.View.extend({
 
         events: {
-            'submit form.loginform': 'submitLoginForm'
+            'submit .login__form': 'submitForm'
         },
 
         template: template,
@@ -23,14 +23,14 @@ define([
         },
 
         show: function () {
-            $(this.el).show();
+            this.$el.show();
         },
 
         hide: function () {
-            $(this.el).hide();
+            this.$el.hide();
         },
 
-        submitLoginForm: function(event) {
+        submitForm: function(event) {
             var url = '/api/v1/auth/login';
             event.preventDefault();            
             $.ajax({

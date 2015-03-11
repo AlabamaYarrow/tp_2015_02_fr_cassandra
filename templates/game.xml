@@ -1,20 +1,20 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-	<div align="center">
+	<div class="game">
 		<h1>Cassandra</h1>
 		<h3>Current word: Ajax</h3>
-		<div class="game">
+		<div class="game__playground">
 			<div class="paintarea">
 				<img style="width: 200px; height: 200px;" src="ajax.jpg"></img>
 			</div>
 			<div class="userschat">
-				<div align="left" class="users">
+				<div class="users">
 					<h3> Users: </h3>
 					<p> 
 						Ivan <b>: Artist</b> <br/> 
 						Petr <br/> Vladislav <b>: Cassandra</b>
 					</p>
 				</div>
-				<div align="left" class="chat">
+				<div class="chat">
 					<h3>Chat:</h3>
 					<div class="chat__area">
 						Vladislav: It's Ajax!
@@ -24,13 +24,10 @@
 				</div>
 			</div>
 		</div>
-		<br/>
 		<button class="game__button">Cassandra guessed!</button>
 		<h3>Time left: 00:07</h3>
 		<div class="menu">
 			<a href="#" class="menu__button">Back</a>
 		</div>
 	</div>
-	
 </fest:template>
-

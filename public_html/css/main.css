@@ -1,5 +1,83 @@
+h1, h2, h3 {
+	text-align: center;
+}
+
+label {
+	display: inline-block;
+	width: 200px;
+	margin: 0 .4em 0 0;
+	text-align: right;
+}
+
+/* Game (begin) */
+
+.game__playground {
+	overflow: hidden;
+}
+
+.game__button {
+	background-color: purple;
+	border-radius: 5px;
+	border: solid 1px purple;
+	color: white;
+}
+
+.game {
+	overflow: hidden;
+	width: 800px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+.paintarea {	
+	float: left;
+	height: 400px;
+	left: 0;
+	display: inline-block;
+	width: 500px;
+	border: solid 3px purple; 
+	border-radius: 5px;
+}
+
+.userschat {
+	float: left;
+	padding: 3px;
+	display: inline-block;
+	width: 200px;
+	margin: 0 0 0 20px;
+}
+
+.chat__area {
+	height: 100px;
+	width: 200px;
+	border: solid 1px #8B8989;
+	border-radius: 5px;
+}
+
+.chat__input {
+	width: 140px;
+}
+
+/* Game (end) */
+
+/* Login (begin) */
+
+.login {
+	margin: 0 auto;
+	width: 600px;
+}
+
+/* Login (end) */
+
+/* Menu (begin) */
+
+.menu {
+	margin: 0 auto;
+	width: 300px;
+}
+
 .menu__button {
-	margin: 4px;
+	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
 	height: 35px;
@@ -11,69 +89,30 @@
 	text-decoration: none;
 }
 
-.game__button {
-	background-color: purple;
-	border-radius: 5px;
-	border: solid 1px purple;
-	color: white;
+/* Menu (end) */
+
+/* Scoreboard (begin) */
+
+.scoreboard__list {
+	margin: 0 auto;
+	width: 200px;
 }
 
-.game {
-	/* width: 100%; */
-	overflow: hidden;
-	width: 800px;
-	position: relative;	
+/* Scoreboard (end) */
+
+/* Signup (begin) */
+
+.signup {
+	margin: 0 auto;
+	width: 600px;
 }
 
-.paintarea {	
-	position: absolute;
-	height: 98%;
-	left: 0;
-	display: inline-block;
-	width: 60%;
-	border: solid 3px purple; 
-	border-radius: 5px;
-	float: left;
-}
+/* Signup (end) */
 
-.userschat {
-	padding: 3px;
-	display: inline-block;
-	width: 30%;
-	float: right;
-}
-
-.chat__area {
-	height: 100px;
-	width: 201px;
-	border: solid 1px #8B8989;
-	border-radius: 5px;
-}
-
-.chat__input {
-	width: 140px;
-}
-
-.formtable {
-	display: table;
-	margin: 25px;
-}
-.formtable__row {
-	display: table-row;
-}
-
-.formtable__label {
-	display: table-cell;
-}
-
-.formtable__input {
-	display: table-cell;
-}
-
-.loginform__button,
-.signupform__button
+.login__form-submit,
+.signup__form-submit
 {
-	margin: 4px;
+	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
 	border: solid 1px purple;
@@ -83,4 +122,5 @@
 	background-color: purple;
 	text-align: center;
 	text-decoration: none;
+	cursor: pointer;
 }
