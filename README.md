@@ -6,8 +6,7 @@
 
 1. Execute this from project directory:
 
-        $ npm init
-        $ sudo npm install
+        # npm install
    
     Or:     
   
