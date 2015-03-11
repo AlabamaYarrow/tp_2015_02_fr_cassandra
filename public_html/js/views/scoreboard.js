@@ -11,15 +11,9 @@ define([
 ){
 
     var Scoreboard = Backbone.View.extend({
-        events: {
-            'click button#show': 'showScoreboard',
-            'click button#hide': 'hideScoreboard'
-        },
-
         template: template,
 
         initialize: function () {
-            _.bindAll(this, 'showScoreboard');
             this.collection = new Scores();
             this.collection.set([ {name: 'alice'}, {name: 'bob'}, {name: 'carol'}, {name: 'sam'}, {name: 'paul'}, {name: 'davis'}, {name: 'trent'} ]);
             this.collection.models = _.sortBy(this.collection.models, function(item) {
@@ -44,14 +38,6 @@ define([
 
         hide: function () {
             this.$el.hide();
-        },
-
-        showScoreboard: function() {
-            $('#scoreboard').show();            
-        },
-
-        hideScoreboard: function() {
-            $('#scoreboard').hide();
         }
     });
 

@@ -3,9 +3,7 @@
 		<h1 style="">Cassandra</h1>
 		<h2>Scoreboard</h2>
 		<h3>Players:</h3>
-		<button class="show">Show board</button>
-		<button class="hide">Hide board</button>
-		<div style="display: none;"	align="center" id="scoreboard">
+		<div align="center" id="scoreboard">
 		</div>			
 		<div class="menu">
 			<a href="#" class="menu__button">Back</a>
