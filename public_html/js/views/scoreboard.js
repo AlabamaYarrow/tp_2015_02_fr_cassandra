@@ -2,13 +2,11 @@ define([
     'backbone',
     'tmpl/scoreboard',
     'collections/scores',
-    'models/score',
     'views/score'
 ], function(
     Backbone,
     tmpl,
     ScoresCollection,
-    Score,
     ScoreView
 ){
 
@@ -22,7 +20,7 @@ define([
             _.bindAll(this, 'showScoreboard');
             this.collection = new ScoresCollection();
             for (var i = 0; i < 10; i++) {
-                this.collection.add(new Score());
+                this.collection.create();
             }
             this.collection.models = _.sortBy(this.collection.models, function(item) {
                 return -item.get('score');
