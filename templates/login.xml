@@ -8,25 +8,25 @@
 		<h1 style="">Cassandra</h1>
 		<h2>Login</h2>
 		
-		<form id="idForm" method="post" action="/api/v1/auth/login">
-			<div class="loginform">
-				<p class="loginform__row">
-					<label class="loginform__label" for="email">
+		<form class="loginform" method="post" action="/api/v1/auth/login">
+			<div class="formtable">
+				<p class="formtable__row">
+					<label class="formtable__label" for="email">
 						Email:</label> 
-					<input type="email" class="loginform__input" 
+					<input type="email" class="formtable__input" 
 						id="email" required="required"></input>
 				</p>
-				<p class="loginform__row">	
-					<label class="loginform__label" for="passw">
+				<p class="formtable__row">	
+					<label class="formtable__label" for="passw">
 						Password:</label> 
-					<input type="password" class="loginform__input" 
+					<input type="password" class="formtable__input" 
 						id="passw" required="required"></input>
-				</p>			
+				</p>
 			</div>
 			<button type="submit" class="loginform__button">Submit</button>
 		</form>
 		
-		<div class="menu">			
+		<div class="menu">
 			<a href="#" class="menu__button">Back</a>
 		</div>
 	</div>

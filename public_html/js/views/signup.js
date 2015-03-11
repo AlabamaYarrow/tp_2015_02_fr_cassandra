@@ -9,7 +9,7 @@ define([
     var View = Backbone.View.extend({
 
         events: {
-            'submit form#idForm': 'submitSignupForm',
+            'submit form.signupform': 'submitSignupForm',
         },
 
         template: tmpl,
