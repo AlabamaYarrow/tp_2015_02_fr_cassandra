@@ -23,3 +23,9 @@
 This will start development server at http://127.0.0.1:8100
 
     $ grunt
+
+If you want to disable browser caching by adding new attribute to every static file each time add this to the beginning of `public_html/main.js`:
+```javascript
+require.config({
+    urlArgs: "_=" + (new Date()).getTime(),
+```
