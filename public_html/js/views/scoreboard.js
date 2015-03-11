@@ -12,8 +12,8 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            'click button#show': 'showScoreboard',
-            'click button#hide': 'hideScoreboard'
+            'click button.show': 'showScoreboard',
+            'click button.hide': 'hideScoreboard'
         },
         template: tmpl,
         initialize: function () {   

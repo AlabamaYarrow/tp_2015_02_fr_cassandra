@@ -54,23 +54,25 @@
 	width: 140px;
 }
 
-.loginform {
+.formtable {
 	display: table;
 	margin: 25px;
 }
-.loginform__row {
+.formtable__row {
 	display: table-row;
 }
 
-.loginform__label {
+.formtable__label {
 	display: table-cell;
 }
 
-.loginform__input {
+.formtable__input {
 	display: table-cell;
 }
 
-.loginform__button {
+.loginform__button,
+.signupform__button
+{
 	margin: 4px;
 	display: block;
 	border-radius: 10px;

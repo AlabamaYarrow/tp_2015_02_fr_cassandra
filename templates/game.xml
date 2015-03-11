@@ -12,17 +12,17 @@
 					<p> 
 						Ivan <b>: Artist</b> <br/> 
 						Petr <br/> Vladislav <b>: Cassandra</b>
-					</p>			
+					</p>
 				</div>
 				<div align="left" class="chat">
 					<h3>Chat:</h3>
-					<div class="chat__area">						
-						Vladislav: It's Ajax!						
+					<div class="chat__area">
+						Vladislav: It's Ajax!
 					</div>
 					<input class="chat__input"></input>
 					<button class="game__button">Send</button>
 				</div>
-			</div>			
+			</div>
 		</div>
 		<br/>
 		<button class="game__button">Cassandra guessed!</button>
