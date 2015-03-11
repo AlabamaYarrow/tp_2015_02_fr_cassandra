@@ -8,7 +8,7 @@
 		<h1 style="">Cassandra</h1>
 		<h2>Sign up</h2>
 		
-		<form class="signupform" method="post" action="/api/v1/auth/login">
+		<form class="signupform" method="post">
 			<div class="formtable">
 				<p class="formtable__row">
 					<label class="formtable__label" for="username">
