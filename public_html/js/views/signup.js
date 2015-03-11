@@ -3,28 +3,33 @@ define([
     'tmpl/signup'
 ], function(
     Backbone,
-    tmpl
+    template
 ){
 
-    var View = Backbone.View.extend({
+    var SignupView = Backbone.View.extend({
 
         events: {
             'submit form.signupform': 'submitSignupForm',
         },
 
-        template: tmpl,
+        template: template,
+
         initialize: function () {        
+            this.render();
+        },
+
+        render: function () {
             this.$el.html( this.template() );
         },
-        render: function () {
-            
-        },
+
         show: function () {
             $(this.el).show();
         },
+
         hide: function () {
             $(this.el).hide();
         },
+
         submitSignupForm: function(event) {
             var url = '/api/v1/auth/signup';
             event.preventDefault();            
@@ -39,9 +44,8 @@ define([
                     alert("So sorry :(");
                 }
             });            
-        },
-
+        }
     });
 
-    return new View();
+    return new SignupView();
 });
