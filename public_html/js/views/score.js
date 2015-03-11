@@ -1,18 +1,22 @@
 define([
-    'backbone'
+    'backbone',
+    'tmpl/score'
 ], function(
-    Backbone
+    Backbone,
+    template
 ){
 
     var View = Backbone.View.extend({
         tagName: 'li',
+
+        template: template,
         
         initialize: function () {
             this.render();
         },
         
         render: function () {
-            this.$el.text(this.model.get('name') + ': ' + this.model.get('score'));
+            this.$el.text(this.template(this.model.toJSON()));
         }
     });
 
