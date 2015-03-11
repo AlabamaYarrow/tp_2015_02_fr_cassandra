@@ -3,28 +3,33 @@ define([
     'tmpl/login'
 ], function(
     Backbone,
-    tmpl
+    template
 ){
 
-    var View = Backbone.View.extend({
+    var LoginView = Backbone.View.extend({
 
         events: {
             'submit form.loginform': 'submitLoginForm'
         },
 
-        template: tmpl,
-        initialize: function () {        
+        template: template,
+
+        initialize: function () {
+            this.render();
+        },
+
+        render: function () {
             this.$el.html( this.template() );
         },
-        render: function () {
-            
-        },
+
         show: function () {
             $(this.el).show();
         },
+
         hide: function () {
             $(this.el).hide();
         },
+
         submitLoginForm: function(event) {
             var url = '/api/v1/auth/login';
             event.preventDefault();            
@@ -40,8 +45,7 @@ define([
                 }
             });            
         }
-
     });
 
-    return new View();
+    return new LoginView();
 });
