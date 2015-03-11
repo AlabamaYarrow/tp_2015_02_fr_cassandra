@@ -12,12 +12,9 @@ define([
 
         initialize: function () {
             this.set({
-                name: 'player' + this.cid,
                 score: Math.floor(Math.random() * 100 + 1)
             });
-        },
-
-        sync: function () {}
+        }
     });
 
     return Score;

@@ -5,48 +5,55 @@ define([
     'views/score'
 ], function(
     Backbone,
-    tmpl,
-    ScoresCollection,
+    template,
+    Scores,
     ScoreView
 ){
 
-    var View = Backbone.View.extend({
+    var Scoreboard = Backbone.View.extend({
         events: {
-            'click button.show': 'showScoreboard',
-            'click button.hide': 'hideScoreboard'
+            'click button#show': 'showScoreboard',
+            'click button#hide': 'hideScoreboard'
         },
-        template: tmpl,
-        initialize: function () {   
+
+        template: template,
+
+        initialize: function () {
             _.bindAll(this, 'showScoreboard');
-            this.collection = new ScoresCollection();
-            for (var i = 0; i < 10; i++) {
-                this.collection.create();
-            }
+            this.collection = new Scores();
+            this.collection.set([ {name: 'alice'}, {name: 'bob'}, {name: 'carol'}, {name: 'sam'}, {name: 'paul'}, {name: 'davis'}, {name: 'trent'} ]);
             this.collection.models = _.sortBy(this.collection.models, function(item) {
                 return -item.get('score');
             })
             this.render();
         },
+
         render: function () {
             this.$el.html(this.template());
+            this.scoreboard = this.$('#scoreboard');
         },
+
         show: function () {
-            $(this.el).show();
-            $('#scoreboard').html('');
+            this.$el.show();
+            this.scoreboard.html('');
+            var that = this;
             _(this.collection.models).each(function (item) {
-                $('#scoreboard').append((new ScoreView({model: item})).el);
+                that.scoreboard.append((new ScoreView({model: item})).el);
             });
         },
+
         hide: function () {
-            $(this.el).hide();
+            this.$el.hide();
         },
+
         showScoreboard: function() {
             $('#scoreboard').show();            
         },
+
         hideScoreboard: function() {
             $('#scoreboard').hide();
         }
     });
 
-    return new View();
+    return new Scoreboard();
 });
