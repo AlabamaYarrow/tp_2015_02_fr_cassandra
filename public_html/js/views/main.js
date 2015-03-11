@@ -3,20 +3,24 @@ define([
     'tmpl/main'
 ], function(
     Backbone,
-    tmpl
+    template
 ){
 
     var View = Backbone.View.extend({
-        template: tmpl,
+        template: template,
+
         initialize: function () {
+            this.render()
+        },
+
+        render: function () {
             this.$el.html(this.template());
         },
-        render: function () {
-            
-        },
+
         show: function () {
             $(this.el).show();
         },
+
         hide: function () {            
             $(this.el).hide();
         }
