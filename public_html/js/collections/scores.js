@@ -1,13 +1,13 @@
 define([
     'backbone',
     'models/score'
-], function(
+], function (
     Backbone,
-    score
-){
-	var ScoresCollection = Backbone.Collection.extend({
-    	model: score
+    Score
+) {
+    var Scores = Backbone.Collection.extend({
+        model: Score
     });
 
-    return ScoresCollection;
+    return Scores;
 });
