@@ -31,14 +31,14 @@ define([
         },
 
         submitForm: function(event) {
-            var url = '/api/v1/auth/login';
+            var url = '/api/v1/auth/signin';
             event.preventDefault();            
             $.ajax({
                 type: "POST",
                 url: url,
-                data: $(this).serialize(),
+                data: $('.login__form').serialize(),
                 success: function(data) {
-                    postDispatcher(data);
+                    alert(data);
                 },
                 error: function(data) {
                     alert("So sorry :(");

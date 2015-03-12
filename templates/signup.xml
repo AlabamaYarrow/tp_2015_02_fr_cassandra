@@ -3,27 +3,34 @@
 		<h1>Cassandra</h1>
 		<h2>Sign up</h2>
 		
-		<form class="signup__form" method="post">
+		<form id="1" class="signup__form" method="post">
+
+
 			<p>
-				<label for="username">
-					Username:</label> 
+				<label for="name">Username:</label> 
 				<input type="text"
-					id="username" required="required"
+					id="name" name="name" required="required"
 					pattern="^[A-z0-9]*$" title="No special characters">
 				</input>
 			</p>
+			
 			<p>
 				<label for="email">Email:</label> 
-				<input type="email" id="email" required="required" />
+				<input type="email" name="email" id="email" required="required" />
 			</p>
+			
 			<p>
-				<label for="passw">Password:</label>
-				<input type="password" id="passw" required="required" />
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" required="required" />
 			</p>
+			
 			<p>
-				<label for="passw">Confirm password:</label> 
-				<input type="password" id="passw" required="required" />
+				<label for="password_confirmation">Confirm password:</label> 
+				<input type="password" name="password_confirmation" id="password_confirmation" required="required" />
 			</p>
+
+			
+			
 			<button type="submit" class="signup__form-submit">Submit</button>
 		</form>
 		

@@ -32,13 +32,13 @@ define([
 
         submitForm: function(event) {
             var url = '/api/v1/auth/signup';
-            event.preventDefault();            
+            event.preventDefault();                    
             $.ajax({
                 type: "POST",
                 url: url,
-                data: $(this).serialize(),
+                data: $('.signup__form').serialize(),
                 success: function(data) {
-                    postDispatcher(data);
+                    alert(data);                    
                 },
                 error: function(data) {
                     alert("So sorry :(");
