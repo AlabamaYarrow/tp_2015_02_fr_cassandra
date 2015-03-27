@@ -15,10 +15,15 @@ label {
 	overflow: hidden;
 }
 
+.game__buttonwrap {
+	text-align: center;
+}
+
 .game__button {
+	margin: 10px;
 	background-color: purple;
 	border-radius: 5px;
-	border: solid 1px purple;
+	border: solid 5px purple;
 	color: white;
 }
 
@@ -43,19 +48,29 @@ label {
 	float: left;
 	padding: 3px;
 	display: inline-block;
-	width: 200px;
+	width: 250px;
 	margin: 0 0 0 20px;
 }
 
 .chat__area {
 	height: 100px;
-	width: 200px;
+	width: 250px;
 	border: solid 1px #8B8989;
 	border-radius: 5px;
 }
 
 .chat__input {
-	width: 140px;
+	float: left;
+	width: 150px;
+}
+
+.chat__button {	
+	float: right;
+	margin: 2px 0px;
+	background-color: purple;
+	border-radius: 5px;
+	border: solid 1px purple;
+	color: white;
 }
 
 /* Game (end) */
