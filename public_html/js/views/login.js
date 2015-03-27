@@ -23,6 +23,7 @@ define([
         },
 
         show: function () {
+            this.trigger("show");
             this.$el.show();
         },
 

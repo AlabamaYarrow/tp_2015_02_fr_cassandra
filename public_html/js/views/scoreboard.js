@@ -28,6 +28,7 @@ define([
         },
 
         show: function () {
+            this.trigger("show");
             this.$el.show();
             this.scoreboard.html('');
             var that = this;
@@ -36,7 +37,7 @@ define([
             });
         },
 
-        hide: function () {
+        hide: function () {            
             this.$el.hide();
         }
     });

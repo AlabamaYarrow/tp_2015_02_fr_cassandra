@@ -18,6 +18,7 @@ define([
         },
 
         show: function () {
+            this.trigger("show");
             $(this.el).show();
         },
 
@@ -25,6 +26,8 @@ define([
             $(this.el).hide();
         }
     });
+
+
 
     return new View();
 });

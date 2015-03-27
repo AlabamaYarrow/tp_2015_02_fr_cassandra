@@ -4,15 +4,18 @@ define([
     'views/game',
     'views/login',
     'views/signup',
-    'views/scoreboard'
+    'views/scoreboard',
+    'views/viewmanager'
 ], function(
     Backbone,
     mainView,
     gameView,
     loginView,
     signupView,
-    scoreboardView
+    scoreboardView,
+    viewmanager
 ){
+
     var Router = Backbone.Router.extend({
         routes: {
             'scoreboard': 'scoreboardAction',
@@ -33,14 +36,13 @@ define([
         scoreboardAction: function () {
             this.setCurrentView(scoreboardView);
         },
-        setCurrentView: function (view) {
-            this.currentView && this.currentView.hide();
-            this.currentView = view;
-            $('#page').append(view.el);
-            view.show();
-        },
         signupAction: function () {
             this.setCurrentView(signupView);
+        },
+        setCurrentView: function (view) {                        
+            $('#page').append(view.el);
+            viewmanager.addView(view);
+            view.show();
         }
     });
 
