@@ -4,18 +4,25 @@ define([
     Backbone
 ){
 
-    var previousView;
-
-    var View = Backbone.View.extend({
-        addView: function (view) {                
-            view.on('show', this.hideView(view) );
+    
+    var ViewManager = Backbone.View.extend({
+        addView: function (view) {
+            view.on('show', this.onViewShow, this);
+            $('#page').append(view.el);
+            return this;
         },
-        hideView: function(view) {
-            if (previousView)
-                previousView.hide();
-            previousView = view;
+
+        changeView: function(view) {
+            if (this.previousView) {
+                this.previousView.hide();
+            }
+            this.previousView = view;
+        },
+
+        onViewShow: function (view) {
+            this.changeView(view);
         }
     });
 
-    return new View();
+    return ViewManager;
 });

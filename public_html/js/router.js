@@ -13,36 +13,49 @@ define([
     loginView,
     signupView,
     scoreboardView,
-    viewmanager
+    ViewManager
 ){
 
     var Router = Backbone.Router.extend({
         routes: {
-            'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
+            'scoreboard': 'scoreboardAction',
             'signup': 'signupAction',
-            '*default': 'defaultActions'
+            '*default': 'mainAction'
         },
-        defaultActions: function () {
-            this.setCurrentView(mainView);
+
+        initialize: function () {
+            this.viewManager = new ViewManager({
+                el: $('#page')
+            });
+            this.viewManager
+                .addView(gameView)
+                .addView(loginView)
+                .addView(mainView)
+                .addView(scoreboardView)
+                .addView(signupView)
+            ;
         },
+
         gameAction: function () {
-            this.setCurrentView(gameView);
+            gameView.show();
         },
+
         loginAction: function () {
-            this.setCurrentView(loginView);
+            loginView.show();
         },
+
+        mainAction: function () {
+            mainView.show();
+        },
+
         scoreboardAction: function () {
-            this.setCurrentView(scoreboardView);
+            scoreboardView.show();
         },
+
         signupAction: function () {
-            this.setCurrentView(signupView);
-        },
-        setCurrentView: function (view) {                        
-            $('#page').append(view.el);
-            viewmanager.addView(view);
-            view.show();
+            signupView.show();
         }
     });
 

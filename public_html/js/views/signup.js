@@ -20,10 +20,11 @@ define([
 
         render: function () {
             this.$el.html( this.template() );
+            this.hide();
         },
 
         show: function () {
-            this.trigger("show");
+            this.trigger("show", this);
             this.$el.show();
         },
 

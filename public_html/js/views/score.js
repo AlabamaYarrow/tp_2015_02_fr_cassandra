@@ -6,7 +6,7 @@ define([
     template
 ){
 
-    var View = Backbone.View.extend({
+    var ScoreView = Backbone.View.extend({
         tagName: 'li',
 
         template: template,
@@ -20,5 +20,5 @@ define([
         }
     });
 
-    return View;
+    return ScoreView;
 });

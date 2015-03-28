@@ -25,10 +25,11 @@ define([
         render: function () {
             this.$el.html(this.template());
             this.scoreboard = this.$('.scoreboard__list');
+            this.hide();
         },
 
         show: function () {
-            this.trigger("show");
+            this.trigger("show", this);
             this.$el.show();
             this.scoreboard.html('');
             var that = this;
