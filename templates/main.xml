@@ -1,9 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<div class="menu">
 		<h1>Cassandra</h1>		
-		<h2>Main Menu</h2>
-		<a href="#scoreboard" class="menu__button">Scoreboard</a>
+		<h2>Main Menu</h2>		
 		<a href="#game" class="menu__button">Start game</a>
+		<a href="#scoreboard" class="menu__button">Scoreboard</a>
 		<a href="#login" class="menu__button">Login</a>
 		<a href="#signup" class="menu__button">Sign up</a>
 	</div>

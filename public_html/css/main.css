@@ -1,5 +1,26 @@
+h1 {
+	margin-top: 0px; 
+}
+
 h1, h2, h3 {
 	text-align: center;
+	color: #FFFFFF;
+}
+
+p, li {
+	color: #FFFFFF;	
+}
+
+body {	
+	margin: 0;	
+}
+
+.cassandra {
+	height: 100vh;
+	background-color: #3366FF; 
+	background-image: url("../stars.jpg"); 
+	background-repeat: repeat; 
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 label {
@@ -21,16 +42,17 @@ label {
 }
 
 .game__button {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	margin: 10px;
-	background-color: purple;
+	background-color: #CC9900;
 	border-radius: 5px;
-	border: solid 5px purple;
+	border: solid 5px #CC9900;
 	color: white;
 }
 
 .game__button:hover {
-	background-color: #800020;
-	border: solid 5px #800020;
+	background-color: #CC6600;
+	border: solid 5px #CC6600;
 }
 
 .game {
@@ -41,12 +63,13 @@ label {
 }
 
 .paintarea {	
+	background-color: #FFFFFF;
 	float: left;
 	height: 400px;
 	left: 0;
 	display: inline-block;
 	width: 500px;
-	border: solid 3px purple; 
+	border: solid 3px #B2D1FF; 
 	border-radius: 5px;
 }
 
@@ -68,6 +91,7 @@ label {
 
 .chat__area {
 	height: 200px;	
+	background-color: #FFFFFF;
 	border: solid 1px #8B8989;
 	border-radius: 5px;
 }
@@ -82,25 +106,30 @@ label {
 }
 
 .chat__button {	
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 10pt;
 	width: 25%;
 	float: right;
 	margin: 2px 0px;
-	background-color: purple;
+	background-color: #CC9900;
 	border-radius: 5px;
-	border: solid 1px purple;
+	border: solid 1px #CC9900;
 	color: white;
+}
+
+.chat__button:hover {
+	background-color: #CC6600;
 }
 
 .chat__message {
 	margin: 0px;
 	font-size: 10pt;
 	font-style: italic;
+	color: #000000;
 
 }
 
-.chat__button:hover {
-	background-color: #800020;
-}
+
 
 /* Game (end) */
 
@@ -128,13 +157,13 @@ label {
 	line-height: 35px;
 	width: 140px;
 	color: white;
-	background-color: #800080;
+	background-color: #CC9900;
 	text-align: center;
 	text-decoration: none;
 }
 
 .menu__button:hover {
-	background-color: #750030;
+	background-color: #CC6600;
 }
 
 /* Menu (end) */
@@ -163,11 +192,11 @@ label {
 	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
-	border: solid 1px purple;
+	border: solid 1px #CC9900;
 	height: 35px;	
 	width: 140px;
 	color: white;
-	background-color: purple;
+	background-color: #CC9900;
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
@@ -175,6 +204,6 @@ label {
 
 .login__form-submit:hover,
 .signup__form-submit:hover {
-	background-color: #750030;	
+	background-color: #CC6600;	
 }
 
