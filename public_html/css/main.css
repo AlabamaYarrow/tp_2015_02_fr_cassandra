@@ -13,6 +13,7 @@ label {
 
 .game__playground {
 	overflow: hidden;
+	position: relative;
 }
 
 .game__buttonwrap {
@@ -50,6 +51,8 @@ label {
 }
 
 .userschat {
+	height: 100%;
+	position: absolute;
 	float: left;
 	padding: 3px;
 	display: inline-block;
@@ -57,25 +60,42 @@ label {
 	margin: 0 0 0 20px;
 }
 
+.chat {
+	position: absolute;
+	margin: 5px;
+	bottom: 0px;
+}
+
 .chat__area {
-	height: 100px;
-	width: 250px;
+	height: 200px;	
 	border: solid 1px #8B8989;
 	border-radius: 5px;
 }
 
 .chat__input {
+	display: block;
 	float: left;
-	width: 150px;
+	width: 75%;
+	padding-right: 0px;
+	padding-left: 0px;
+	box-sizing: border-box;	
 }
 
 .chat__button {	
+	width: 25%;
 	float: right;
 	margin: 2px 0px;
 	background-color: purple;
 	border-radius: 5px;
 	border: solid 1px purple;
 	color: white;
+}
+
+.chat__message {
+	margin: 0px;
+	font-size: 10pt;
+	font-style: italic;
+
 }
 
 .chat__button:hover {

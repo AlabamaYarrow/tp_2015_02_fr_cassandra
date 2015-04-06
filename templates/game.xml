@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<div class="game">
-		<h1>Cassandra</h1>
-		<h3>Current word: Ajax</h3>
+		
+		<h3>Current word: AJAX</h3>
 		<div class="game__playground">
 			<div class="paintarea">
 				<img style="width: 200px; height: 200px;" src="ajax.jpg"></img>
@@ -15,12 +15,13 @@
 					</p>
 				</div>
 				<div class="chat">
-					<h3>Chat:</h3>
 					<div class="chat__area">
-						Vladislav: It's Ajax!
-					</div>					
+						<p class="chat__message">Vladislav: It's Ajax!</p>
+					</div>		
+					<div>			
 						<input class="chat__input"></input>
-						<button class="chat__button">Send</button>					
+						<button class="chat__button">Send</button>
+					</div>
 				</div>
 			</div>
 		</div>
