@@ -27,6 +27,11 @@ label {
 	color: white;
 }
 
+.game__button:hover {
+	background-color: #800020;
+	border: solid 5px #800020;
+}
+
 .game {
 	overflow: hidden;
 	width: 800px;
@@ -73,6 +78,10 @@ label {
 	color: white;
 }
 
+.chat__button:hover {
+	background-color: #800020;
+}
+
 /* Game (end) */
 
 /* Login (begin) */
@@ -99,9 +108,13 @@ label {
 	line-height: 35px;
 	width: 140px;
 	color: white;
-	background-color: purple;
+	background-color: #800080;
 	text-align: center;
 	text-decoration: none;
+}
+
+.menu__button:hover {
+	background-color: #750030;
 }
 
 /* Menu (end) */
@@ -139,3 +152,9 @@ label {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.login__form-submit:hover,
+.signup__form-submit:hover {
+	background-color: #750030;	
+}
+
