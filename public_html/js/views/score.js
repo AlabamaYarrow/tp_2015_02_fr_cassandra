@@ -7,8 +7,10 @@ define([
 ){
 
     var ScoreView = Backbone.View.extend({
-        tagName: 'li',
+        //tagName: 'li',
 
+        tagName: 'tr',
+        
         template: template,
         
         initialize: function () {
@@ -16,7 +18,7 @@ define([
         },
         
         render: function () {
-            this.$el.text(this.template(this.model.toJSON()));
+            this.$el.html(this.template( this.model.toJSON()));
         }
     });
 

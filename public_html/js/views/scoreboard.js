@@ -24,7 +24,8 @@ define([
 
         render: function () {
             this.$el.html(this.template());
-            this.scoreboard = this.$('.scoreboard__list');
+            //this.scoreboard = this.$('.scoreboard__list');
+            this.scoreboard = this.$('.scoretable__body');
             this.hide();
         },
 

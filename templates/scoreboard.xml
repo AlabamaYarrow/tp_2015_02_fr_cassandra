@@ -2,8 +2,23 @@
 	<div class="scoreboard">
 		<h1>Cassandra</h1>
 		<h2>Scoreboard</h2>
-		<h3>Players:</h3>
-		<ul class="scoreboard__list"></ul>
+		<!-- <ul class="scoreboard__list"></ul>  !-->
+			<table class="scoretable">	
+				<thead  class="scoretablehead">	
+					<tr>					
+						<td class="scoretablehead__left">
+							User
+						</td>
+						<td class="scoretablehead__right">
+							Score
+						</td>		
+					</tr>
+				</thead>
+				<tbody class="scoretable__body">			
+
+				</tbody>
+			</table>
+		
 		<div class="menu">
 			<a href="#" class="menu__button">Back</a>
 		</div>

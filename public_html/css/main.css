@@ -4,16 +4,26 @@ h1 {
 
 h1, h2, h3 {
 	text-align: center;
-	color: #FFFFFF;
+	color: white;
 }
 
 p, li {
-	color: #FFFFFF;	
+	color: white;	
 }
 
 body {	
 	margin: 0;	
 }
+
+/*
+table, th, td {
+
+}
+
+td {
+	background-color: #6699FF;
+}
+*/
 
 .cassandra {
 	height: 100vh;
@@ -63,7 +73,7 @@ label {
 }
 
 .paintarea {	
-	background-color: #FFFFFF;
+	background-color: white;
 	float: left;
 	height: 400px;
 	left: 0;
@@ -91,7 +101,7 @@ label {
 
 .chat__area {
 	height: 200px;	
-	background-color: #FFFFFF;
+	background-color: white;
 	border: solid 1px #8B8989;
 	border-radius: 5px;
 }
@@ -175,6 +185,44 @@ label {
 	width: 200px;
 }
 
+.scoretable {
+	border: 0px solid white;
+    color: white;	
+	margin: 0 auto; 
+	margin-bottom: 20px;
+	width: 200px;	
+}
+
+.scoretable__left {
+	border: 1px solid white;
+	background-color: #6699FF;
+	color: white;
+	width: 60%;
+	text-align: left;
+}
+
+.scoretable__right {
+	border: 1px solid white;
+	background-color: #6699FF;	
+	color: white;
+	text-align: center;	
+}
+
+.scoretablehead__left {
+	border: 1px solid white;
+	background-color: #003399;
+	color: white;
+	width: 60%;
+	text-align: center;
+}
+
+.scoretablehead__right {
+	border: 1px solid white;
+	background-color: #003399;	
+	color: white;
+	text-align: center;	
+}
+
 /* Scoreboard (end) */
 
 /* Signup (begin) */
@@ -189,6 +237,8 @@ label {
 .login__form-submit,
 .signup__form-submit
 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 12pt;
 	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
