@@ -47,7 +47,14 @@ label {
 	position: relative;
 }
 
-.game__buttonwrap {
+.game__panelpaint {
+	float: left;
+	width: 506px;
+	text-align: center;
+}
+
+.game__panelguess {
+	
 	text-align: center;
 }
 

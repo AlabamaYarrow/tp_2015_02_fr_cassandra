@@ -26,10 +26,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="game__buttonwrap">
-			<button class="js-buttonclear game__button">Clear</button>
-			<button class="js-buttonguess game__button">Cassandra guessed!</button>
-			<button class="js-buttoncolor game__button">Color</button>
+		<div>
+			<div class="game__panelpaint">
+				<button class="js-buttonclear game__button">Clear</button>
+				<button class="js-buttoncolor game__button">Color</button>
+				<button class="js-buttonwidth game__button">Width</button>			
+			</div>
+			<div class="game__panelguess">		
+				<button class="js-buttonguess game__button">Cassandra guessed!</button>			
+			</div>
 		</div>
 		<h3>Time left: 00:07</h3>
 		<div class="menu">

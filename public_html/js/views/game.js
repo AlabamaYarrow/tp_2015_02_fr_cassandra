@@ -11,7 +11,8 @@ define([
     var View = Backbone.View.extend({
         events: {
             'click .js-buttonclear': 'clear',
-            'click .js-buttoncolor': 'color'
+            'click .js-buttoncolor': 'setColor',
+            'click .js-buttonwidth': 'setWidth'
         },
 
         template: tmpl,
@@ -25,7 +26,7 @@ define([
             context.fillRect(0, 0, canvas.width, canvas.height);
         },
 
-        color: function () {
+        setColor: function () {
             alert("TODO");
         },        
 
@@ -46,6 +47,10 @@ define([
 
         hide: function () {            
             this.$el.hide();
+        },
+
+        setWidth: function () {
+            alert("TODO");
         }
 
     });
