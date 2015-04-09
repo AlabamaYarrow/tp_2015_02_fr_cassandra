@@ -1,10 +1,10 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-	<div class="game">
+	<div id="game" class="game">
 		
 		<h3>Current word: AJAX</h3>
 		<div class="game__playground">
-			<div class="paintarea">
-				<img style="width: 200px; height: 200px;" src="ajax.jpg"></img>
+			<div class="js-paintarea paintarea">
+				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
 			</div>
 			<div class="userschat">
 				<div class="users">
@@ -27,7 +27,9 @@
 			</div>
 		</div>
 		<div class="game__buttonwrap">
-			<button class="game__button">Cassandra guessed!</button>
+			<button class="js-buttonclear game__button">Clear</button>
+			<button class="js-buttonguess game__button">Cassandra guessed!</button>
+			<button class="js-buttoncolor game__button">Color</button>
 		</div>
 		<h3>Time left: 00:07</h3>
 		<div class="menu">

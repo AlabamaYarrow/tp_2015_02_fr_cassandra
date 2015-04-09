@@ -4,15 +4,15 @@ define([
     'views/game',
     'views/login',
     'views/signup',
-    'views/scoreboard',
-    'views/viewmanager'
+    'views/scoreboard',   
+    'views/viewmanager'    
 ], function(
     Backbone,
     mainView,
     gameView,
     loginView,
     signupView,
-    scoreboardView,
+    scoreboardView,       
     ViewManager
 ){
 
@@ -35,10 +35,11 @@ define([
                 .addView(mainView)
                 .addView(scoreboardView)
                 .addView(signupView)
+                
             ;
         },
 
-        gameAction: function () {
+        gameAction: function () {               
             gameView.show();
         },
 

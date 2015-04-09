@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 				stderr: true
 			},
 			server: {
-				command: 'java -cp L1.2.jar main.Main 8100'
+				command: 'java -cp L2.1.jar main.Main 8100'
 			}
 		},
 		fest: {
