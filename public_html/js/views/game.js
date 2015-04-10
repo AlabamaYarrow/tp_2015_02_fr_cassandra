@@ -1,11 +1,13 @@
 define([
     'backbone',
     'tmpl/game',
-    'views/paintarea'
+    'views/paintarea',
+    'views/gameover'
 ], function(
     Backbone,
     tmpl,
-    paintareaView
+    paintareaView,
+    gameoverView
 ){
 
     var View = Backbone.View.extend({
