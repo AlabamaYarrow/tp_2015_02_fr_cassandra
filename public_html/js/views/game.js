@@ -12,27 +12,22 @@ define([
 
     var View = Backbone.View.extend({
         events: {
-            'click .js-buttonclear': 'clear',
+            'click .js-buttonclear': 'onClear',
             'click .js-buttoncolor': 'setColor',
             'click .js-buttonwidth': 'setWidth'
         },
 
         template: tmpl,
 
-        clear: function () {
-            canvas = $('.js-canvas')[0];
-            canvas.width = $('.paintarea').width();
-            canvas.height = $('.paintarea').height();
-            context = canvas.getContext('2d');
-            context.fillStyle = '#FFFFFF';
-            context.fillRect(0, 0, canvas.width, canvas.height);
+        onClear: function () {
+            paintareaView.clear();
         },
 
         setColor: function () {
             alert("TODO");
         },        
 
-        initialize: function () {
+        initialize: function () {  
             this.render();
         },
 
@@ -51,7 +46,7 @@ define([
             this.$el.hide();
         },
 
-        setWidth: function () {
+        setWidth: function () {            
             alert("TODO");
         }
 
