@@ -1,9 +1,7 @@
 define([
-    'backbone',
-  
+    'backbone'  
 ], function(
-    Backbone,
-  
+    Backbone  
 ){
 
     var View = Backbone.View.extend({

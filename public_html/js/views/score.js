@@ -7,7 +7,6 @@ define([
 ){
 
     var ScoreView = Backbone.View.extend({
-        //tagName: 'li',
 
         tagName: 'tr',
         

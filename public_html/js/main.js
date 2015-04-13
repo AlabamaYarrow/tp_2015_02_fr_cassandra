@@ -21,8 +21,7 @@ define([
     'router'
 ], function(
     Backbone,
-    router,
-    apiSync
+    router
 ){
     Backbone.history.start();
 });

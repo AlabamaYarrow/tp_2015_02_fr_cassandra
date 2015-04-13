@@ -3,6 +3,7 @@
 		
 		<h3>Current word: AJAX</h3>
 		<div class="game__playground">
+			<span id="test"></span>
 			<div class="js-paintarea paintarea">
 				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
 			</div>
@@ -10,9 +11,7 @@
 				<div class="users">
 					<h3> Users: </h3>
 					<p> 
-						Ivan <b>: Artist</b> <br/> 
-						Petr <b>: Judge</b> <br/> 
-						Vladislav <b>: Cassandra</b>
+						<fest:value>json.name</fest:value> <br/> 
 					</p>
 				</div>
 				<div class="chat">

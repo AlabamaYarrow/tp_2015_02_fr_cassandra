@@ -9,24 +9,24 @@
 			<p>
 				<label for="name">Username:</label> 
 				<input type="text"
-					id="name" name="name" required="required"
+					id="nameIdSP" name="name" required="required"
 					pattern="^[A-z0-9]*$" title="No special characters">
 				</input>
 			</p>
 			
 			<p>
 				<label for="email">Email:</label> 
-				<input type="email" name="email" id="email" required="required" />
+				<input type="email" name="email" id="emailIdSP" required="required" ></input>
 			</p>
 			
 			<p>
 				<label for="password">Password:</label>
-				<input type="password" name="password" id="password" required="required" />
+				<input type="password" name="password" id="passwordIdSP" required="required" ></input>
 			</p>
 			
 			<p>
 				<label for="password_confirmation">Confirm password:</label> 
-				<input type="password" name="password_confirmation" id="password_confirmation" required="required" />
+				<input type="password" name="password_confirmation" id="password_confirmationIdSP" required="required" ></input>
 			</p>
 
 			

@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'tmpl/signup'
+    'tmpl/signup',
+    'models/session'
 ], function(
     Backbone,
-    template
+    template,
+    session
 ){
 
     var SignupView = Backbone.View.extend({
@@ -14,7 +16,8 @@ define([
 
         template: template,
 
-        initialize: function () {        
+        initialize: function () {                 
+            this.model = session.user;
             this.render();
         },
 
@@ -29,23 +32,42 @@ define([
         },
 
         hide: function () {
-            this.$el.hide();
+            this.$el.hide();            
         },
 
         submitForm: function(event) {
-            var url = '/api/v1/auth/signup';
-            event.preventDefault();                    
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $('.signup__form').serialize(),
-                success: function(data) {
-                    alert(data);                    
-                },
-                error: function(data) {
-                    alert("So sorry :(");
-                }
-            });            
+            event.preventDefault();
+            
+            var json_data = {                             
+                email: $('#emailIdSP').val(),
+                name: $('#nameIdSP').val(), 
+                password: $('#passwordIdSP').val()  
+            };
+            form_data = $('.signup__form').serialize();          
+            this.model.save( null, form_data,
+            {
+                emulateJSON: true,                 
+                wait: true,                
+                success: this.onSubmitSuccess(json_data, this.model),
+                error: this.onSubmitFail()
+            },
+            'signup'
+            );                     
+        },
+
+        onSubmitSuccess: function(json_data, model) {
+            return function(data) {
+                console.log('signup success');
+                model.set(json_data);                        
+                Backbone.history.navigate('#login', true);
+            }
+        },
+
+        onSubmitFail: function() {
+            return function(data) {
+                console.log('signup fail');
+                alert('Failed to sign up');
+            }
         }
     });
 

@@ -3,6 +3,7 @@ define([
     'views/main',
     'views/game',
     'views/login',
+    'views/logout',
     'views/signup',
     'views/scoreboard',   
     'views/viewmanager'    
@@ -11,6 +12,7 @@ define([
     mainView,
     gameView,
     loginView,
+    logoutView,
     signupView,
     scoreboardView,       
     ViewManager
@@ -20,6 +22,7 @@ define([
         routes: {
             'game': 'gameAction',
             'login': 'loginAction',
+            'logout': 'logoutAction',
             'scoreboard': 'scoreboardAction',
             'signup': 'signupAction',
             '*default': 'mainAction'
@@ -32,10 +35,10 @@ define([
             this.viewManager
                 .addView(gameView)
                 .addView(loginView)
+                .addView(logoutView)
                 .addView(mainView)
                 .addView(scoreboardView)
-                .addView(signupView)
-                
+                .addView(signupView)                
             ;
         },
 
@@ -45,6 +48,10 @@ define([
 
         loginAction: function () {
             loginView.show();
+        },
+
+        logoutAction: function () {
+            logoutView.show();
         },
 
         mainAction: function () {

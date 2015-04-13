@@ -2,12 +2,14 @@ define([
     'backbone',
     'tmpl/game',
     'views/paintarea',
-    'views/gameover'
+    'views/gameover',
+    'models/session'
 ], function(
     Backbone,
     tmpl,
     paintareaView,
-    gameoverView
+    gameoverView,
+    session
 ){
 
     var View = Backbone.View.extend({
@@ -23,7 +25,8 @@ define([
             paintareaView.clear();
         },
 
-        setColor: function () {
+        setColor: function () {            
+            console.log( 'set color, user=' + session.user.get('name'));
             alert("TODO");
         },        
 
@@ -32,7 +35,7 @@ define([
         },
 
         render: function () {
-            this.$el.html( this.template() );
+            this.$el.html( this.template( session.user.toJSON() ) );
             this.hide();
         },
 

@@ -1,24 +1,32 @@
 define([
     'backbone',
-    'tmpl/main'
+    'tmpl/main',
+    'models/session'
 ], function(
     Backbone,
-    template
+    template,
+    session
 ){
 
     var View = Backbone.View.extend({
         template: template,
 
-        initialize: function () {
+        initialize: function () {    
+            this.model = session;
+            _.bindAll(this, 'render');
+            this.model.bind('change', this.render);        
             this.render();
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        render: function () {       
+            //console.log( 'main render, JSON ' + session.user.toJSON()['name'] );
+            this.$el.html(this.template( session.user.toJSON() ));
             this.hide();
         },
 
         show: function () {
+            //console.log( 'main show, JSON ' + session.user.toJSON()['name'] );
+            this.render(); //FOR TESTS
             this.trigger("show", this);
             this.$el.show();
         },

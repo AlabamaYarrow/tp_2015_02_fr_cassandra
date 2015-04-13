@@ -61,15 +61,15 @@ label {
 .game__button {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	margin: 10px;
-	background-color: #FF9900;
+	background-color: #003399;
 	border-radius: 5px;
-	border: solid 5px #FF9900;
+	border: solid 5px #003399;
 	color: white;
 }
 
 .game__button:hover {
-	background-color: #CC6600;
-	border: solid 5px #CC6600;
+	background-color: #111166;
+	border: solid 5px #111166;
 }
 
 .game {
@@ -133,14 +133,15 @@ label {
 	width: 25%;
 	float: right;
 	margin: 2px 0px;
-	background-color: #FF9900;
+	background-color: #003399;
 	border-radius: 5px;
-	border: solid 1px #FF9900;
+	border: solid 1px #003399;
 	color: white;
 }
 
 .chat__button:hover {
-	background-color: #CC6600;
+	background-color: #111166;
+	border: solid 1px #111166;
 }
 
 .chat__message {
@@ -175,17 +176,19 @@ label {
 	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
-	height: 35px;
-	line-height: 35px;
-	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	width: 180px;
 	color: white;
-	background-color: #FF9900;
+	background-color: #003399;
+	/* background-color: #003399; */
+	font-size: 15pt;
 	text-align: center;
 	text-decoration: none;
 }
 
 .menu__button:hover {
-	background-color: #CC6600;
+	background-color: #111166;
 }
 
 /* Menu (end) */
@@ -250,15 +253,15 @@ label {
 .signup__form-submit
 {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 12pt;
+	font-size: 15pt;
 	margin: 4px auto;
 	display: block;
 	border-radius: 10px;
-	border: solid 1px #FF9900;
-	height: 35px;	
-	width: 140px;
+	border: solid 1px #003399;
+	height: 40px;
+	width: 180px;
 	color: white;
-	background-color: #FF9900;
+	background-color: #003399;
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
@@ -266,6 +269,7 @@ label {
 
 .login__form-submit:hover,
 .signup__form-submit:hover {
-	background-color: #CC6600;	
+	background-color: #111166;	
+	border: solid 1px #111166;
 }
 

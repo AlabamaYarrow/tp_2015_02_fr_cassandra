@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/login',
+    'models/session'
 ], function(
     Backbone,
-    template
+    template,
+    session
 ){
 
     var LoginView = Backbone.View.extend({
@@ -15,6 +17,7 @@ define([
         template: template,
 
         initialize: function () {
+            this.model = session.user;
             this.render();
         },
 
@@ -33,20 +36,39 @@ define([
         },
 
         submitForm: function(event) {
-            var url = '/api/v1/auth/signin';
-            event.preventDefault();            
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $('.login__form').serialize(),
-                success: function(data) {
-                    alert(data);
-                },
-                error: function(data) {
-                    alert("So sorry :(");
-                }
-            });            
+            event.preventDefault();
+            var json_data = { 
+                name: $('#nameIdSI').val(), 
+                password: $('#passwordIdSI').val()  
+            };
+            form_data = $('.login__form').serialize();           
+            this.model.save( null, form_data,
+            {
+                emulateJSON: true,                 
+                wait: true,                
+                success: this.onSubmitSuccess(json_data, this.model),
+                error: this.onSubmitFail()
+            },
+            'signin'
+            );                     
+        },
+
+        onSubmitSuccess: function(json_data, model) {
+            return function(data) {
+                console.log('login success'); 
+                model.set({name: json_data['name']});      
+                console.log(model.get('name'));                                     
+                Backbone.history.navigate('#', true);
+            }
+        },
+
+        onSubmitFail: function() {
+            return function(data) {
+                console.log('fail');
+                alert('Failed to login');
+            }
         }
+
     });
 
     return new LoginView();
