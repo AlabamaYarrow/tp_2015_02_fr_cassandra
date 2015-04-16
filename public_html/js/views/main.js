@@ -31,7 +31,7 @@ define([
         },
 
         show: function () {
-            //this.render(); //FOR TESTS
+            this.render(); //FOR TESTS
             this.trigger("show", this);
             this.$el.show();
         },
