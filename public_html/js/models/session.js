@@ -28,9 +28,10 @@ define([
                         Backbone.history.navigate('#', true);                                             
                     }, this),
 
-                    fail: _.bind( function() {
+                    error: _.bind( function() {
                         console.log('login fail');
                         this.user = new User();
+                        console.log( this.user.toJSON() );
                     }, this)
                 },
                 'signin'
@@ -50,7 +51,7 @@ define([
                         Backbone.history.navigate('#', true);                       
                     }, this),
 
-                    fail: _.bind( function() {
+                    error: _.bind( function() {
                         console.log('logout fail');
                     }, this)
                 },
@@ -71,7 +72,7 @@ define([
                         this.login();                                                
                     }, this),
 
-                    fail: _.bind( function() {
+                    error: _.bind( function() {
                         console.log('signup fail');
                         this.user = new User();
                     }, this)

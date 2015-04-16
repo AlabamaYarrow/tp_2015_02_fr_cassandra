@@ -46,11 +46,8 @@ define([
                 });
 
             console.log(json_data);
-            session.user.set(json_data);
-            //console.log( session.user.get('name') + ' ' + session.user.get('email'));            
+            session.user.set(json_data);           
             session.signup();
-
-
         },
 
     });

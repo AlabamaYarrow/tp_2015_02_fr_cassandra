@@ -12,8 +12,15 @@ define([
         template: template,
 
         initialize: function () {  
-            _.bindAll(this, 'render');
-            session.user.bind('change', this.render);        
+            //_.bindAll(this, 'render');
+
+            // this.model = session.user;
+            // console.log(session.user);
+            // this.model.bind('change', _.bind(this.render, this));        
+            
+            this.model = session.user;
+
+
             this.render();
         },
 
@@ -24,7 +31,7 @@ define([
         },
 
         show: function () {
-            this.render(); //FOR TESTS
+            //this.render(); //FOR TESTS
             this.trigger("show", this);
             this.$el.show();
         },
