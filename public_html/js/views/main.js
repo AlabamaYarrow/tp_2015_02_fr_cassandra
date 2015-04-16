@@ -11,21 +11,19 @@ define([
     var View = Backbone.View.extend({
         template: template,
 
-        initialize: function () {    
-            this.model = session;
+        initialize: function () {  
             _.bindAll(this, 'render');
-            this.model.bind('change', this.render);        
+            session.user.bind('change', this.render);        
             this.render();
         },
 
         render: function () {       
-            //console.log( 'main render, JSON ' + session.user.toJSON()['name'] );
+            console.log( 'main render, username: ' + session.user.toJSON()['name'] );
             this.$el.html(this.template( session.user.toJSON() ));
             this.hide();
         },
 
         show: function () {
-            //console.log( 'main show, JSON ' + session.user.toJSON()['name'] );
             this.render(); //FOR TESTS
             this.trigger("show", this);
             this.$el.show();

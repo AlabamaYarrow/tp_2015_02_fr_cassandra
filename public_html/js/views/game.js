@@ -30,7 +30,9 @@ define([
             alert("TODO");
         },        
 
-        initialize: function () {  
+        initialize: function () {
+            _.bindAll(this, 'render');  
+            session.user.bind('change', this.render);   //???     
             this.render();
         },
 

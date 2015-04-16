@@ -20,18 +20,8 @@ define([
         show: function () {
             this.trigger("show", this);
             this.$el.show();
-            
-            this.model.save( null, session.user.toJSON(),
-            {
-                emulateJSON: true,                 
-                wait: true,                
-                success: function() { console.log('logout success'); },
-                error:  function() { console.log('logout fail'); }
-            },
-            'signout'
-            );
-            session.user.set({name: ''});
-            Backbone.history.navigate('#', true);
+            session.signout();
+
         },
 
         hide: function () {

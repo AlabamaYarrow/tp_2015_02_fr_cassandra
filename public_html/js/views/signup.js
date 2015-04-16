@@ -38,37 +38,21 @@ define([
         submitForm: function(event) {
             event.preventDefault();
             
-            var json_data = {                             
-                email: $('#emailIdSP').val(),
-                name: $('#nameIdSP').val(), 
-                password: $('#passwordIdSP').val()  
-            };
-            form_data = $('.signup__form').serialize();          
-            this.model.save( null, form_data,
-            {
-                emulateJSON: true,                 
-                wait: true,                
-                success: this.onSubmitSuccess(json_data, this.model),
-                error: this.onSubmitFail()
-            },
-            'signup'
-            );                     
+            var signupForm = $('.signup__form').serializeArray();
+            var json_data = {};
+            $.each(signupForm,
+                function(i, v) {
+                    json_data[v.name] = v.value;
+                });
+
+            console.log(json_data);
+            session.user.set(json_data);
+            //console.log( session.user.get('name') + ' ' + session.user.get('email'));            
+            session.signup();
+
+
         },
 
-        onSubmitSuccess: function(json_data, model) {
-            return function(data) {
-                console.log('signup success');
-                model.set(json_data);                        
-                Backbone.history.navigate('#login', true);
-            }
-        },
-
-        onSubmitFail: function() {
-            return function(data) {
-                console.log('signup fail');
-                alert('Failed to sign up');
-            }
-        }
     });
 
     return new SignupView();

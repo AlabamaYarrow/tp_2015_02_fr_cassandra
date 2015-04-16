@@ -16,7 +16,7 @@
 				</div>
 				<div class="chat">
 					<div class="chat__area">
-						<p class="chat__message">Vladislav: It's Ajax!</p>
+						<p class="chat__message"></p>
 					</div>		
 					<div>			
 						<input class="chat__input"></input>

@@ -37,37 +37,19 @@ define([
 
         submitForm: function(event) {
             event.preventDefault();
-            var json_data = { 
-                name: $('#nameIdSI').val(), 
-                password: $('#passwordIdSI').val()  
-            };
-            form_data = $('.login__form').serialize();           
-            this.model.save( null, form_data,
-            {
-                emulateJSON: true,                 
-                wait: true,                
-                success: this.onSubmitSuccess(json_data, this.model),
-                error: this.onSubmitFail()
-            },
-            'signin'
-            );                     
-        },
 
-        onSubmitSuccess: function(json_data, model) {
-            return function(data) {
-                console.log('login success'); 
-                model.set({name: json_data['name']});      
-                console.log(model.get('name'));                                     
-                Backbone.history.navigate('#', true);
-            }
-        },
+            var signupForm = $('.login__form').serializeArray();
+            var json_data = {};
+            $.each(signupForm,
+                function(i, v) {
+                    json_data[v.name] = v.value;
+                });
 
-        onSubmitFail: function() {
-            return function(data) {
-                console.log('fail');
-                alert('Failed to login');
-            }
-        }
+            console.log(json_data);
+            session.user.set(json_data);          
+            session.login();
+                  
+        }     
 
     });
 
