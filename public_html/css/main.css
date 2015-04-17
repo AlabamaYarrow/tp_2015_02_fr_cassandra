@@ -15,21 +15,10 @@ body {
 	margin: 0;	
 }
 
-/*
-table, th, td {
-
-}
-
-td {
-	background-color: #6699FF;
-}
-*/
-
 .cassandra {
-	height: 100vh;
+	height: 100vh;	
 	background-color: #3366FF; 
-	background-image: url("../stars.jpg"); 
-	background-repeat: repeat; 
+	background: url("../stars.jpg") repeat;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 

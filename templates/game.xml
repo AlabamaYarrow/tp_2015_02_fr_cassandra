@@ -15,12 +15,12 @@
 					</p>
 				</div>
 				<div class="chat">
-					<div class="chat__area">
+					<div class="js-chatarea chat__area">
 						<p class="chat__message"></p>
 					</div>		
 					<div>			
-						<input class="chat__input"></input>
-						<button class="chat__button">Send</button>
+						<input class="js-chatinput chat__input"></input>
+						<button class="js-chatbutton chat__button">Send</button>
 					</div>
 				</div>
 			</div>

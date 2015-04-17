@@ -5,11 +5,12 @@ define([
 ){
 
     var User = Backbone.Model.extend({
-        
+
         initialize: function () {            
         },
 
         defaults: {
+            id: 0,
             loggedIn: false,
             name: '',
             email: '',
@@ -35,6 +36,7 @@ define([
 
         parse: function(resp, options) {
             var parsedResp = {};            
+            parsedResp.id = resp['body']['id'];
             parsedResp.name = resp['body']['name'];
             parsedResp.email = resp['body']['email'];
             parsedResp.score = resp['body']['score'];
