@@ -53,7 +53,6 @@ define([
                     socket = session.user.socket;
                 }
                 if (messageType == 'chat_message') {
-                    // console.log('chat msg recieved');
                     showChatMessage(messageObject);
                 }
             };
@@ -74,8 +73,6 @@ define([
                 $('.js-chatinput').val('');
                 if (outgoingMessage == '') return;
                 var messageJSON = { type: 'chat_message', body: { id: session.user.id, text: outgoingMessage }};
-                // console.log('JSON formatted message:');      
-                // console.log( JSON.stringify(messageJSON) );
                 socket.send( JSON.stringify(messageJSON) );
                 showChatMessage(messageJSON);
             }
@@ -89,7 +86,7 @@ define([
                         + uid + ': ' 
                         + messageText + '</p>';
                 $('.js-chatarea').append(message);
-                var chatarea = $('.js-chatarea');
+                var chatarea = $('.js-chatarea')[0];
                 chatarea.scrollTop = chatarea.scrollHeight;
             }
 
