@@ -11,27 +11,28 @@ define([
     var View = Backbone.View.extend({
         template: template,
 
-        initialize: function () {  
-            //_.bindAll(this, 'render');
-
-            // this.model = session.user;
-            // console.log(session.user);
-            // this.model.bind('change', _.bind(this.render, this));        
+        initialize: function () {              
+            console.log('main view init');            
             
-            this.model = session.user;
+            this.listenTo(session.user, 'change', function() {console.log('session.user change (main)');});
+            this.listenTo(session.user, 'change', this.render);
+            
 
+            session.checkAuth();
 
-            this.render();
+            //this.render();
         },
 
-        render: function () {       
-            console.log( 'main render, username: ' + session.user.toJSON()['name'] );
+        render: function () {                   
+            console.log( 'main render, user: ' );
+            console.log( session.user.toJSON() );            
             this.$el.html(this.template( session.user.toJSON() ));
             this.hide();
         },
 
         show: function () {
-            this.render(); //FOR TESTS
+            //this.render(); 
+            console.log( 'main view show ' );
             this.trigger("show", this);
             this.$el.show();
         },

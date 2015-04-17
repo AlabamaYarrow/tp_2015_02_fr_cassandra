@@ -327,7 +327,7 @@
       changing        = this._changing;
       this._changing  = true;
 
-      if (!changing) {
+      if (!changing) {        
         this._previousAttributes = _.clone(this.attributes);
         this.changed = {};
       }
@@ -349,9 +349,10 @@
       }
 
       // Trigger all relevant attribute changes.
-      if (!silent) {
+      if (!silent) {        
         if (changes.length) this._pending = true;
         for (var i = 0, l = changes.length; i < l; i++) {
+          console.log('trigger changes for: ' + changes[i]);        
           this.trigger('change:' + changes[i], this, current[changes[i]], options);
         }
       }
@@ -362,6 +363,8 @@
       if (!silent) {
         while (this._pending) {
           this._pending = false;
+          console.log('trigger change: '  );        
+          console.log( this.toJSON() );
           this.trigger('change', this, options);
         }
       }
@@ -1185,7 +1188,8 @@
   // Map from CRUD to HTTP for our default `Backbone.sync` implementation.
   var methodMap = {
     'create': 'POST',
-    'update': 'PUT',
+    //'update': 'PUT',
+    'update': 'POST',
     'patch':  'PATCH',
     'delete': 'DELETE',
     'read':   'GET'
