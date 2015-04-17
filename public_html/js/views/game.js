@@ -37,6 +37,7 @@ define([
             };
 
             socket.onmessage = function (event) {
+
                 console.log('mes', this, arguments);
                 console.log(event.data);
                 messageObject = JSON.parse(event.data);
@@ -50,6 +51,10 @@ define([
                     //session.user.socket.close();             
                     session.user.socket = new WebSocket("ws://localhost:8100/api/v1/game/");
                     socket = session.user.socket;
+                }
+                if (messageType == 'chat_message') {
+                    // console.log('chat msg recieved');
+                    showChatMessage(messageObject);
                 }
             };
 
@@ -65,34 +70,31 @@ define([
 
             function sendMessage(message) {
 
-                // var outgoingMessage = $('.js-chatinput').val();
-
-                // console.log('sending message:');                
-                // console.log(outgoingMessage);
-                
-                // var messageJSON = { type: 'chat-message', body: { id: session.user.id, text: outgoingMessage }};
-                // console.log('JSON formatted message:');      
-                // console.log( JSON.stringify(messageJSON) ); 
-                
-                // socket.send( JSON.stringify(messageJSON) );
-                // return false;
                 var outgoingMessage = $('.js-chatinput').val(); 
                 $('.js-chatinput').val('');
-                if ( outgoingMessage != '' ) {               
-                    showChatMessage('<p class="chat__message">' 
-                        + session.user.get('name') + ': ' 
-                        + outgoingMessage + '</p>');
-                }
-
+                if (outgoingMessage == '') return;
+                var messageJSON = { type: 'chat_message', body: { id: session.user.id, text: outgoingMessage }};
+                // console.log('JSON formatted message:');      
+                // console.log( JSON.stringify(messageJSON) );
+                socket.send( JSON.stringify(messageJSON) );
+                showChatMessage(messageJSON);
             }
 
-            function showChatMessage(message) {
+            function showChatMessage(messageObject) {
+
+                var uid = messageObject['body']['id'];
+                var messageText = messageObject['body']['text'];
+
+                var message = '<p class="chat__message">' 
+                        + uid + ': ' 
+                        + messageText + '</p>';
                 $('.js-chatarea').append(message);
                 var chatarea = $('.js-chatarea');
                 chatarea.scrollTop = chatarea.scrollHeight;
             }
 
             function setUsers( messageObject ) {
+
                 $('.js-userslist').empty();                
                 usersArray = messageObject['body']['viewers'];
                 usersArray.forEach( function (user)
