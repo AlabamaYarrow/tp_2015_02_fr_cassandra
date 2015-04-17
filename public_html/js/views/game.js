@@ -25,14 +25,22 @@ define([
 
         runChat: function() {
 
-            var socket = new WebSocket("ws://localhost:8100/api/v1/game/");
+            session.user.socket = new WebSocket("ws://localhost:8100/api/v1/game/");
+            var socket = session.user.socket;            
 
             socket.onerror = function () {
                 console.log('err', this, arguments);
             };
 
-            socket.onmessage = function () {
+            socket.onmessage = function (event) {
                 console.log('mes', this, arguments);
+                console.log(event.data);
+                messageObject = JSON.parse(event.data);
+                var messageType = messageObject['type'];
+                if (messageType == 'viewer_status')
+                    setUsers( messageObject );
+                if (messageType == 'user_come')
+                    addNewUser( messageObject );    
             };
 
 
@@ -54,18 +62,23 @@ define([
                 console.log('socket closed');
             };
 
-            // socket.onmessage = function(event) {
-            //     console.log('receiving message:');
-            //     console.log(event.data);
-            //     var incomingMessage = event.data;
-            //     showMessage(incomingMessage);
-            // };
-
-            function showMessage(message) {
+            function showChatMessage(message) {
                 $('.js-chatarea').html.append(message);
             }
 
+            function setUsers( messageObject ) {
+                $('.js-users').html('');                
+                usersArray = messageObject['body']['viewers'];
+                usersArray.forEach( function (user)
+                {
+                    $('.js-users').append(user['name'] + ' ');
+                });               
+            }
 
+            function addNewUser( messageObject ) {
+                user = messageObject['body']['name'];                
+                $('.js-users').append(user + ' ');
+            }
         },
 
         onClear: function () {
@@ -78,9 +91,9 @@ define([
         },        
 
         initialize: function () {
-            _.bindAll(this, 'render');  
-            session.user.bind('change', this.render);   //???     
+            _.bindAll(this, 'render');       
             this.render();
+            
         },
 
         render: function () {
@@ -89,13 +102,18 @@ define([
         },
 
         show: function () {
+            console.log('game show');
             this.trigger("show", this);
             paintareaView.show();
-            this.$el.show();
             this.runChat();
+            this.$el.show();
+            
         },
 
-        hide: function () {            
+        hide: function () {       
+            console.log('game hide');
+            if (session.user.socket)
+                session.user.socket.close();     
             this.$el.hide();
         },
 

@@ -8,11 +8,9 @@
 				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
 			</div>
 			<div class="userschat">
-				<div class="users">
-					<h3> Users: </h3>
-					<p> 
-						<fest:value>json.name</fest:value> <br/> 
-					</p>
+				<h3> Users: </h3>	
+				<div class="js-users users">
+										
 				</div>
 				<div class="chat">
 					<div class="js-chatarea chat__area">

@@ -11,7 +11,7 @@ define([
     var Session = Backbone.Model.extend({
         
         initialize: function () {            
-            this.user = new User();
+            this.user = new User();            
         },
 
         checkAuth: function() {            

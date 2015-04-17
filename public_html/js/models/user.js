@@ -6,7 +6,10 @@ define([
 
     var User = Backbone.Model.extend({
 
-        initialize: function () {            
+        socket: {},
+
+        initialize: function () {      
+            this.socket = 0;
         },
 
         defaults: {
