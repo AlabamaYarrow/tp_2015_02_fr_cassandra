@@ -32,6 +32,10 @@ define([
                 console.log('err', this, arguments);
             };
 
+            socket.onclose = function(event) {
+                console.log('socket closed');
+            };
+
             socket.onmessage = function (event) {
                 console.log('mes', this, arguments);
                 console.log(event.data);
@@ -40,44 +44,66 @@ define([
                 if (messageType == 'viewer_status')
                     setUsers( messageObject );
                 if (messageType == 'user_come')
-                    addNewUser( messageObject );    
+                    addNewUser( messageObject );
+                if (messageType == 'user_gone') {
+                    $('.js-userslist').empty();   
+                    //session.user.socket.close();             
+                    session.user.socket = new WebSocket("ws://localhost:8100/api/v1/game/");
+                    socket = session.user.socket;
+                }
             };
 
 
-            $('.js-chatbutton').click ( function() {                
-                var outgoingMessage = $('.js-chatinput').val();
+            $('.js-chatbutton').click ( function() { 
+                sendMessage();
+            });
 
-                console.log('sending message:');                
-                console.log(outgoingMessage);
-                
-                var messageJSON = { type: 'chat-message', body: { id: session.user.id, text: outgoingMessage }};
-                console.log('JSON formatted message:');      
-                console.log( JSON.stringify(messageJSON) ); 
-                
-                socket.send( JSON.stringify(messageJSON) );
-                return false;
-            } );
+            $('.js-chatinput').keyup(function (e) {
+                if (e.keyCode == 13)         
+                    sendMessage();
+            });
 
-            socket.onclose = function(event) {
-                console.log('socket closed');
-            };
+            function sendMessage(message) {
+
+                // var outgoingMessage = $('.js-chatinput').val();
+
+                // console.log('sending message:');                
+                // console.log(outgoingMessage);
+                
+                // var messageJSON = { type: 'chat-message', body: { id: session.user.id, text: outgoingMessage }};
+                // console.log('JSON formatted message:');      
+                // console.log( JSON.stringify(messageJSON) ); 
+                
+                // socket.send( JSON.stringify(messageJSON) );
+                // return false;
+                var outgoingMessage = $('.js-chatinput').val(); 
+                $('.js-chatinput').val('');
+                if ( outgoingMessage != '' ) {               
+                    showChatMessage('<p class="chat__message">' 
+                        + session.user.get('name') + ': ' 
+                        + outgoingMessage + '</p>');
+                }
+
+            }
 
             function showChatMessage(message) {
-                $('.js-chatarea').html.append(message);
+                $('.js-chatarea').append(message);
+                var chatarea = $('.js-chatarea');
+                chatarea.scrollTop = chatarea.scrollHeight;
             }
 
             function setUsers( messageObject ) {
-                $('.js-users').html('');                
+                $('.js-userslist').empty();                
                 usersArray = messageObject['body']['viewers'];
                 usersArray.forEach( function (user)
                 {
-                    $('.js-users').append(user['name'] + ' ');
+                    $('.js-userslist').append('<li>' + user['name'] + '</li>');
                 });               
             }
 
             function addNewUser( messageObject ) {
                 user = messageObject['body']['name'];                
-                $('.js-users').append(user + ' ');
+                $('.js-userslist').append('<li>' + user  + '</li>');
             }
         },
 
@@ -87,7 +113,6 @@ define([
 
         setColor: function () {            
             console.log( 'set color, user=' + session.user.get('name'));
-            alert("TODO");
         },        
 
         initialize: function () {
@@ -112,13 +137,14 @@ define([
 
         hide: function () {       
             console.log('game hide');
-            if (session.user.socket)
+            if (session.user.socket) {
+                console.log('closing socket');
                 session.user.socket.close();     
+            }
             this.$el.hide();
         },
 
         setWidth: function () {            
-            alert("TODO");
         }
 
     });

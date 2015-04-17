@@ -95,7 +95,11 @@ label {
 }
 
 .users {
+	font-size: 12pt; 
+	margin-right: 10px;
+	margin-left: 10px;
 	color: white;
+	overflow: auto;
 }
 
 .chat {
@@ -105,6 +109,9 @@ label {
 }
 
 .chat__area {
+	overflow-y: auto;
+	word-wrap: break-word; 
+	width: 240px;
 	height: 200px;	
 	background-color: white;
 	border: solid 1px #8B8989;
