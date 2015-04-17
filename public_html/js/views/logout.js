@@ -11,7 +11,6 @@ define([
     var LogoutView = Backbone.View.extend({
 
         initialize: function () {
-            //this.model = session.user;
         },
 
         render: function () {

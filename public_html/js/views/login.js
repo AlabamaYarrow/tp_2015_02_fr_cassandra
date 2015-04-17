@@ -17,7 +17,6 @@ define([
         template: template,
 
         initialize: function () {
-            //this.model = session.user;
             this.render();
         },
 
@@ -44,11 +43,8 @@ define([
                 function(i, v) {
                     json_data[v.name] = v.value;
                 });
-            console.log('Form input:');
-            console.log(json_data);
             session.user.set(json_data);          
-            session.login();
-                  
+            session.login();                  
         }     
 
     });

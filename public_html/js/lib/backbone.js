@@ -352,7 +352,6 @@
       if (!silent) {        
         if (changes.length) this._pending = true;
         for (var i = 0, l = changes.length; i < l; i++) {
-          console.log('trigger changes for: ' + changes[i]);        
           this.trigger('change:' + changes[i], this, current[changes[i]], options);
         }
       }
@@ -363,8 +362,6 @@
       if (!silent) {
         while (this._pending) {
           this._pending = false;
-          console.log('trigger change: '  );        
-          console.log( this.toJSON() );
           this.trigger('change', this, options);
         }
       }

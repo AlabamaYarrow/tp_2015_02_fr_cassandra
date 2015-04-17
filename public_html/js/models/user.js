@@ -5,8 +5,8 @@ define([
 ){
 
     var User = Backbone.Model.extend({
-        initialize: function () {
-            
+        
+        initialize: function () {            
         },
 
         defaults: {
@@ -24,14 +24,21 @@ define([
             'check': '/api/v1/auth/check/'
         },
 
+        clear: function() {
+            this.set({
+                loggedIn: false, name: '',
+                email: '',
+                password: '',
+                score: 0
+            });
+        },
+
         parse: function(resp, options) {
             var parsedResp = {};            
             parsedResp.name = resp['body']['name'];
             parsedResp.email = resp['body']['email'];
             parsedResp.score = resp['body']['score'];
 
-            console.log('parsed response:');
-            console.log(parsedResp);
             return parsedResp;
         },
         
@@ -39,8 +46,7 @@ define([
             options = options || {};
             options.url = this.urlMap[url];
             return Backbone.Model.prototype.fetch.call(this, options);
-        },
-        
+        },        
 
         save: function (options, url) {
             attributes = this.attributes;
