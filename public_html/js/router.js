@@ -5,7 +5,8 @@ define([
     'views/login',
     'views/logout',
     'views/signup',
-    'views/scoreboard',   
+    'views/scoreboard',
+    'views/gameover',   
     'views/viewmanager'    
 ], function(
     Backbone,
@@ -14,7 +15,8 @@ define([
     loginView,
     logoutView,
     signupView,
-    scoreboardView,       
+    scoreboardView,  
+    gameoverView,     
     ViewManager
 ){
 
@@ -38,7 +40,8 @@ define([
                 .addView(logoutView)
                 .addView(mainView)
                 .addView(scoreboardView)
-                .addView(signupView)                
+                .addView(signupView)
+                .addView(gameoverView)                
             ;
         },
 

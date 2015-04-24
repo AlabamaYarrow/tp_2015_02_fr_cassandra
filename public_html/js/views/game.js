@@ -17,7 +17,8 @@ define([
             'click .js-buttonclear': 'onClear',
             'click .js-buttoncolor': 'setColor',
             'click .js-buttonwidth': 'setWidth',
-            'click .js-chatbutton': 'send'
+            'click .js-chatbutton': 'send',
+            'click .js-buttonguess': 'onGuess'
         },
 
         template: tmpl,
@@ -38,8 +39,8 @@ define([
 
             socket.onmessage = function (event) {
 
-                console.log('mes', this, arguments);
-                console.log(event.data);
+                //console.log('mes', this, arguments);
+                //console.log(event.data);
                 messageObject = JSON.parse(event.data);
                 var messageType = messageObject['type'];
                 if (messageType == 'viewer_status')
@@ -110,8 +111,11 @@ define([
             paintareaView.clear();
         },
 
+        onGuess: function(event) {
+            gameoverView.show();
+        },
+
         setColor: function () {            
-            console.log( 'set color, user=' + session.user.get('name'));
         },        
 
         initialize: function () {
@@ -126,7 +130,6 @@ define([
         },
 
         show: function () {
-            console.log('game show');
             this.trigger("show", this);
             paintareaView.show();
             this.runChat();

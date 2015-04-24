@@ -20,8 +20,6 @@ define([
                     success: _.bind( function() {                        
                         this.user.set({ loggedIn: true });   
                         console.log('checkAuth success:');
-                        Backbone.history.navigate('#checkAuth', true);
-                        Backbone.history.navigate('#', true);                                                                                        
                     }, this),
 
                     error: _.bind( function() {

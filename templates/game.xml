@@ -3,7 +3,6 @@
 		
 		<h3>Current word: AJAX</h3>
 		<div class="game__playground">
-			<span id="test"></span>
 			<div class="js-paintarea paintarea">
 				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
 			</div>
@@ -11,10 +10,7 @@
 				<div class="js-users users">
 					<h3> Users: </h3>
 					<ul class="js-userslist">
-						
-
 					</ul>
-
 				</div>
 				<div class="chat">
 					<div class="js-chatarea chat__area">						

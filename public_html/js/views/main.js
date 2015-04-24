@@ -12,7 +12,7 @@ define([
         template: template,
 
         initialize: function () {              
-            this.listenTo(session.user, 'change', this.render);           
+            this.listenTo(session.user, 'change', this.render);
             session.checkAuth();
         },
 

@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="gameover">
+		<h1>Cassandra</h1>
+		<h2>Game Over!</h2>
+		<h3>Your score:<fest:space/>+1</h3> 
+			 
+		<h3>Save with user name:</h3>
+		<form class="gamover__form" method="post">
+			<p>						
+				<input class="gameover__input" type="text" id="nameIdSI" name="name" required="required" value="{json.name}"
+					></input>
+			</p>
+			<div class="menu">
+				<button type="submit" class="gameover__form-submit">Submit</button>
+			</div>
+		</form>
+	</div>
+</fest:template>
