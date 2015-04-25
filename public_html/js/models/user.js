@@ -6,19 +6,13 @@ define([
 
     var User = Backbone.Model.extend({
 
-        socket: {},
-
-        initialize: function () {      
-            this.socket = 0;
-        },
-
         defaults: {
             id: 0,
             loggedIn: false,
             name: '',
             email: '',
             password: '',
-            score: 0            
+            score: 0
         },
 
         urlMap: {
@@ -30,34 +24,84 @@ define([
 
         clear: function() {
             this.set({
-                loggedIn: false, name: '',
+                loggedIn: false,
+                name: '',
                 email: '',
                 password: '',
                 score: 0
             });
         },
 
-        parse: function(resp, options) {
-            var parsedResp = {};            
-            parsedResp.id = resp['body']['id'];
-            parsedResp.name = resp['body']['name'];
-            parsedResp.email = resp['body']['email'];
-            parsedResp.score = resp['body']['score'];
-
-            return parsedResp;
-        },
-        
         fetch: function (options, url) {
             options = options || {};
             options.url = this.urlMap[url];
             return Backbone.Model.prototype.fetch.call(this, options);
-        },        
+        },
+
+        getOnSocketError: function (user) {
+            return function () {
+                console.log('socket err', this, arguments);
+                user.trigger('socketError');
+            };
+        },
+
+        getOnSocketClose: function (user) {
+            return function () {
+                user.socket = null;
+                console.log('socket closed');
+                user.trigger('socketClose');
+            };
+        },
+
+        getOnSocketMessage: function (user) {
+            return function (event) {
+                message = JSON.parse(event.data);
+                user.trigger(message.type, message.body);
+            };
+        },
+
+        parse: function(resp, options) {
+            var parsedResp = {};
+            parsedResp.id = resp.body.id;
+            parsedResp.name = resp.body.name;
+            parsedResp.email = resp.body.email;
+            parsedResp.score = resp.body.score;
+
+            return parsedResp;
+        },
 
         save: function (options, url) {
             attributes = this.attributes;
             options = options || {};
             options.url = this.urlMap[url];
             return Backbone.Model.prototype.save.call(this, attributes, options);
+        },
+
+        sendChatMessage: function (text) {
+            this.sendMessage('chat_message', { text: text });
+        },
+
+        sendMessage: function (type, body) {
+            var messageJSON = {
+                type: type,
+                body: body
+            };
+            this.socket.send(JSON.stringify(messageJSON));
+        },
+
+        startGame: function () {
+            this.socket = new WebSocket("ws://localhost:8100/api/v1/game/");
+            this.socket.onerror = this.getOnSocketError(this);
+            this.socket.onclose = this.getOnSocketClose(this);
+            this.socket.onmessage = this.getOnSocketMessage(this);
+        },
+
+        stopGame: function () {
+            console.log('stopGame');
+            if (this.socket) {
+                console.log('closing socket');
+                this.socket.close();
+            }
         }
     });
 

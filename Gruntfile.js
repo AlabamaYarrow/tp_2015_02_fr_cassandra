@@ -1,32 +1,32 @@
 module.exports = function (grunt) {
-	grunt.initConfig({
-		shell: {
-			options: {
-				stdout: true,
-				stderr: true
-			},
-			server: {
-				command: 'java -cp Cassandra.jar main.Main 8100'
-			}
-		},
+		grunt.initConfig({
+				shell: {
+						options: {
+								stdout: true,
+								stderr: true
+						},
+						server: {
+								command: 'java -cp Cassandra.jar main.Main 8100'
+						}
+				},
 		fest: {
-			templates: {
-                files: [{
-                    expand: true,
-                    cwd: 'templates',
-                    src: '*.xml',
-                    dest: 'public_html/js/tmpl'
-                }],
-                options: {
-                    template: function (data) {
-                        return grunt.template.process(
-                            'define(function () { return <%= contents %> ; });',
-                            {data: data}
-                        );
-                    }
-                }
-            }
-		},		
+				templates: {
+	          files: [{
+	              expand: true,
+	              cwd: 'templates',
+	              src: '*.xml',
+	              dest: 'public_html/js/tmpl'
+	          }],
+	          options: {
+	              template: function (data) {
+	                  return grunt.template.process(
+	                      'define(function () { return <%= contents %> ; });',
+	                      { data: data }
+	                  );
+	              }
+	          }
+	      }
+		},
 		watch: {
             fest: {
                 files: ['templates/*.xml'],
@@ -59,8 +59,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-fest');
 
-
 	grunt.registerTask('default', ['concurrent']);
-
 };
-

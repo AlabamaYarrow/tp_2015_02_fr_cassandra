@@ -10,15 +10,15 @@ define([
 
     var Session = Backbone.Model.extend({
         
-        initialize: function () {            
-            this.user = new User();            
+        initialize: function () {
+            this.user = new User();
         },
 
-        checkAuth: function() {            
+        checkAuth: function() {
             this.user.fetch(
                 {
-                    success: _.bind( function() {                        
-                        this.user.set({ loggedIn: true });   
+                    success: _.bind( function() {
+                        this.user.set({ loggedIn: true });
                         console.log('checkAuth success:');
                     }, this),
 
@@ -37,8 +37,8 @@ define([
                 {
                     success: _.bind( function() {
                         this.user.set({ loggedIn: true });
-                        console.log('login success');                         
-                        Backbone.history.navigate('#', true);                                             
+                        console.log('login success');
+                        Backbone.history.navigate('#', true);
                     }, this),
 
                     error: _.bind( function() {
@@ -47,16 +47,16 @@ define([
                     }, this)
                 },
                 'signin'
-            );            
-            
+            );
+
         },
 
         signout: function() {
             this.user.save(
                 {
                     success: _.bind( function() {
-                        console.log('logout success');    
-                        Backbone.history.navigate('#', true);                       
+                        console.log('logout success');
+                        Backbone.history.navigate('#', true);
                     }, this),
 
                     error: _.bind( function() {
@@ -65,15 +65,15 @@ define([
                 },
                 'signout'
             );
-            this.user.clear();                          
+            this.user.clear();
         },
 
-        signup: function() {  
+        signup: function() {
             this.user.save(
                 {
                     success: _.bind( function() {
-                        console.log('signup success');                        
-                        this.login();                                                
+                        console.log('signup success');
+                        this.login();
                     }, this),
 
                     error: _.bind( function() {
