@@ -21,8 +21,7 @@ define([
         },
 
         initialize: function () {                                  
-            $(window).resize( _.bind(this.calculateOffset, this) );
-            this.fileName = 'cassandraCanvas'
+            $(window).resize( _.bind(this.calculateOffset, this) );            
             this.allowDraw = false;
             this.goOn = false;
             this.render();
@@ -72,7 +71,6 @@ define([
             this.allowDraw = false;
             this.goOn = false;
             this.finish();
-            localStorage.setItem(fileName, this.canvas.toDataURL());
         },
 
         onMouseleave: function (e) {  
