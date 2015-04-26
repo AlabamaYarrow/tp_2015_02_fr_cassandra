@@ -1,8 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-	<div id="game" class="game">
+	<div id="game" class="js-game game">
 
 		<h3>Current word: AJAX</h3>
-		<div class="game__playground">
+		<div class="js-gameplayground game__playground">
 			<div class="js-paintarea paintarea">
 				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
 			</div>
@@ -24,8 +24,10 @@
 		<div>
 			<div class="game__panelpaint">
 				<button class="js-buttonclear game__button">Clear</button>
-				<button class="js-buttoncolor game__button">Color</button>
-				<button class="js-buttonwidth game__button">Width</button>
+				<input class="js-buttoncolor game__button" type="color" name="favcolor"></input>
+				<!-- <button class="game__button">-</button>
+				<span class="js-buttonwidth game__button">Width: 1</span>
+				<button class="game__button">+</button> -->
 			</div>
 			<div class="game__panelguess">
 				<button class="js-buttonguess game__button">Cassandra guessed!</button>

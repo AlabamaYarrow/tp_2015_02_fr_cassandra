@@ -5,44 +5,63 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.js-paintarea',
 
         events: function () {
             return {
                 'mousedown .js-canvas': _.bind(this.onMousedown, this),
-                'mouseup .js-canvas': _.bind(this.onMouseup, this),
-                'mouseleave .js-canvas': _.bind(this.onMouseleave, this)
+                'mouseleave .js-canvas': _.bind(this.onMouseleave, this),
+                'mouseover .js-canvas': _.bind(this.onMouseover, this),                
+                'click .js-buttonclear':  _.bind(this.clear, this),
+                'input .js-buttoncolor':  _.bind(this.onChangeColor, this) 
             }; 
-        },
+        },       
         
-        initialize: function () {       
+        onChangeColor: function() {
+            this.context.strokeStyle = $('.js-buttoncolor').val();
+        },
+
+        initialize: function () {
+            $(window).resize( _.bind(this.calculateOffset, this) );
+            this.allowDraw = false;
+            this.goOn = false;
             this.render();
         },
-        
-        render: function () {            
+
+        calculateOffset: function () {         
+            var canvasRectangle = this.canvas.get(0).getBoundingClientRect();
+            this.offsetLeft = canvasRectangle.left;
+            this.offsetTop = canvasRectangle.top;      
         },
-        
-        show: function () {
-            this.setElement( $('.js-paintarea') );
+
+        clear: function() {
+            console.log('clear');
+            this.context.fillStyle = '#FFFFFF';
+            this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
+        },
+
+        show: function () {            
+            this.setElement( $('.js-game') );
+            $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
 
             canvas = $('.js-canvas');
-            canvas[0].width = $('.paintarea').width();
-            canvas[0].height = $('.paintarea').height();
-            context = canvas[0].getContext('2d');
+            canvas.get(0).width = $('.paintarea').width();
+            canvas.get(0).height = $('.paintarea').height();
+            context = canvas.get(0).getContext('2d');
 
-            this.context = context;
             this.canvas = canvas;
-
+            this.context = context;
             var gameDiv = $('.game').parent();
-            gameDiv.removeAttr('style');            
-            var canvasRectangle = canvas[0].getBoundingClientRect();
-            this.offsetLeft = canvasRectangle.left;
-            this.offsetTop = canvasRectangle.top;          
+            gameDiv.removeAttr('style');   
+            this.calculateOffset();
+        },
+
+        hide: function() {
+            $('.js-cassandra').off('mouseup');
         },
 
         onMousedown: function (e) {
-            //console.log('mousedown');            
-            canvas.on('mousemove', _.bind(this.onMousemove, this));
+            this.canvas.on('mousemove', _.bind(this.onMousemove, this));            
+            this.allowDraw = true;            
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
             this.context.moveTo(x, y);
@@ -50,15 +69,30 @@ define([
         },
 
         onMouseup: function (e) {
+            this.allowDraw = false;
+            this.goOn = false;
             this.finish();
         },
 
-        onMouseleave: function (e) {
+        onMouseleave: function (e) {  
+            if(this.allowDraw) {
+                this.goOn = true;          
+            }
             this.finish();
+        },
+
+        onMouseover: function (e) {             
+            if (this.allowDraw) {        
+                var x = e.pageX - this.offsetLeft;
+                var y = e.pageY - this.offsetTop;
+                this.context.moveTo(x, y);
+                this.context.beginPath();      
+                this.canvas.on('mousemove', _.bind(this.onMousemove, this));
+                this.goOn = false;
+            }
         },
 
         onMousemove: function(e) {
-            //console.log('mousemove');
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
             this.drawLine(x,y);            
@@ -70,21 +104,9 @@ define([
         }, 
 
         finish: function() {
-            //console.log('finish');
-            canvas.off('mousemove');
+            this.canvas.off('mousemove');
             this.context.closePath();
-        },
-
-        clear: function() {
-            //console.log('clear');            
-            canvas = $('.js-canvas');
-            canvas[0].width = $('.paintarea').width();
-            canvas[0].height = $('.paintarea').height();
-            context = canvas[0].getContext('2d');
-            
-            context.fillStyle = '#FFFFFF';
-            context.fillRect(0, 0, canvas.width, canvas.height);
-        }
+        }       
 
     });
 

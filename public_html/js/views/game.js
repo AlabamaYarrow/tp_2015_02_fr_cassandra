@@ -16,7 +16,6 @@ define([
 
     var GameView = Backbone.View.extend({
         events: {
-            'click .js-buttonclear': 'onClearClick',
             'click .js-buttonguess': 'onGuessClick'
         },
 
@@ -25,7 +24,7 @@ define([
         initialize: function () {
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
             this.listenTo(session.user, 'user_come', this.onUserUserCome);
-            this.listenTo(session.user, 'user_gone', this.onUserUserGone);
+            this.listenTo(session.user, 'user_gone', this.onUserUserGone);            
             this.render();
         },
 
@@ -81,6 +80,7 @@ define([
 
         hide: function () {
             session.user.stopGame();
+            paintareaView.hide();
             this.$el.hide();
         }
 
