@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'public_html/css/main.css': 'public_html/sass/main.scss'					
+					'public_html/css/main.css': 'sass/main.scss'					
 				}
 			}
 		},	
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                 files: [
                     'public_html/js/**/*.js',
                     'public_html/css/**/*.css',
-                    'public_html/sass/**/*.scss'
+                    'sass/**/*.scss'
                 ],
                 tasks: ['sass'],
                 options: {
