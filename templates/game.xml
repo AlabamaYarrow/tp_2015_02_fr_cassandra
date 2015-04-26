@@ -24,7 +24,7 @@
 		<div>
 			<div class="game__panelpaint">
 				<button class="js-buttonclear game__button">Clear</button>
-				<input class="js-buttoncolor game__button" type="color" name="favcolor"></input>
+				<input class="js-buttoncolor game__colorselect" type="color" name="favcolor"></input>
 				<!-- <button class="game__button">-</button>
 				<span class="js-buttonwidth game__button">Width: 1</span>
 				<button class="game__button">+</button> -->

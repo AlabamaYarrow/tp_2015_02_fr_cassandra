@@ -20,8 +20,9 @@ define([
             this.context.strokeStyle = $('.js-buttoncolor').val();
         },
 
-        initialize: function () {
+        initialize: function () {                                  
             $(window).resize( _.bind(this.calculateOffset, this) );
+            this.fileName = 'cassandraCanvas'
             this.allowDraw = false;
             this.goOn = false;
             this.render();
@@ -34,7 +35,6 @@ define([
         },
 
         clear: function() {
-            console.log('clear');
             this.context.fillStyle = '#FFFFFF';
             this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
         },
@@ -72,6 +72,7 @@ define([
             this.allowDraw = false;
             this.goOn = false;
             this.finish();
+            localStorage.setItem(fileName, this.canvas.toDataURL());
         },
 
         onMouseleave: function (e) {  
