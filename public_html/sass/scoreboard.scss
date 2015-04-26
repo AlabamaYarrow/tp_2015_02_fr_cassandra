@@ -1,0 +1,55 @@
+.scoreboardbackground {
+	margin: 0 auto;
+	width: 400px;
+	background-color: #6F91FA;
+	border-radius: 0px 0px 20px 20px;
+	overflow: auto;
+}
+
+.scoreboard {
+	margin-bottom: 20px;
+}
+
+.scoreboard__list {
+	margin: 0 auto;
+	width: 200px;
+}
+
+.scoretable {
+	border: 0px solid white;
+    color: white;	
+	margin: 0 auto; 
+	margin-bottom: 20px;
+	width: 200px;	
+}
+
+.scoretable__left {
+	border: 1px solid white;
+	background-color: #6699FF;
+	color: #002061;
+	width: 60%;
+	text-align: left;
+}
+
+.scoretable__right {
+	border: 1px solid white;
+	background-color: #6699FF;	
+	color: #002061;
+	text-align: center;	
+}
+
+.scoretablehead__left {
+	border: 1px solid white;
+	background-color: #003399;
+	color: white;
+	width: 60%;
+	text-align: center;
+}
+
+.scoretablehead__right {
+	border: 1px solid white;
+	background-color: #003399;	
+	color: white;
+	text-align: center;	
+}
+

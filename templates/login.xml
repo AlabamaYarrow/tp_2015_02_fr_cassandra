@@ -1,22 +1,22 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<div class="login">
-		<h1>Cassandra</h1>
-		<h2>Login</h2>
-		
-		<form class="login__form" method="post">
-			<p>
-				<label class="login__label" for="name">Username:</label> 
-				<input class="login__input" type="text" id="nameIdSI" name="name" required="required">
-				</input>
-			</p>
-			<p class="formtable__row">	
-				<label class="login__label" for="password">Password:</label>
-				<input class="login__input" type="password" id="passwordIdSI" name="password" required="required" ></input>
-			</p>			
-			<button type="submit" class="login__submit">Submit</button>			
-		</form>
-		
-		<div class="menu">
+	<div class="loginbackground">
+		<div class="login">
+			<h1>Cassandra</h1>
+			<h2>Login</h2>
+			
+			<form class="login__form" method="post">
+				<p>
+					<label class="login__label" for="name">Username:</label> 
+					<input class="login__input" type="text" id="nameIdSI" name="name" required="required">
+					</input>
+				</p>
+				<p class="formtable__row">	
+					<label class="login__label" for="password">Password:</label>
+					<input class="login__input" type="password" id="passwordIdSI" name="password" required="required" ></input>
+				</p>			
+				<button type="submit" class="login__submit">Submit</button>			
+			</form>
+			
 			<a href="#" class="menu__button">Back</a>
 		</div>
 	</div>
