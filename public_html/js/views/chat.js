@@ -12,7 +12,6 @@ define([
             'keyup .js-chatinput': 'onInputKeyup'
         },
 
-
         runChat: function() {
         },
 

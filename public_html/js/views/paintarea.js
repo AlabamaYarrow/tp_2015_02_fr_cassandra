@@ -12,10 +12,15 @@ define([
                 'mouseleave .js-canvas': _.bind(this.onMouseleave, this),
                 'mouseover .js-canvas': _.bind(this.onMouseover, this),                
                 'click .js-buttonclear':  _.bind(this.clear, this),
-                'input .js-buttoncolor':  _.bind(this.onChangeColor, this) 
+                'input .js-buttoncolor':  _.bind(this.onChangeColor, this),
+                'input .js-widthselect':  _.bind(this.onChangeWidth, this),
             }; 
         },       
-        
+
+        onChangeWidth: function() {
+            this.context.lineWidth = $('.js-widthselect').val();
+        },        
+
         onChangeColor: function() {
             this.context.strokeStyle = $('.js-buttoncolor').val();
         },
@@ -46,6 +51,11 @@ define([
             canvas.get(0).width = $('.paintarea').width();
             canvas.get(0).height = $('.paintarea').height();
             context = canvas.get(0).getContext('2d');
+            context.lineWidth = 25;            
+            $('.js-buttoncolor').val('#000000');
+            context.lineJoin = "round";
+            context.lineCap = "round";
+
 
             this.canvas = canvas;
             this.context = context;

@@ -30,19 +30,24 @@ body,html {
 
 /* Game (begin) */
 
+.game__paneltext {
+	color: white;
+}
+
+
+
 .game__playground {
 	overflow: hidden;
 	position: relative;
 }
 
-.game__panelpaint {
+.game__controlpanel {
 	float: left;
 	width: 506px;
 	text-align: center;
 }
 
-.game__panelguess {
-	
+.game__guesspanel {	
 	text-align: center;
 }
 
@@ -65,6 +70,12 @@ body,html {
 	border-radius: 5px;
 	border: solid 1px #003399;
 	color: white;
+}
+
+.game__widthselect {
+	vertical-align: bottom;
+	margin: 10px;
+	height: 30px;
 }
 
 
