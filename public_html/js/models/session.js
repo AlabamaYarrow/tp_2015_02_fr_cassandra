@@ -9,7 +9,7 @@ define([
     var sessionObject;
 
     var Session = Backbone.Model.extend({
-        
+
         initialize: function () {
             this.user = new User();
         },
@@ -32,18 +32,26 @@ define([
                 )
         },
 
-        login: function() {
+        /**
+         * Accepts `always`, `error` and `success` callback in options hash.
+         */
+        login: function(options) {
+            options = options || {};
             this.user.save(
                 {
                     success: _.bind( function() {
                         this.user.set({ loggedIn: true });
                         console.log('login success');
                         Backbone.history.navigate('#', true);
+                        options.always && options.always();
+                        options.success && options.success();
                     }, this),
 
                     error: _.bind( function() {
                         console.log('login fail');
                         this.user.clear();
+                        options.always && options.always();
+                        options.error && options.error();
                     }, this)
                 },
                 'signin'
@@ -68,17 +76,25 @@ define([
             this.user.clear();
         },
 
-        signup: function() {
+        /**
+         * Accepts `always`, `error` and `success` callback in options hash.
+         */
+        signup: function(options) {
+            options = options || {};
             this.user.save(
                 {
                     success: _.bind( function() {
                         console.log('signup success');
                         this.login();
+                        options.always && options.always();
+                        options.success && options.success();
                     }, this),
 
                     error: _.bind( function() {
                         console.log('signup fail');
                         this.user.clear();
+                        options.always && options.always();
+                        options.error && options.error();
                     }, this)
                 },
                 'signup'

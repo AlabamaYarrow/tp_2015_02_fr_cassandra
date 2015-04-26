@@ -1,0 +1,44 @@
+$gauge-width: 250px;
+
+@-webkit-keyframes rotation {
+  from {-webkit-transform: rotate(0deg);}
+  to   {-webkit-transform: rotate(359deg);}
+}
+
+@keyframes rotation {
+  from {transform: rotate(0deg);}
+  to   {transform: rotate(359deg);}
+}
+
+.gauge {
+  position: absolute;
+  width: $gauge-width;
+  left: 50%;
+  top: 20%;
+  margin-left: -$gauge-width/2;
+}
+
+.gauge_hidden {
+  display: none;
+}
+
+.gauge__palette {
+  width: $gauge-width;
+}
+
+.gauge__palette-colors {
+  $scaling: .7;
+  position: absolute;
+  left: $gauge-width * (1 - $scaling) * .5;
+  top: $gauge-width * (1 - $scaling) * .5;
+  width: $gauge-width * $scaling;
+  -webkit-animation: rotation 2s infinite linear;
+  animation: rotation 2s infinite linear;
+}
+
+.gauge__title {
+  font-size: 290%;
+  transition: font-size .2s;
+  margin-top: 15px;
+  color: #000;
+}

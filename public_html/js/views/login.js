@@ -1,9 +1,11 @@
 define([
     'backbone',
+    'views/gauge',
     'tmpl/login',
     'models/session'
 ], function(
     Backbone,
+    gauge,
     template,
     session
 ){
@@ -36,6 +38,7 @@ define([
 
         submitForm: function(event) {
             event.preventDefault();
+            gauge.show();
 
             var signupForm = $('.login__form').serializeArray();
             var json_data = {};
@@ -43,9 +46,13 @@ define([
                 function(i, v) {
                     json_data[v.name] = v.value;
                 });
-            session.user.set(json_data);          
-            session.login();                  
-        }     
+            session.user.set(json_data);
+            session.login({
+                always: function () {
+                    gauge.hide();
+                }
+            });
+        }
 
     });
 

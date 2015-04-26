@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="gauge">
+		<img class="gauge__palette" src="images/palette.svg" />
+		<img class="gauge__palette-colors" src="images/palette-colors.svg" />
+		<h2 class="gauge__title">Loading...</h2>
+	</div>
+</fest:template>
