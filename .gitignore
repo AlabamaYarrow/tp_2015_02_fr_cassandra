@@ -1,4 +1,5 @@
 node_modules
 public_html/js/tmpl
+public_html/css
 *.css
 .sass-cache

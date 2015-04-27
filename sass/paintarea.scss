@@ -1,0 +1,17 @@
+.paintarea {	
+	background-color: white;
+	float: left;
+	height: $paintareaHeight;
+	left: 0;
+	display: inline-block;
+	width: $paintareaWidth;
+	border: solid $paintareaMargin $menuColor; 
+	border-radius: 5px 5px 0px 0px;
+
+	.paintarea__canvas {	
+		cursor: default;
+		position: absolute;
+	}
+}
+
+

@@ -1,0 +1,67 @@
+@mixin roundedBottom($radius) {
+	border-radius: 0px 0px $radius $radius;
+}
+
+.background {
+	@include roundedBottom (20px);
+	margin: 0 auto;
+	width: 400px;
+	background-color: $menuColor;	
+	overflow: auto;
+}
+
+.controlPanelElem {
+	color: white;
+	margin: 10px;
+	height: 30px;
+}
+
+.formInput {
+	float: right; 
+	width: 200px;
+}
+
+.formLabel {
+	display: inline-block;
+	margin: 0 .4em 0 0;
+	text-align: left;
+}
+
+.buttonBase {
+	background-color: $buttonColor;
+	color: white;
+	font-family: $font;
+}
+
+.button {
+	@extend .buttonBase;
+	margin: 4px auto;
+	font-size: 15pt;
+	display: block;
+	border-radius: $buttonRadius;
+	height: $buttonHeight;
+	width: $buttonWidth;
+	text-align: center;
+	text-decoration: none;
+}
+
+.buttonHover {
+	background-color: $buttonHoverColor;	
+}
+
+.returnbutton {
+	@extend .button;
+	line-height: 40px;
+}
+
+.submit {	
+	@extend .button;	
+	border: solid 1px $buttonColor;
+	cursor: pointer;
+}
+
+.submitHover {
+	@extend .buttonHover;
+	border: solid 1px $buttonHoverColor;
+}
+

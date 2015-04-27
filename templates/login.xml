@@ -17,7 +17,7 @@
 				<button type="submit" class="login__submit">Submit</button>			
 			</form>
 			
-			<a href="#" class="menu__button">Back</a>
+			<a href="#" class="login__menubutton">Back</a>
 		</div>
 	</div>
 </fest:template>

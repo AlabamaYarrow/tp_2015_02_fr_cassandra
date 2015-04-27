@@ -10,9 +10,8 @@
 				<input class="gameover__input" type="text" id="nameIdSI" name="name" required="required" value="{json.name}"
 					></input>
 			</p>
-			<div class="menu">
-				<button type="submit" class="gameover__form-submit">Submit</button>
-			</div>
+			<!-- <button type="submit" class="gameover__submit">Submit</button> -->
+			<a href="#" class="menu__button">Menu</a>
 		</form>
 	</div>
 </fest:template>

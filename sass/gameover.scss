@@ -1,10 +1,20 @@
 .gameover {
 	margin: 0 auto;
 	width: 400px;
+
+	.gameover__input {
+		display: block;
+		margin: auto;
+		width: 50%;
+	}
+
+	.gameover__submit {
+		@extend .submit;	
+	}
+
+	.gameover__submit:hover {
+		@extend .submitHover;
+	}
 }
 
-.gameover__input {
-	display: block;
-	margin: auto;
-	width: 50%;
-}
+

@@ -3,22 +3,22 @@
 	<div class="scoreboard">
 		<h1>Cassandra</h1>
 		<h2>Scoreboard</h2>		
-			<table class="scoretable">	
-				<thead  class="scoretablehead">	
-					<tr>					
-						<td class="scoretablehead__left">
-							User
-						</td>
-						<td class="scoretablehead__right">
-							Score
-						</td>		
-					</tr>
-				</thead>
-				<tbody class="scoretable__body">			
+		<table class="scoretable">	
+			<thead  class="scoretablehead">	
+				<tr>					
+					<td class="scoretablehead__left">
+						User
+					</td>
+					<td class="scoretablehead__right">
+						Score
+					</td>		
+				</tr>
+			</thead>
+			<tbody class="scoretable__body">			
 
-				</tbody>
-			</table>
-			<a href="#" class="menu__button">Back</a>		
+			</tbody>
+		</table>
+		<a href="#" class="scoreboard__menubutton">Back</a>		
 	</div>
 	</div>
 </fest:template>

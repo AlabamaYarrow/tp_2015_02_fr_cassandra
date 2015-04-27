@@ -44,10 +44,6 @@ define([
             this.setUsers(data.viewers);
         },
 
-        onClearClick: function () {
-            paintareaView.clear();
-        },
-
         onGuessClick: function(event) {
             gameoverView.show();
         },
@@ -57,12 +53,15 @@ define([
         },
 
         render: function () {
-            this.$el.html( this.template( session.user.toJSON() ) );
-            this.usersList = this.$('.js-userslist');
+            this.$el.html( this.template( ) );
+
             this.chat = new ChatView({
-              el: this.$('.chat'),
-              model: session.user
+                el: this.$('.userschat'),
+                model: session.user
             });
+
+            this.usersList = this.$('.js-userslist');
+
             this.hide();
         },
 
@@ -71,11 +70,13 @@ define([
             _.each(viewers, _.bind(this.addUser, this));
         },
 
-        show: function () {
-            this.trigger("show", this);
-            paintareaView.show();
+        show: function () {       
+            this.trigger("show", this);            
+            
             session.user.startGame();
-            this.$el.show();
+            this.$el.show();     
+            paintareaView.show();
+            this.chat.show();
         },
 
         hide: function () {

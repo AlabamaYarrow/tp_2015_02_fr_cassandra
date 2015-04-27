@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'models/session'
+    'models/session',
+    'tmpl/chat'
 ], function(
     Backbone,
-    session
+    session,
+    tmpl
 ){
 
     var ChatView = Backbone.View.extend({
@@ -12,16 +14,22 @@ define([
             'keyup .js-chatinput': 'onInputKeyup'
         },
 
+        template: tmpl,
+
         runChat: function() {
         },
 
         initialize: function () {
             this.listenTo(this.model, 'chat_message', this.onUserChatMessage);
-            this.chatarea = this.$('.js-chatarea');
+            this.render();
+            this.chatarea = this.$('.js-chatarea');   
+        },
+
+        render: function () {  
+            this.$el.html( this.template() );
         },
 
         hide: function () {
-            console.log('game hide');
             if (session.user.socket) {
                 console.log('closing socket');
                 session.user.socket.close();
@@ -59,6 +67,10 @@ define([
                     + text + '</p>');
             var chatarea = this.chatarea[0];
             chatarea.scrollTop = chatarea.scrollHeight;
+        },
+
+        show: function () {
+            this.$el.show();
         }
 
     });

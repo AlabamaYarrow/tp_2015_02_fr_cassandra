@@ -31,7 +31,7 @@
 			<button type="submit" class="signup__submit">Submit</button>
 		</form>
 
-		<a href="#" class="menu__button">Back</a>
+		<a href="#" class="signup__menubutton">Back</a>
 
 	</div>
 	</div>

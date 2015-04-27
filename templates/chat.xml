@@ -1,0 +1,16 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+
+	<div class="js-users users">
+		<h3> Users: </h3>
+		<ul class="js-userslist"></ul>
+	</div>
+	<div class="chat">
+		<div class="js-chatarea chat__area">
+		</div>
+		<div>
+			<input class="js-chatinput chat__input"></input>
+			<button class="js-chatsend chat__button">Send</button>
+		</div>
+	</div>
+	
+</fest:template>

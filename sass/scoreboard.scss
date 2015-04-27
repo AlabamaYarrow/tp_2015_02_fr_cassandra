@@ -1,55 +1,72 @@
-.scoreboardbackground {
-	margin: 0 auto;
-	width: 400px;
-	background-color: #6F91FA;
-	border-radius: 0px 0px 20px 20px;
-	overflow: auto;
+$headerBackground: #6699FF;
+$rowBackground: #003399;
+$rowTextColor: #002061;
+
+.scoretableItem {
+	border: 1px solid white;	
 }
 
-.scoreboard {
-	margin-bottom: 20px;
-}
-
-.scoreboard__list {
-	margin: 0 auto;
-	width: 200px;
-}
-
-.scoretable {
-	border: 0px solid white;
-    color: white;	
-	margin: 0 auto; 
-	margin-bottom: 20px;
-	width: 200px;	
-}
-
-.scoretable__left {
-	border: 1px solid white;
-	background-color: #6699FF;
-	color: #002061;
-	width: 60%;
-	text-align: left;
-}
-
-.scoretable__right {
-	border: 1px solid white;
-	background-color: #6699FF;	
-	color: #002061;
-	text-align: center;	
-}
-
-.scoretablehead__left {
-	border: 1px solid white;
-	background-color: #003399;
+.scoretableHeadItem {	
+	@extend .scoretableItem;
+	background-color: $rowBackground;
 	color: white;
-	width: 60%;
 	text-align: center;
 }
 
-.scoretablehead__right {
-	border: 1px solid white;
-	background-color: #003399;	
-	color: white;
-	text-align: center;	
+.scoretableBodyItem {
+	@extend .scoretableItem;
+	background-color: $headerBackground;
+	color: $rowTextColor;
 }
+
+.scoreboardbackground {
+	@extend .background;
+	
+	.scoreboard {
+		margin-bottom: 20px;
+		.scoretable {
+			border: 0px solid white;
+		    color: white;	
+			margin: 0 auto; 
+			margin-bottom: 20px;
+			width: 200px;	
+			.scoretablehead {
+				.scoretablehead__left {
+					@extend .scoretableHeadItem;
+					width: 60%;
+					
+				}
+				.scoretablehead__right {
+					@extend .scoretableHeadItem;
+				}				
+			}
+
+			.scoretable__left {
+				@extend .scoretableBodyItem;
+				width: 60%;
+				text-align: left;
+			}
+
+			.scoretable__right {
+				@extend .scoretableBodyItem;
+				text-align: center;	
+			}
+		}
+
+		.scoreboard__menubutton {
+			@extend .returnbutton;			
+		}
+
+		.scoreboard__menubutton:hover {
+			@extend .buttonHover;			
+		}	
+	}
+}
+
+
+
+
+
+
+
 
