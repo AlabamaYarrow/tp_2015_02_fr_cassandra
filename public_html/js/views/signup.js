@@ -1,9 +1,11 @@
 define([
     'backbone',
+    'views/gauge',
     'tmpl/signup',
     'models/session'
 ], function(
     Backbone,
+    gauge,
     template,
     session
 ){
@@ -16,7 +18,7 @@ define([
 
         template: template,
 
-        initialize: function () {                 
+        initialize: function () {
             this.model = session.user;
             this.render();
         },
@@ -32,22 +34,26 @@ define([
         },
 
         hide: function () {
-            this.$el.hide();            
+            this.$el.hide();
         },
 
         submitForm: function(event) {
             event.preventDefault();
-            
+            gauge.show();
+
             var signupForm = $('.signup__form').serializeArray();
             var json_data = {};
-            $.each(signupForm,
-                function(i, v) {
-                    json_data[v.name] = v.value;
-                });
+            $.each(signupForm, function(i, v) {
+                json_data[v.name] = v.value;
+            });
 
             console.log(json_data);
-            session.user.set(json_data);           
-            session.signup();
+            session.user.set(json_data);
+            session.signup({
+                always: function () {
+                    gauge.hide();
+                }
+            });
         },
 
     });
