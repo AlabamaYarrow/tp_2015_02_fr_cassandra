@@ -13,7 +13,8 @@ define([
     var SignupView = Backbone.View.extend({
 
         events: {
-            'submit .signup__form': 'submitForm',
+            'submit .signup__form': 'submitForm',            
+            'keyup .signup__input': 'saveToStorage'
         },
 
         template: template,
@@ -23,9 +24,36 @@ define([
             this.render();
         },
 
+        getFormJSON: function () {
+            var signupForm = $('.signup__form').serializeArray();
+            var json_data = {};
+            $.each(signupForm,
+                function(i, v) {
+                    json_data[v.name] = v.value;
+                });
+            return json_data;
+        },
+
         render: function () {
-            this.$el.html( this.template() );
+            json_string = localStorage.getItem('signupData');
+            json_data = JSON.parse(json_string);
+            if (json_data == null) {
+                json_data = { name: '', email: '', password: '', password_confirmation: '' };
+            } 
+
+            this.$el.html( this.template({
+                        name: json_data.name, 
+                        email: json_data.email,
+                        password: json_data.password,
+                        password_confirmation: json_data.password_confirmation
+                    }));
+            
             this.hide();
+        },
+
+        saveToStorage: function () {
+            json_data = this.getFormJSON();
+            localStorage.setItem('signupData', JSON.stringify(json_data));
         },
 
         show: function () {
@@ -39,7 +67,6 @@ define([
 
         submitForm: function(event) {
             event.preventDefault();
-            gauge.show();
 
             var signupForm = $('.signup__form').serializeArray();
             var json_data = {};
@@ -47,13 +74,9 @@ define([
                 json_data[v.name] = v.value;
             });
 
-            console.log(json_data);
             session.user.set(json_data);
-            session.signup({
-                always: function () {
-                    gauge.hide();
-                }
-            });
+            session.signup();
+            localStorage.removeItem('signupData');
         },
 
     });

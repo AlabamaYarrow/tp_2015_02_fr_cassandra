@@ -1,4 +1,4 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<div class="loginbackground">
 		<div class="login">
 			<h1>Cassandra</h1>
@@ -7,12 +7,12 @@
 			<form class="login__form" method="post">
 				<p>
 					<label class="login__label" for="name">Username:</label> 
-					<input class="login__input" type="text" id="nameIdSI" name="name" required="required">
+					<input class="js-loginName login__input" type="text" id="nameIdSI" name="name" required="required" value="{json.name}" >
 					</input>
 				</p>
 				<p class="formtable__row">	
 					<label class="login__label" for="password">Password:</label>
-					<input class="login__input" type="password" id="passwordIdSI" name="password" required="required" ></input>
+					<input class="js-loginPassword login__input" type="password" id="passwordIdSI" name="password" required="required" value="{json.password}" ></input>
 				</p>			
 				<button type="submit" class="login__submit">Submit</button>			
 			</form>

@@ -1,4 +1,10 @@
-define(['tmpl/gauge'], function (template) {
+define([
+    'backbone',
+    'tmpl/gauge'
+],  function (
+    Backbone,
+    template
+){
     var GaugeView = Backbone.View.extend({
         template: template,
 

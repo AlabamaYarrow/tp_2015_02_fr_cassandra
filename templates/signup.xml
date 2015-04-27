@@ -1,4 +1,4 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<div class="signupbackground">
 	<div class="signup">
 		<h1>Cassandra</h1>
@@ -10,23 +10,23 @@
 				<label  class="signup__label" for="name">Username:</label> 
 				<input class="signup__input" type="text" 
 					id="nameIdSP" name="name" required="required"
-					pattern="^[A-z0-9]*$" title="No special characters">
+					pattern="^[A-z0-9]*$" title="No special characters" value="{json.name}">
 				</input>
 			</p>
 			
 			<p>
 				<label class="signup__label" for="email">Email:</label> 
-				<input class="signup__input" type="email" name="email" id="emailIdSP" required="required" ></input>
+				<input class="signup__input" type="email" name="email" id="emailIdSP" required="required" value="{json.email}" ></input>
 			</p>
 			
 			<p>
 				<label class="signup__label" for="password">Password:</label>
-				<input class="signup__input" type="password" name="password" id="passwordIdSP" required="required" ></input>
+				<input class="signup__input" type="password" name="password" id="passwordIdSP" required="required" value="{json.password}" ></input>
 			</p>
 			
 			<p>
 				<label class="signup__label" for="password_confirmation">Confirm:</label> 
-				<input class="signup__input" type="password" name="password_confirmation" id="password_confirmationIdSP" required="required" ></input>
+				<input class="signup__input" type="password" name="password_confirmation" id="password_confirmationIdSP" required="required" value="{json.password_confirmation}"></input>
 			</p>
 			<button type="submit" class="signup__submit">Submit</button>
 		</form>

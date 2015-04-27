@@ -21,12 +21,10 @@ define([
         show: function () {
             this.trigger("show", this);
             this.$el.show();
-            gauge.show();
             session.signout();
         },
 
         hide: function () {
-            gauge.hide();
             this.$el.hide();
         }
     });

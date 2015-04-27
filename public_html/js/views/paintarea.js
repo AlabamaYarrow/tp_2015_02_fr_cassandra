@@ -46,6 +46,7 @@ define([
         show: function () {            
             this.setElement( $('.js-game') );
             $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
+            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );
 
             canvas = $('.js-canvas');
             canvas.get(0).width = $('.paintarea').width();
