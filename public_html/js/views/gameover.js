@@ -49,8 +49,6 @@ define([
                 user: session.user,
                 score: data.score
             });
-            this.hide();
-            Backbone.history.navigate('#scoreboard', true);
 
         }
 
