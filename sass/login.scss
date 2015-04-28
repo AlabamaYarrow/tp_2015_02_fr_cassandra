@@ -1,44 +1,45 @@
 
 .loginbackground {
 	@extend .background;
+}
+
+.login {
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 325px;
 	
-	.login {
-		margin: 0 auto;
-		margin-bottom: 20px;
-		width: 325px;
+	&__form {
+		margin-top: 40px; 	
+	}
+
+	&__label {
+		@extend .formLabel;
+		width: 75px;
+	}
+
+	&__input {
+		@extend .formInput;
+	}
+
+	&__submit {
+		@extend .submit;
+		margin-top: 40px;
 		
-		.login__form {
-			margin-top: 40px; 	
+		&:hover {
+			@extend .submitHover;
+		}	
+	}
 
-			.login__label {
-				@extend .formLabel;
-				width: 75px;
-			}
-
-			.login__input {
-				@extend .formInput;
-			}
-
-			.login__submit {
-				@extend .submit;
-				margin-top: 40px;
-			}
-
-			.login__submit:hover {
-				@extend .submitHover;
-			}		
-
-		}
-
-		.login__menubutton {
-			@extend .returnbutton;	
-		}
-
-		.login__menubutton:hover {
+	
+	&__menubutton {
+		@extend .returnbutton;	
+		
+		&:hover {
 			@extend .buttonHover;	
 		}
 	}
 }
+
 
 
 
