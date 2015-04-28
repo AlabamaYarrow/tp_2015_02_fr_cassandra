@@ -1,17 +1,16 @@
 .menu {
 	@extend .background;
+}
 
-	.menu__buttonpanel {
-		margin-bottom: 20px;
+.menu__buttonpanel {
+	margin-bottom: 20px;
+}
+
+.menu__button {
+	@extend .button;
+	line-height: 40px;
+
+	&:hover {
+		background-color: $buttonHoverColor;
 	}
-
-	.menu__button {
-		@extend .button;
-		line-height: 40px;	
-	}
-
-	.menu__button:hover {
-		background-color:  $buttonHoverColor;
-	}
-
 }

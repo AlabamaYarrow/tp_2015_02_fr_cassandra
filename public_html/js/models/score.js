@@ -5,15 +5,15 @@ define([
 ){
 
     var Score = Backbone.Model.extend({
-        defaults: {
-            name: '',
-            score: 0
+        initialize: function () {
+
         },
 
-        initialize: function () {
-            this.set({
-                score: Math.floor(Math.random() * 100 + 1)
-            });
+        parse: function (response) {
+          response = response.body || response;
+          _.extend(response, response.user);
+          delete response.user;
+          return response;
         }
     });
 

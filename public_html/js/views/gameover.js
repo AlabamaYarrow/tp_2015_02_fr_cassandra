@@ -1,10 +1,12 @@
 define([
     'backbone',
     'tmpl/gameover',
+    'collections/scores',
     'models/session'
 ], function(
     Backbone,
     template,
+    scores,
     session
 ){
 
@@ -17,7 +19,7 @@ define([
         template: template,
 
         initialize: function () {
-        	this.listenTo(session.user, 'change', this.render);
+            this.listenTo(session.user, 'change', this.render);
             this.render();
         },
 
@@ -27,8 +29,8 @@ define([
             this.hide();
         },
 
-        show: function () {        	
-	        this.trigger("show", this);
+        show: function () {
+            this.trigger("show", this);
             this.$el.show();
         },
 
@@ -38,17 +40,16 @@ define([
 
         submitForm: function(event) {
             event.preventDefault();
-            /*
-            var signupForm = $('.login__form').serializeArray();
-            var json_data = {};
-            $.each(signupForm,
-                function(i, v) {
-                    json_data[v.name] = v.value;
-                });
-            session.user.set(json_data);          
-            session.login();                  
-            */
-        }     
+            var fields = $('.gameover__form').serializeArray();
+            var data = {};
+            _.each(fields, function(field) {
+                data[field.name] = field.value;
+            });
+            scores.create({
+                user: session.user,
+                score: data.score
+            });
+        }
 
     });
 

@@ -6,7 +6,7 @@ define([
 ], function(
     Backbone,
     template,
-    Scores,
+    scores,
     ScoreView
 ){
 
@@ -14,32 +14,38 @@ define([
         template: template,
 
         initialize: function () {
-            this.collection = new Scores();
-            this.collection.set([ {name: 'alice'}, {name: 'bob'}, {name: 'carol'}, {name: 'sam'}, {name: 'paul'}, {name: 'davis'}, {name: 'trent'} ]);
-            this.collection.models = _.sortBy(this.collection.models, function(item) {
-                return -item.get('score');
-            })
             this.render();
+            this.collection = scores;
+            this.listenTo(this.collection, 'sync', this.onCollectionSync);
+            this.collection.fetch({
+              success: _.bind(this.renderCollection, this)
+            });
+            this.hide();
+        },
+
+        onCollectionSync: function () {
+            this.renderCollection();
         },
 
         render: function () {
             this.$el.html(this.template());
-            //this.scoreboard = this.$('.scoreboard__list');
             this.scoreboard = this.$('.scoretable__body');
-            this.hide();
+        },
+
+        renderCollection: function () {
+            this.scoreboard.html('');
+            var that = this;
+            this.collection.each(function (model) {
+                that.scoreboard.append((new ScoreView({model: model})).el);
+            });
         },
 
         show: function () {
             this.trigger("show", this);
             this.$el.show();
-            this.scoreboard.html('');
-            var that = this;
-            _(this.collection.models).each(function (item) {
-                that.scoreboard.append((new ScoreView({model: item})).el);
-            });
         },
 
-        hide: function () {            
+        hide: function () {
             this.$el.hide();
         }
     });

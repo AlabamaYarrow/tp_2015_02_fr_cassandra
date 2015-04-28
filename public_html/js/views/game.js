@@ -4,6 +4,7 @@ define([
     'views/chat',
     'views/paintarea',
     'views/gameover',
+    'collections/scores',
     'models/session'
 ], function(
     Backbone,
@@ -11,6 +12,7 @@ define([
     ChatView,
     paintareaView,
     gameoverView,
+    scores,
     session
 ){
 
@@ -24,7 +26,7 @@ define([
         initialize: function () {
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
             this.listenTo(session.user, 'user_come', this.onUserUserCome);
-            this.listenTo(session.user, 'user_gone', this.onUserUserGone);            
+            this.listenTo(session.user, 'user_gone', this.onUserUserGone);
             this.render();
         },
 
@@ -70,11 +72,11 @@ define([
             _.each(viewers, _.bind(this.addUser, this));
         },
 
-        show: function () {       
-            this.trigger("show", this);            
-            
+        show: function () {
+            this.trigger("show", this);
+
             session.user.startGame();
-            this.$el.show();     
+            this.$el.show();
             paintareaView.show();
             this.chat.show();
         },
