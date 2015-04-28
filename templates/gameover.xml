@@ -7,12 +7,11 @@
 		</h2>
 
 		<h3>How much points do you want?</h3>
-		<form class="gameover__form" method="post" action="/#">
+		<form class="gameover__form" method="post">
 			<p>
 				<input class="gameover__input" type="text" name="score" required="required" value="1" />
 			</p>
 			<button type="submit" class="gameover__submit">Submit</button>
-			<a href="#" class="menu__button">Menu</a>
 		</form>
 	</div>
 </fest:template>
