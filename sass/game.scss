@@ -6,60 +6,61 @@
 	margin: 0 auto;
 	position: relative;	
 
-	.game__playground {
+	&__playground {
 		overflow: hidden;
 		position: relative;
 	}
 
-	.game__controlpanel {
+	&__controlpanel {
 		background-color: $menuColor;
 		@include roundedBottom(20px); 
 		float: left;
 		width: $paintareaWidth + 2*$paintareaMargin;
 		text-align: center;
-
-		.game__paneltext {
-			color: white;
-		}
-
-		.game__colorselect {
-			@extend .controlPanelElem;
-			vertical-align: bottom;	
-			background-color: $buttonColor;
-			border: solid 1px $buttonColor;
-		}
-
-		.game__widthselect {
-			@extend .controlPanelElem;
-			vertical-align: bottom;
-		}
 	}
 
-	.game__guesspanel {	
+	&__paneltext {
+		color: white;
+	}
+
+	&__colorselect {
+		@extend .controlPanelElem;
+		vertical-align: bottom;	
+		background-color: $buttonColor;
+		border: solid 1px $buttonColor;
+	}
+
+	&__widthselect {
+		@extend .controlPanelElem;
+		vertical-align: bottom;
+	}
+
+	&__guesspanel {	
 		text-align: center;
 	}
 
-	.game__button {
+	&__button {
 		@extend .controlPanelElem;
 		font-family: $font;
 		font-size: 12pt;
 		background-color: $buttonColor;
 		border-radius: 5px;
 		border: solid 5px $buttonColor;
-	}
+		
+		&:hover {
+			background-color: $buttonHoverColor;
+			border: solid 5px $buttonHoverColor;
+		}
+	}	
 
-	.game__button:hover {
-		background-color: $buttonHoverColor;
-		border: solid 5px $buttonHoverColor;
-	}
-
-	.game__menubutton {
+	&__menubutton {
 		@extend .returnbutton;
+		
+		&:hover {
+			@extend .buttonHover;
+		}
 	}
-
-	.game__menubutton:hover {
-		@extend .buttonHover;
-	}
+	
 }
 
 

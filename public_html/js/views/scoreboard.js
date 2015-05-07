@@ -20,6 +20,7 @@ define([
             this.collection.fetch({
               success: _.bind(this.renderCollection, this)
             });
+
             this.hide();
         },
 
@@ -34,7 +35,11 @@ define([
 
         renderCollection: function () {
             this.scoreboard.html('');
-            var that = this;
+            var that = this;         
+            this.collection.models = _.sortBy(this.collection.models, function(item) {
+                return -item.get('score');
+            })
+            this.collection.models = this.collection.first(10);
             this.collection.each(function (model) {
                 that.scoreboard.append((new ScoreView({model: model})).el);
             });

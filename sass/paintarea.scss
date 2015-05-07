@@ -8,7 +8,7 @@
 	border: solid $paintareaMargin $menuColor; 
 	border-radius: 5px 5px 0px 0px;
 
-	.paintarea__canvas {	
+	&__canvas {	
 		cursor: default;
 		position: absolute;
 	}

@@ -1,39 +1,44 @@
 .signupbackground {
 	@extend .background;
+}
+.signup {
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 350px;
+	
+	&__form {
 
-	.signup {
-		margin: 0 auto;
-		margin-bottom: 20px;
-		width: 350px;
-		.signup__form {
-			.signup__label {
-				@extend .formLabel;
-				width: 100px;
-			}
+	}
 
-			.signup__input {
-				@extend .formInput;
-			}
-
-			.signup__submit {
-				@extend .submit;
-				margin-top: 40px;
-			}
-
-			.signup__submit:hover {
-				@extend .submitHover;
-			}
-		}
-
-		.signup__menubutton {
-			@extend .returnbutton;	
-		}
-
-		.signup__menubutton:hover {
+	&__menubutton {
+		@extend .returnbutton;	
+		
+		&:hover {
 			@extend .buttonHover;	
 		}
+	}	
+
+	&__label {
+		@extend .formLabel;
+		width: 100px;
 	}
+
+	&__input {
+		@extend .formInput;
+	}
+
+	&__submit {
+		@extend .submit;
+		margin-top: 40px;
+		
+		&:hover {
+			@extend .submitHover;
+		}
+	}
+
+	
 }
+
 
 
 
