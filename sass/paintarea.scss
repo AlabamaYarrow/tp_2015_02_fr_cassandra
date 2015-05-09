@@ -2,11 +2,15 @@
 	background-color: white;
 	float: left;
 	height: $paintareaHeight;
+	margin-left: 10px;
+	margin-top: 10px;
 	left: 0;
 	display: inline-block;
 	width: $paintareaWidth;
-	border: solid $paintareaMargin $menuColor; 
+	border: solid $paintareaMargin $gamePanelColor; 
 	border-radius: 5px 5px 0px 0px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	overflow: visible; 
 
 	&__canvas {	
 		cursor: default;

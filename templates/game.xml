@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<div id="game" class="js-game game">
 
-		<h3>Current word: AJAX</h3>
+		<h3 class="game__header">Current word: AJAX</h3>
 		<div class="js-gameplayground game__playground">
 			<div class="js-paintarea paintarea">
 				<canvas id="canvas" class="js-canvas paintarea__canvas"></canvas>
@@ -19,8 +19,15 @@
 		<div class="game__guesspanel">
 			<button class="js-buttonguess game__button">Cassandra guessed!</button>
 		</div>
-		<h3>Time left: 00:07</h3>
+		<h3 class="game__header">Time left: 00:07</h3>
 		
 		<a href="#" class="game__menubutton">Back</a>
+
+		
+	<!-- 	<div class="paintarea">
+			<canvas class="js-canvas2 paintarea__canvas"></canvas>
+		</div>
+ -->		
+
 	</div>
 </fest:template>

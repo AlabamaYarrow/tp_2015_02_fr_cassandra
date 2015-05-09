@@ -2,9 +2,13 @@
 
 .game {
 	overflow: hidden;
-	width: 800px;
+	width: 850px;
 	margin: 0 auto;
 	position: relative;	
+
+	&__header {
+		color: white;
+	}
 
 	&__playground {
 		overflow: hidden;
@@ -12,11 +16,14 @@
 	}
 
 	&__controlpanel {
-		background-color: $menuColor;
+		background-color: $gamePanelColor;		
 		@include roundedBottom(20px); 
 		float: left;
 		width: $paintareaWidth + 2*$paintareaMargin;
+		margin-left: 10px;
 		text-align: center;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		display: inline-block;
 	}
 
 	&__paneltext {
@@ -36,6 +43,12 @@
 	}
 
 	&__guesspanel {	
+		background-color: $gamePanelColor;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		@include roundedBottom(20px); 
+		display: inline-block;
+		width: $userschatWidth + 2*$userschatPadding;
+		margin-left: 20px;
 		text-align: center;
 	}
 
@@ -46,6 +59,7 @@
 		background-color: $buttonColor;
 		border-radius: 5px;
 		border: solid 5px $buttonColor;
+		box-shadow: 0 0 5px rgba(0,0,0,0.5);
 		
 		&:hover {
 			background-color: $buttonHoverColor;

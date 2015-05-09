@@ -1,11 +1,14 @@
 .userschat {
+	background-color: $gamePanelColor;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 20px 20px 0px 0px;
 	height: 100%;
 	position: absolute;
 	float: left;
-	padding: 3px;
+	padding: $userschatPadding;
 	display: inline-block;
-	width: 250px;
-	margin: 0 0 0 20px;
+	width: $userschatWidth;
+	margin: 10px 0 0 20px;
 }
 
 .users {
@@ -14,12 +17,17 @@
 	margin-left: 10px;
 	color: white;
 	overflow: auto;
+
+	&__header {
+		background-color: $buttonColor;
+		border-radius: 5px;
+	}
 }
 
 .chat {
 	position: absolute;
 	margin: 5px;
-	bottom: 0px;
+	bottom: 10px;
 
 	&__area {
 		overflow-y: auto;

@@ -59,6 +59,9 @@ define([
         },
 
         hide: function () {
+            $('.login__input').val('');
+            $('.login__errormsg').html('');
+            localStorage.removeItem('loginData');
             this.$el.hide();
         },
 
@@ -66,7 +69,10 @@ define([
             event.preventDefault();
             json_data = this.getFormJSON();
             session.user.set(json_data);
-            session.login();            
+            session.login({
+                error: _.bind(function () {
+                    $('.login__errormsg').html('Incorrect email of password');
+                }, this) });
             localStorage.removeItem('loginData');
         }
 

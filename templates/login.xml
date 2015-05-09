@@ -10,10 +10,15 @@
 					<input class="js-loginName login__input" type="text" id="nameIdSI" name="name" required="required" value="{json.name}" >
 					</input>
 				</p>
-				<p class="formtable__row">	
+
+				<p>	
 					<label class="login__label" for="password">Password:</label>
 					<input class="js-loginPassword login__input" type="password" id="passwordIdSI" name="password" required="required" value="{json.password}" ></input>
-				</p>			
+				</p>
+
+				<p class="login__errormsg">					
+				</p>
+					
 				<button type="submit" class="login__submit">Submit</button>			
 			</form>
 			

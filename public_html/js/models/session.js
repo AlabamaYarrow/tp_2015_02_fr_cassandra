@@ -69,6 +69,7 @@ define([
 
                     error: _.bind( function() {
                         console.log('logout fail');
+                        Backbone.history.navigate('#', true);
                     }, this)
                 },
                 'signout'

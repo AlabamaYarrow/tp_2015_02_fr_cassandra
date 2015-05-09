@@ -2,7 +2,7 @@
 
 
 	<div class="menu">
-		<h1>Cassandra</h1>				
+		<h1 class="menu__title">Cassandra</h1>				
 		<h2 class="menu__header">			
 			<fest:if test="json.loggedIn == true">
 				Hello, <fest:space/> <fest:value>json.name</fest:value>! 

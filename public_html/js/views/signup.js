@@ -62,6 +62,9 @@ define([
         },
 
         hide: function () {
+            $('.signup__input').val('');
+            $('.signup__errormsg').html('');
+            localStorage.removeItem('signupData');
             this.$el.hide();
         },
 
@@ -74,8 +77,17 @@ define([
                 json_data[v.name] = v.value;
             });
 
+            if (json_data.password != json_data.password_confirmation) {
+                $('.signup__errormsg').html('Passwords dot not match');
+                return;
+            }
+
+
             session.user.set(json_data);
-            session.signup();
+            session.signup({
+                error: _.bind(function () {
+                    $('.signup__errormsg').html('User already exists');
+                }, this) });
             localStorage.removeItem('signupData');
         },
 

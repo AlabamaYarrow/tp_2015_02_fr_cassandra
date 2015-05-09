@@ -5,6 +5,11 @@
 	margin: 0 auto;
 	margin-bottom: 20px;
 	width: 350px;
+
+	&__errormsg {
+		text-align: center;
+		color: red;
+	}
 	
 	&__form {
 
