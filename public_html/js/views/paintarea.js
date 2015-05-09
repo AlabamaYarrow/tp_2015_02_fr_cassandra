@@ -26,16 +26,15 @@ define([
         },
 
         initialize: function () {                                  
-            $(window).resize( _.bind(this.calculateOffset, this) );            
             this.allowDraw = false;
             this.goOn = false;
             this.render();
         },
 
-        calculateOffset: function () {         
+        calculateOffset: function () {
             var canvasRectangle = this.canvas.get(0).getBoundingClientRect();
-            this.offsetLeft = canvasRectangle.left;
-            this.offsetTop = canvasRectangle.top;      
+            this.offsetLeft = canvasRectangle.left + window.scrollX;
+            this.offsetTop = canvasRectangle.top + window.scrollY;
         },
 
         clear: function() {
@@ -43,7 +42,7 @@ define([
             this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
         },
 
-        show: function () {            
+        show: function () {
             this.setElement( $('.js-game') );
             $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
             $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );
@@ -52,7 +51,7 @@ define([
             canvas.get(0).width = $('.paintarea').width();
             canvas.get(0).height = $('.paintarea').height();
             context = canvas.get(0).getContext('2d');
-            context.lineWidth = 25;            
+            context.lineWidth = 25;
             $('.js-buttoncolor').val('#000000');
             context.lineJoin = "round";
             context.lineCap = "round";
@@ -61,7 +60,7 @@ define([
             this.canvas = canvas;
             this.context = context;
             var gameDiv = $('.game').parent();
-            gameDiv.removeAttr('style');   
+            gameDiv.removeAttr('style');
             this.calculateOffset();
         },
 
@@ -71,7 +70,8 @@ define([
 
         onMousedown: function (e) {
             this.canvas.on('mousemove', _.bind(this.onMousemove, this));            
-            this.allowDraw = true;            
+            this.allowDraw = true;        
+            this.calculateOffset();  
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
             this.context.moveTo(x, y);
