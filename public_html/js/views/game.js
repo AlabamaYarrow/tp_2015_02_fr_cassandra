@@ -5,7 +5,8 @@ define([
     'views/paintarea',
     'views/gameover',
     'collections/scores',
-    'models/session'
+    'models/session',
+    'views/gauge'
 ], function(
     Backbone,
     tmpl,
@@ -13,7 +14,8 @@ define([
     PaintareaView,
     gameoverView,
     scores,
-    session
+    session,
+    gaugeView
 ){
 
     var GameView = Backbone.View.extend({
@@ -57,7 +59,7 @@ define([
             this.$('.js-user-' + data.id).remove();
         },
 
-        render: function () {
+        render: function () {            
             this.$el.html( this.template( session.user.toJSON() ) );
             
             this.paintarea = new PaintareaView({
@@ -71,7 +73,6 @@ define([
 
 
             this.usersList = this.$('.js-userslist');
-
         },
 
         setUsers: function (viewers) {

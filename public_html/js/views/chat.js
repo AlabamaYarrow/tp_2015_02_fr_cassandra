@@ -1,11 +1,14 @@
 define([
     'backbone',
     'models/session',
-    'tmpl/chat'
+    'tmpl/chat',
+    'views/gauge'
 ], function(
     Backbone,
     session,
-    tmpl
+    tmpl,
+    gaugeView
+
 ){
 
     var ChatView = Backbone.View.extend({
@@ -58,17 +61,21 @@ define([
         },
 
         onStatusChanged: function(args) {
-            if (args['role'] == undefined)
-                args['role'] = 'spectator';
-            var message = 'You are ' + args['role'] + '.';
-            if (args['role'] == 'artist')
-                message += ' Draw this: ' + args['secret'] + '.';
-            $('.js-chatarea').append('<p class="chat__sysmessage">'
-                    + message
-                    + '</p>');    
-                        
-            var chatarea = this.chatarea[0];
-            chatarea.scrollTop = chatarea.scrollHeight;
+            gaugeView.show();
+            setTimeout(function () {
+                gaugeView.hide();
+                if (args['role'] == undefined)
+                    var message = 'You are spectator. Enjoy the game.'
+                else if (args['role'] == 'artist')
+                    var message = 'You are the artist. Draw this: ' + args['secret'] + '.';
+                else
+                    var message = 'You are Cassandra. Guess the word.'
+                
+                $('.js-chatarea').append('<p class="chat__sysmessage">'
+                        + message + '</p>');    
+                var chatarea = this.chatarea[0];
+                chatarea.scrollTop = chatarea.scrollHeight;
+            }, 800);            
         },
 
         sendMessage: function () {
