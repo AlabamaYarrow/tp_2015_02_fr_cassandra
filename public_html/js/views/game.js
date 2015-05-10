@@ -82,12 +82,14 @@ define([
 
         show: function () {
             this.trigger("show", this);
-
-            session.user.startGame();
-            this.$el.show();
-
-            this.paintarea.show();
-            this.chat.show();
+            session.user.startGame();            
+            gaugeView.show();
+            setTimeout( _.bind(function() {
+                gaugeView.hide();
+                this.$el.show();
+                this.paintarea.show();
+                this.chat.show();
+            }, this), 1000);            
         },
 
         hide: function () {
