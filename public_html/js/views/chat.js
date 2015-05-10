@@ -19,8 +19,12 @@ define([
         runChat: function() {
         },
 
-        initialize: function () {
-            this.listenTo(this.model, 'chat_message', this.onUserChatMessage);
+        initialize: function () { 
+            this.model.off('chat_message');
+            this.model.off('status_changed');
+            this.model.on('chat_message', _.bind(this.onUserChatMessage, this));   
+            this.model.on('status_changed', _.bind(this.onStatusChanged, this));   
+
             this.render();
             this.chatarea = this.$('.js-chatarea');   
         },
@@ -30,11 +34,13 @@ define([
         },
 
         hide: function () {
+            this.model.off('chat_message');
+            this.model.off('status_changed');
+
             if (session.user.socket) {
                 console.log('closing socket');
-                session.user.socket.close();
+                session.user.socket.close();                
             }
-            this.$el.hide();
         },
 
         onUserChatMessage: function (data) {
@@ -49,6 +55,20 @@ define([
 
         onSendClick: function () {
             this.sendMessage();
+        },
+
+        onStatusChanged: function(args) {
+            if (args['role'] == undefined)
+                args['role'] = 'spectator';
+            var message = 'You are ' + args['role'] + '.';
+            if (args['role'] == 'artist')
+                message += ' Draw this: ' + args['secret'] + '.';
+            $('.js-chatarea').append('<p class="chat__sysmessage">'
+                    + message
+                    + '</p>');    
+                        
+            var chatarea = this.chatarea[0];
+            chatarea.scrollTop = chatarea.scrollHeight;
         },
 
         sendMessage: function () {

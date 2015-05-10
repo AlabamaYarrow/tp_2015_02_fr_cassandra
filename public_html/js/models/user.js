@@ -12,6 +12,7 @@ define([
             name: '',
             email: '',
             password: '',
+            role: 'viewer',
             score: 0
         },
 
@@ -22,12 +23,18 @@ define([
             'check': '/api/v1/auth/check/'
         },
 
+        initialize: function() {
+            this.on('player_status', _.bind( (this.setStatus) , this));
+            this.on('viewer_status', _.bind( (this.setStatus) , this));
+        },
+
         clear: function() {
             this.set({
                 loggedIn: false,
                 name: '',
                 email: '',
                 password: '',
+                role: 'viewer',
                 score: 0
             });
         },
@@ -54,8 +61,9 @@ define([
         },
 
         getOnSocketMessage: function (user) {
-            return function (event) {
+            return function (event) {            
                 message = JSON.parse(event.data);
+                console.log(message);
                 user.trigger(message.type, message.body);
             };
         },
@@ -86,7 +94,13 @@ define([
                 type: type,
                 body: body
             };
+            console.log(messageJSON);
             this.socket.send(JSON.stringify(messageJSON));
+        },
+
+        setStatus: function (event) {
+            this.set({ role: event['role'], secret: event['secret'] });
+            this.trigger('status_changed', {role: event['role'], secret: event['secret']});
         },
 
         startGame: function () {

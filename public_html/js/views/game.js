@@ -10,7 +10,7 @@ define([
     Backbone,
     tmpl,
     ChatView,
-    paintareaView,
+    PaintareaView,
     gameoverView,
     scores,
     session
@@ -24,10 +24,13 @@ define([
         template: tmpl,
 
         initialize: function () {
+            this.listenTo(session.user, 'change', this.render);
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
             this.listenTo(session.user, 'user_come', this.onUserUserCome);
             this.listenTo(session.user, 'user_gone', this.onUserUserGone);
             this.render();
+
+            this.hide();
         },
 
         addUser: function (data) {
@@ -55,16 +58,20 @@ define([
         },
 
         render: function () {
-            this.$el.html( this.template( ) );
+            this.$el.html( this.template( session.user.toJSON() ) );
+            
+            this.paintarea = new PaintareaView({
+                el: this.$('.js-game')
+            });
 
             this.chat = new ChatView({
                 el: this.$('.userschat'),
                 model: session.user
-            });
+            }); 
+
 
             this.usersList = this.$('.js-userslist');
 
-            this.hide();
         },
 
         setUsers: function (viewers) {
@@ -77,13 +84,15 @@ define([
 
             session.user.startGame();
             this.$el.show();
-            paintareaView.show();
+
+            this.paintarea.show();
             this.chat.show();
         },
 
         hide: function () {
             session.user.stopGame();
-            paintareaView.hide();
+            this.paintarea.hide();
+            this.chat.hide();
             this.$el.hide();
         }
 

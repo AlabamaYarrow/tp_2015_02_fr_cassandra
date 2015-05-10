@@ -35,7 +35,7 @@
 		width: 240px;
 		height: 200px;	
 		background-color: white;
-		border: solid 1px $menuColor;
+		border: solid 1px #1B50BA;
 		border-radius: 5px;
 	}
 
@@ -46,19 +46,30 @@
 			color: #000000;
 	}
 
+	&__sysmessage {
+			margin: 0px;
+			font-size: 10pt;
+			font-style: italic;
+			font-weight: bold;
+			color: red;
+	}
+
 	&__input {
 		display: block;
 		float: left;
 		width: 75%;
 		padding-right: 0px;
 		padding-left: 0px;
+		margin-top: 2px;
+		border: solid 1px #1B50BA;
+		border-radius: 1px;
 		box-sizing: border-box;	
 	}
 
 	&__button {	
 		@extend .buttonBase;
 		font-size: 10pt;
-		width: 25%;
+		width: 24%;
 		float: right;
 		margin: 2px 0px;
 		border-radius: 5px;

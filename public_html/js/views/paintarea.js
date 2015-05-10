@@ -1,10 +1,12 @@
 define([
-    'backbone'    
+    'backbone',
+    'models/session'    
 ], function(
-    Backbone
+    Backbone,
+    session
 ){
 
-    var View = Backbone.View.extend({
+    var PaintareaView = Backbone.View.extend({
 
         events: function () {
             return {
@@ -42,34 +44,39 @@ define([
             this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
         },
 
-        show: function () {
-            this.setElement( $('.js-game') );
-            $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
-            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );
-
-            canvas = $('.js-canvas');
-            canvas.get(0).width = $('.paintarea').width();
-            canvas.get(0).height = $('.paintarea').height();
+        render: function () {
+            canvas = this.$('.js-canvas');
+            canvas.get(0).width = this.$('.paintarea').width();
+            canvas.get(0).height = this.$('.paintarea').height();
             context = canvas.get(0).getContext('2d');
+
             context.lineWidth = 25;
-            $('.js-buttoncolor').val('#000000');
+            this.$('.js-widthselect').val('25');
+            this.$('.js-buttoncolor').val('#000000');
             context.lineJoin = "round";
             context.lineCap = "round";
 
 
             this.canvas = canvas;
-            this.context = context;
+            this.context = context;           
+        },
+
+        show: function () {
             var gameDiv = $('.game').parent();
             gameDiv.removeAttr('style');
             this.calculateOffset();
         },
 
         hide: function() {
-            $('.js-cassandra').off('mouseup');
+            this.$('.js-cassandra').off('mouseup');
         },
 
         onMousedown: function (e) {
-            this.canvas.on('mousemove', _.bind(this.onMousemove, this));            
+            if (session.user.get('role') != 'artist')
+                return;
+            this.canvas.on('mousemove', _.bind(this.onMousemove, this));   
+            $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
+            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );         
             this.allowDraw = true;        
             this.calculateOffset();  
             var x = e.pageX - this.offsetLeft;
@@ -120,5 +127,5 @@ define([
 
     });
 
-    return new View();
+    return PaintareaView;
 });

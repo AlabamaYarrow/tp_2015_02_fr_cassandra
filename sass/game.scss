@@ -69,7 +69,8 @@
 
 	&__menubutton {
 		@extend .returnbutton;
-		
+		margin-top: 20px;
+
 		&:hover {
 			@extend .buttonHover;
 		}
