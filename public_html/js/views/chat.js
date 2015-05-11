@@ -62,7 +62,7 @@ define([
 
         onStatusChanged: function(args) {
             gaugeView.show();
-            setTimeout(function () {
+            setTimeout( _.bind(function () {
                 gaugeView.hide();
                 if (args['role'] == undefined)
                     var message = 'You are spectator. Enjoy the game.'
@@ -75,7 +75,7 @@ define([
                         + message + '</p>');    
                 var chatarea = this.chatarea[0];
                 chatarea.scrollTop = chatarea.scrollHeight;
-            }, 800);            
+            }, this), 800);            
         },
 
         sendMessage: function () {

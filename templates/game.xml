@@ -53,13 +53,10 @@
 		</div>
 				
 		<a href="#" class="game__menubutton">Back</a>
-
-		
-	<!--
+		<h3 class="game__header" style="margin-left: 0px; width: 30%;">Other player's canvas:</h3>
 		<div class="paintarea">
 			<canvas class="js-canvas2 paintarea__canvas"></canvas>
 		</div>
-	-->		
 
 	</div>
 </fest:template>

@@ -31,7 +31,6 @@ define([
             this.listenTo(session.user, 'user_come', this.onUserUserCome);
             this.listenTo(session.user, 'user_gone', this.onUserUserGone);
             this.render();
-
             this.hide();
         },
 

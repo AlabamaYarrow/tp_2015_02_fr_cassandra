@@ -11,7 +11,6 @@ define([
         events: function () {
             return {
                 'mousedown .js-canvas': _.bind(this.onMousedown, this),
-                'mouseleave .js-canvas': _.bind(this.onMouseleave, this),
                 'mouseover .js-canvas': _.bind(this.onMouseover, this),                
                 'click .js-buttonclear':  _.bind(this.clear, this),
                 'input .js-buttoncolor':  _.bind(this.onChangeColor, this),
@@ -42,6 +41,7 @@ define([
         clear: function() {
             this.context.fillStyle = '#FFFFFF';
             this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
+            this.drawOnOtherCanvas( JSON.stringify({clear: true}) );
         },
 
         render: function () {
@@ -55,8 +55,6 @@ define([
             this.$('.js-buttoncolor').val('#000000');
             context.lineJoin = "round";
             context.lineCap = "round";
-
-
             this.canvas = canvas;
             this.context = context;           
         },
@@ -69,18 +67,27 @@ define([
 
         hide: function() {
             this.$('.js-cassandra').off('mouseup');
+            this.$('.js-cassandra').off('mousemove');
         },
 
         onMousedown: function (e) {
             if (session.user.get('role') != 'artist')
-                return;
-            this.canvas.on('mousemove', _.bind(this.onMousemove, this));   
+                 return;
+            this.canvas.on('mousemove', _.bind(this.onMousemove, this));  
+            this.canvas.on('mouseleave', _.bind(this.onMouseleave, this));    
             $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
-            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );         
+            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );                     
             this.allowDraw = true;        
-            this.calculateOffset();  
+            this.calculateOffset();              
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
+
+            this.curve = {};
+            this.curve.color = this.context.strokeStyle;
+            this.curve.width = this.context.lineWidth;
+            this.curve.start = {'x': x, 'y': y};
+            this.curve.lines = [];
+
             this.context.moveTo(x, y);
             this.context.beginPath();
         },
@@ -111,8 +118,11 @@ define([
 
         onMousemove: function(e) {
             var x = e.pageX - this.offsetLeft;
-            var y = e.pageY - this.offsetTop;
+            var y = e.pageY - this.offsetTop;            
             this.drawLine(x,y);            
+
+            var line = {'x': x, 'y': y};
+            this.curve.lines.push(line);
         },
 
         drawLine: function (x,y) {
@@ -120,9 +130,50 @@ define([
             this.context.stroke();          
         }, 
 
-        finish: function() {
+        finish: function() {   
             this.canvas.off('mousemove');
+            this.canvas.off('mouseleave');                        
+            if (! this.allowDraw ) {
+                $('.js-cassandra').off('mouseup');
+                $('.js-cassandra').off('mouseleave');
+            }
             this.context.closePath();
+
+            data = JSON.stringify(this.curve);
+            this.drawOnOtherCanvas(data);
+
+        },
+
+        drawOnOtherCanvas: function (data) {
+            canvas = $('.js-canvas2');
+            canvas.get(0).width = $('.paintarea').width();
+            canvas.get(0).height = $('.paintarea').height();
+            context = canvas.get(0).getContext('2d');
+
+            var canvasRectangle = canvas.get(0).getBoundingClientRect();
+            offsetLeft = canvasRectangle.left + window.scrollX;
+            offsetTop = canvasRectangle.top + window.scrollY;
+
+            curve = JSON.parse(data);
+            console.log(curve);
+
+            if (curve.clear) {
+                context.fillStyle = '#FFFFFF';
+                context.fillRect(0, 0, canvas.width(), canvas.height());
+                return;
+            }
+
+            context.lineJoin = "round";
+            context.lineCap = "round";
+
+            context.beginPath();
+            context.moveTo(curve.start.x, curve.start.y);
+            context.strokeStyle = curve.color;
+            context.lineWidth = curve.width;
+            curve.lines.forEach(function (line) {
+                context.lineTo(line.x, line.y);
+                context.stroke();
+            });
         }       
 
     });
