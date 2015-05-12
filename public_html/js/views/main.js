@@ -24,11 +24,15 @@ define([
 
         show: function () {
             this.trigger('show', this);
+            $('.menu').animate({
+                height: 265
+            }, 450);
             this.$el.show();
         },
 
         hide: function () {            
             this.$el.hide();
+            $('.menu').height(0);
         }
     });
 

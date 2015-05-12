@@ -40,17 +40,27 @@ define([
                 return -item.get('score');
             })
             this.collection.models = this.collection.first(10);
+            var i = 10;
             this.collection.each(function (model) {
                 that.scoreboard.append((new ScoreView({model: model})).el);
+                i--;
             });
+            for(var j = 0; j < i; j++) {
+                that.scoreboard.append((new ScoreView()).el);
+            }
+
         },
 
         show: function () {
             this.trigger("show", this);
+            $('.scoreboardbackground').animate({
+                height: 455
+            }, 550);           
             this.$el.show();
         },
 
         hide: function () {
+            $('.scoreboardbackground').height(0);
             this.$el.hide();
         }
     });

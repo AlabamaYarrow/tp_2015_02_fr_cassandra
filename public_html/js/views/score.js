@@ -17,7 +17,10 @@ define([
         },
         
         render: function () {
-            this.$el.html(this.template( this.model.toJSON()));
+            if (this.model)
+                this.$el.html(this.template( this.model.toJSON()));
+            else 
+                this.$el.html( this.template({name: '', score: '-'}) );
         }
     });
 

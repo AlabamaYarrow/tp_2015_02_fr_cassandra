@@ -15,6 +15,7 @@ $rowTextColor: #002061;
 
 .scoretableBodyItem {
 	@extend .scoretableItem;
+	// min-height: 22px;
 	background-color: $headerBackground;
 	color: $rowTextColor;
 }

@@ -58,6 +58,9 @@ define([
 
         show: function () {
             this.trigger("show", this);
+            $('.signupbackground').animate({
+                height: 375
+            }, 450);
             this.$el.show();
         },
 
@@ -66,6 +69,7 @@ define([
             $('.signup__errormsg').html('');
             localStorage.removeItem('signupData');
             this.$el.hide();
+            $('.signupbackground').height(0);
         },
 
         submitForm: function(event) {
