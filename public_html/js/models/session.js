@@ -19,11 +19,9 @@ define([
                 {
                     success: _.bind( function() {
                         this.user.set({ loggedIn: true });
-                        console.log('checkAuth success:');
                     }, this),
 
                     error: _.bind( function() {
-                        console.log('checkAuth fail');
                         this.user.clear();
                         this.user.trigger('change');
                     }, this)

@@ -63,7 +63,9 @@ define([
         getOnSocketMessage: function (user) {
             return function (event) {            
                 message = JSON.parse(event.data);
+                console.log('Recieved: ');
                 console.log(message);
+                user.trigger('message', {'type': message.type, 'message': message.body});
                 user.trigger(message.type, message.body);
             };
         },
@@ -86,7 +88,12 @@ define([
         },
 
         sendChatMessage: function (text) {
-            this.sendMessage('chat_message', { text: text });
+            var type = 'chat_message'
+            if (this.get('role') == 'artist')
+                type = 'prompt_status'
+            else if (this.get('role') == 'cassandra')
+                type = 'cassandra_decided'
+            this.sendMessage(type, { text: text });
         },
 
         sendMessage: function (type, body) {
@@ -94,6 +101,7 @@ define([
                 type: type,
                 body: body
             };
+            console.log('Sending: ');
             console.log(messageJSON);
             this.socket.send(JSON.stringify(messageJSON));
         },
@@ -111,9 +119,9 @@ define([
         },
 
         stopGame: function () {
-            console.log('stopGame');
+            console.log('Stopping game');
             if (this.socket) {
-                console.log('closing socket');
+                console.log('Closing socket');
                 this.socket.close();
             }
         }

@@ -2,12 +2,16 @@ define([
     'backbone',
     'models/session',
     'tmpl/chat',
-    'views/gauge'
+    'views/gauge',
+    'views/messages/msgchat',
+    'views/messages/msgsystem'
 ], function(
     Backbone,
     session,
     tmpl,
-    gaugeView
+    gaugeView,
+    MessageChatView,
+    MessageSysView
 
 ){
 
@@ -23,9 +27,9 @@ define([
         },
 
         initialize: function () { 
-            this.model.off('chat_message');
+            this.model.off('message');
             this.model.off('status_changed');
-            this.model.on('chat_message', _.bind(this.onUserChatMessage, this));   
+            this.model.on('message', _.bind(this.onUserChatMessage, this));   
             this.model.on('status_changed', _.bind(this.onStatusChanged, this));   
 
             this.render();
@@ -37,7 +41,7 @@ define([
         },
 
         hide: function () {
-            this.model.off('chat_message');
+            this.model.off('message');
             this.model.off('status_changed');
 
             if (session.user.socket) {
@@ -71,8 +75,7 @@ define([
                 else
                     var message = 'You are Cassandra. Guess the word.'
                 
-                $('.js-chatarea').append('<p class="chat__sysmessage">'
-                        + message + '</p>');    
+                this.chatarea.append(new MessageSysView({ 'text': message }).el );
                 var chatarea = this.chatarea[0];
                 chatarea.scrollTop = chatarea.scrollHeight;
             }, this), 800);            
@@ -89,9 +92,7 @@ define([
         },
 
         showMessage: function (id, text) {
-            $('.js-chatarea').append('<p class="chat__message">'
-                    + id + ': '
-                    + text + '</p>');
+            this.chatarea.append(new MessageChatView({ 'name': id, 'text': text }).el );
             var chatarea = this.chatarea[0];
             chatarea.scrollTop = chatarea.scrollHeight;
         },

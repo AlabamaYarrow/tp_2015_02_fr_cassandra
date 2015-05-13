@@ -166,7 +166,7 @@ define([
             offsetTop = canvasRectangle.top + window.scrollY;
 
             curve = JSON.parse(data);
-            console.log(curve);
+            //console.log(curve);
 
             if (curve.clear) {
                 context.fillStyle = '#FFFFFF';
