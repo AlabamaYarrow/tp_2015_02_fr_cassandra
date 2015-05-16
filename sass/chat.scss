@@ -24,7 +24,7 @@
 		font-size: 14pt;
 		text-align: center;
 		background-color: #3D60A8;
-		border-radius: $rightBorderRadius;
+		@include roundedTop($rightBorderRadius);
 	}
 }
 

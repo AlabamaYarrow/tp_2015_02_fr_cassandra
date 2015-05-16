@@ -51,10 +51,7 @@
 		vertical-align: bottom;
 	}
 
-	&__guesspanel {	
-		//background-color: $gamePanelColor;
-		//box-shadow: 0 0 10px rgba(0,0,0,0.5);
-		//@include rounded($rightBorderRadius); 
+	&__guesspanel {			
 		display: inline-block;
 		width: $userschatWidth + 2*$userschatPadding;
 		margin-left: 20px;
@@ -75,6 +72,23 @@
 			border: solid 5px $buttonHoverColor;
 		}
 	}	
+
+	&__guessbutton {
+		@extend .controlPanelElem;
+		font-family: $font;
+		font-size: 12pt;
+		box-shadow: 0 0 5px rgba(0,0,0,0.5);
+		font-size: 12pt;
+		background-color: #215F16;
+		border-radius: 5px;
+		border: solid 5px #215F16;
+		&:hover {
+			background-color: #3D992D;
+			border: solid 5px #3D992D;
+		}
+	}
+
+	
 
 	&__menubutton {
 		@extend .returnbutton;

@@ -2,6 +2,10 @@
 	border-radius: 0px 0px $radius $radius;
 }
 
+@mixin roundedTop($radius) {
+	border-radius: $radius $radius 0px 0px;
+}
+
 @mixin rounded($radius) {
 	border-radius: $radius $radius $radius $radius;
 }

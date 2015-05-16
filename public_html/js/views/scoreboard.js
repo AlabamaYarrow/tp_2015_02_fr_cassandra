@@ -53,14 +53,17 @@ define([
 
         show: function () {
             this.trigger("show", this);
-            $('.scoreboardbackground').animate({
-                height: 455
-            }, 550);
+            this.$el.show();
+            var animateHeight = this.$('.scoreboardbackground').height(); 
+            this.$el.hide();
+            this.$('.scoreboardbackground').height(0);
+            this.$('.scoreboardbackground').animate({
+                height: animateHeight
+            }, 450);
             this.$el.show();
         },
 
         hide: function () {
-            $('.scoreboardbackground').height(0);
             this.$el.hide();
         }
     });

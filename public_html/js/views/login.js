@@ -55,10 +55,14 @@ define([
 
         show: function () {
             this.trigger("show", this);
-            $('.loginbackground').animate({
-                height: 325
-            }, 450);
             this.$el.show();
+            var animateHeight = this.$('.loginbackground').height(); 
+            this.$el.hide();
+            this.$('.loginbackground').height(0);
+            this.$('.loginbackground').animate({
+                height: animateHeight
+            }, 450);
+            this.$el.show();            
         },
 
         hide: function () {
@@ -66,7 +70,6 @@ define([
             $('.login__errormsg').html('');
             localStorage.removeItem('loginData');
             this.$el.hide();
-            $('.loginbackground').height(0);
         },
 
         submitForm: function(event) {

@@ -24,15 +24,18 @@ define([
 
         show: function () {
             this.trigger('show', this);
-            $('.menu').animate({
-                height: 265
+            this.$el.show();
+            var animateHeight = this.$('.menu').height(); 
+            this.$el.hide();
+            this.$('.menu').height(0);
+            this.$('.menu').animate({
+                height: animateHeight
             }, 450);
             this.$el.show();
         },
 
         hide: function () {            
             this.$el.hide();
-            $('.menu').height(0);
         }
     });
 

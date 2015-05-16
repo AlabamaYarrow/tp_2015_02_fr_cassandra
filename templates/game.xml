@@ -40,7 +40,7 @@
 			<div class="game__guesspanel">
 				<fest:choose>
 					<fest:when test="json.role == 'artist'">
-						<button class="js-buttonguess game__button">Cassandra guessed!</button>	
+						<button class="js-buttonguess game__guessbutton">Cassandra guessed!</button>	
 					</fest:when>
 					<fest:otherwise>
 					</fest:otherwise>
