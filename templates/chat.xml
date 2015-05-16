@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 
 	<div class="js-users users">
-		<h3 class="users__header"> Users: </h3>
+		<p class="users__header"> Users: </p>
 		<ul class="js-userslist"></ul>
 	</div>
 	<div class="chat">

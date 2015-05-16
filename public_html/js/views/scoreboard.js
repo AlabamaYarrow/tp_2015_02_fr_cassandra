@@ -55,7 +55,7 @@ define([
             this.trigger("show", this);
             $('.scoreboardbackground').animate({
                 height: 455
-            }, 550);           
+            }, 550);
             this.$el.show();
         },
 

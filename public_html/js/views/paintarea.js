@@ -67,10 +67,7 @@ define([
         show: function () {
             var gameDiv = $('.game').parent();
             gameDiv.removeAttr('style');
-            this.calculateOffset();
-            this.canvas2 = $('.js-canvas2');
-            this.canvas2.get(0).width = $('.paintarea').width();
-            this.canvas2.get(0).height = $('.paintarea').height();
+            this.calculateOffset();           
         },
 
         hide: function() {

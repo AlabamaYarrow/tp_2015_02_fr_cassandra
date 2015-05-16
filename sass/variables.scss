@@ -3,8 +3,10 @@ $font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 $backgroundImage: url("../images/stars.jpg") repeat;
 $backgroundColor: #3366FF;
 
-$menuColor: #EEEEFF; //#6F91FA;
+$menuColor: #EEEEFF; 
 $menuTextColor: #6B98F0;
+
+$rightBorderRadius: 5px;
 
 $gamePanelColor: #6F91FA;
 
@@ -12,11 +14,11 @@ $buttonColor: #003399;
 $buttonHoverColor: #111166;
 $buttonWidth: 180px;
 $buttonHeight: 40px;
-$buttonRadius: 10px;
+$buttonRadius: 7px;
 
-$paintareaWidth: 500px;
+$paintareaWidth: 550px;
 $paintareaMargin: 3px;
 $paintareaHeight: 400px;
 
-$userschatWidth: 250px;
-$userschatPadding: 3px;
+$userschatWidth: 252px;
+$userschatPadding: 0px;

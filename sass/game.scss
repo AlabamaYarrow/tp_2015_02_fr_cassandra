@@ -5,19 +5,28 @@
 	width: 850px;
 	margin: 0 auto;
 	position: relative;	
+	background-color: #EEEEFF;
+	box-shadow: 0 0 40px rgba(0,0,0,0.5);
+	@include roundedBottom(20px); 
 
 	&__header {
+		width: 30%;
+		height: 30px;
+		line-height: 30px;
 		color: white;
+		border-radius: 0 10px 10px 0;
+		background: $buttonHoverColor;
 	}
 
-	&__playground {
+	&__playground {		
 		overflow: hidden;
 		position: relative;
+		margin-bottom: 15px;
 	}
 
 	&__controlpanel {
 		background-color: $gamePanelColor;		
-		@include roundedBottom(20px); 
+		@include rounded($rightBorderRadius); 
 		float: left;
 		width: $paintareaWidth + 2*$paintareaMargin;
 		margin-left: 10px;
@@ -43,9 +52,9 @@
 	}
 
 	&__guesspanel {	
-		background-color: $gamePanelColor;
-		box-shadow: 0 0 10px rgba(0,0,0,0.5);
-		@include roundedBottom(20px); 
+		//background-color: $gamePanelColor;
+		//box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		//@include rounded($rightBorderRadius); 
 		display: inline-block;
 		width: $userschatWidth + 2*$userschatPadding;
 		margin-left: 20px;
@@ -70,6 +79,7 @@
 	&__menubutton {
 		@extend .returnbutton;
 		margin-top: 20px;
+		margin-bottom: 20px;
 
 		&:hover {
 			@extend .buttonHover;

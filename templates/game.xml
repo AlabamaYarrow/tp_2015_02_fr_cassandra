@@ -26,31 +26,27 @@
 			</div>
 		</div>
 
-		<div class="game__controlpanel">
-			<fest:choose>
-				<fest:when test="json.role == 'artist'">
-					<button class="js-buttonclear game__button">Clear</button>
-					<span class="game__paneltext"> Color: <fest:space/> </span>
-					<input class="js-buttoncolor game__colorselect" type="color" name="favcolor"></input>
-					<span class="game__paneltext"> Line width: <fest:space/> </span>
-					<input class="js-widthselect game__widthselect" type="range" name="points" min="1" max="50"></input>	
-				</fest:when>
-				<fest:otherwise>
-					<p>Place for advertisement</p>
-				</fest:otherwise>
-			</fest:choose>			
-		</div>
+		<fest:if test="json.role == 'artist'">
+			<div class="game__controlpanel">
+								<button class="js-buttonclear game__button">Clear</button>
+						<span class="game__paneltext"> Color: <fest:space/> </span>
+						<input class="js-buttoncolor game__colorselect" type="color" name="favcolor"></input>
+						<span class="game__paneltext"> Line width: <fest:space/> </span>
+						<input class="js-widthselect game__widthselect" type="range" name="points" min="1" max="50"></input>					
+			</div>
+		</fest:if>
 
-		<div class="game__guesspanel">
-			<fest:choose>
-				<fest:when test="json.role == 'artist'">
-					<button class="js-buttonguess game__button">Cassandra guessed!</button>	
-				</fest:when>
-				<fest:otherwise>
-					<p>Place for advertisement</p>
-				</fest:otherwise>
-			</fest:choose>
-		</div>
+		<fest:if test="json.role == 'artist'">
+			<div class="game__guesspanel">
+				<fest:choose>
+					<fest:when test="json.role == 'artist'">
+						<button class="js-buttonguess game__button">Cassandra guessed!</button>	
+					</fest:when>
+					<fest:otherwise>
+					</fest:otherwise>
+				</fest:choose>
+			</div>
+		</fest:if>
 				
 		<a href="#" class="game__menubutton">Back</a>
 		

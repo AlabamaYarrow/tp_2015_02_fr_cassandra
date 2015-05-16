@@ -85,7 +85,7 @@ define([
             gaugeView.show();
             setTimeout( _.bind(function() {
                 gaugeView.hide();
-                this.$el.show();
+                this.$el.show();                
                 this.paintarea.show();
                 this.chat.show();
             }, this), 1000);            
