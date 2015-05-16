@@ -63,9 +63,10 @@ define([
         getOnSocketMessage: function (user) {
             return function (event) {            
                 message = JSON.parse(event.data);
-                console.log('Recieved: ');
-                console.log(message);
-                user.trigger('message', {'type': message.type, 'message': message.body});
+                // console.log('Recieved: ');
+                // console.log(message);
+                if ((message.type == 'message') || (message.type == 'prompt_status'))    
+                    user.trigger('message', {'type': message.type, 'message': message.body});
                 user.trigger(message.type, message.body);
             };
         },
@@ -101,8 +102,8 @@ define([
                 type: type,
                 body: body
             };
-            console.log('Sending: ');
-            console.log(messageJSON);
+            // console.log('Sending: ');
+            // console.log(messageJSON);
             this.socket.send(JSON.stringify(messageJSON));
         },
 

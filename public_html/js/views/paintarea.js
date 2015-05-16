@@ -12,7 +12,7 @@ define([
             return {
                 'mousedown .js-canvas': _.bind(this.onMousedown, this),
                 'mouseover .js-canvas': _.bind(this.onMouseover, this),                
-                'click .js-buttonclear':  _.bind(this.clear, this),
+                'click .js-buttonclear':  _.bind(this.onClear, this),
                 'input .js-buttoncolor':  _.bind(this.onChangeColor, this),
                 'input .js-widthselect':  _.bind(this.onChangeWidth, this),
             }; 
@@ -26,7 +26,8 @@ define([
             this.context.strokeStyle = $('.js-buttoncolor').val();
         },
 
-        initialize: function () {                                  
+        initialize: function () {     
+            session.user.on('new_curve', _.bind(this.onNewCurve, this));                             
             this.allowDraw = false;
             this.goOn = false;
             this.render();
@@ -38,10 +39,14 @@ define([
             this.offsetTop = canvasRectangle.top + window.scrollY;
         },
 
+        onClear: function () {
+            this.clear();
+            session.user.sendMessage('new_curve',{clear: true});
+        },
+
         clear: function() {
             this.context.fillStyle = '#FFFFFF';
-            this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());
-            this.drawOnOtherCanvas( JSON.stringify({clear: true}) );
+            this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());            
         },
 
         render: function () {
@@ -69,6 +74,7 @@ define([
         },
 
         hide: function() {
+            session.user.off('new_curve');  
             this.$('.js-cassandra').off('mouseup');
             this.$('.js-cassandra').off('mousemove');
         },
@@ -127,7 +133,6 @@ define([
             var y = e.pageY - this.offsetTop;            
             this.drawLine(x,y);            
 
-
             var line = {'x': x, 'y': y};
             this.curve.lines.push(line);
             this.curve.start = {'x': this.prevX, 'y': this.prevY};
@@ -136,9 +141,8 @@ define([
             this.prevY = y;
 
             data = JSON.stringify(this.curve);
-            this.drawOnOtherCanvas(data);
+            session.user.sendMessage('new_curve',this.curve);            
             this.curve.lines = [];
-
         },
 
         drawLine: function (x,y) {
@@ -154,38 +158,24 @@ define([
                 $('.js-cassandra').off('mouseleave');
             }
             this.context.closePath();
-
-
         },
 
-        drawOnOtherCanvas: function (data) {
-            context = this.canvas2.get(0).getContext('2d');
-
-            var canvasRectangle = this.canvas2.get(0).getBoundingClientRect();
-            offsetLeft = canvasRectangle.left + window.scrollX;
-            offsetTop = canvasRectangle.top + window.scrollY;
-
-            curve = JSON.parse(data);
-            //console.log(curve);
+        onNewCurve: function (data) {
+            curve = data
 
             if (curve.clear) {
-                context.fillStyle = '#FFFFFF';
-                context.fillRect(0, 0, this.canvas2.width(), this.canvas2.height());
+                this.clear();
                 return;
             }
 
-            context.lineJoin = "round";
-            context.lineCap = "round";
-
-            context.beginPath();
-            context.moveTo(curve.start.x, curve.start.y);
-            context.strokeStyle = curve.color;
-            context.lineWidth = curve.width;
-            curve.lines.forEach(function (line) {
-                context.lineTo(line.x, line.y);
-                context.stroke();
-            });
-        }       
+            this.context.beginPath();
+            this.context.moveTo(curve.start.x, curve.start.y);
+            this.context.strokeStyle = curve.color;
+            this.context.lineWidth = curve.width;
+            this.context.lineTo(curve.lines[0].x, curve.lines[0].y);            
+            this.context.stroke();            
+            this.context.closePath();
+        }   
 
     });
 
