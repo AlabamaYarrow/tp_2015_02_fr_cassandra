@@ -27,6 +27,16 @@
 	height: 30px;
 }
 
+.controlButton {
+	@extend .controlPanelElem;
+	font-family: $font;
+	font-size: 12pt;
+	background-color: $buttonColor;
+	border-radius: 5px;
+	border: solid 5px $buttonColor;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);	
+}
+
 .formInput {
 	float: right; 
 	width: 200px;
@@ -50,7 +60,7 @@
 	margin: 4px auto;
 	font-size: 15pt;
 	display: block;
-	border-radius: $buttonRadius;
+	@include rounded ($buttonRadius);
 	height: $buttonHeight;
 	width: $buttonWidth;
 	text-align: center;

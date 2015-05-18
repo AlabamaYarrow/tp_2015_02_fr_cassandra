@@ -9,6 +9,46 @@
 	box-shadow: 0 0 40px rgba(0,0,0,0.5);
 	@include roundedBottom(20px); 
 
+
+
+	&__button {
+		@extend .controlButton;
+				
+		&:hover {
+			background-color: $buttonHoverColor;
+			border: solid 5px $buttonHoverColor;
+		}
+	}
+
+	&__colorselect {
+		@extend .controlPanelElem;
+		vertical-align: bottom;	
+		background-color: $buttonColor;
+		border: solid 1px $buttonColor;
+		border-radius: 5px;
+	}
+
+	&__eraser {
+		@extend .controlButton;
+		
+		&-on {
+			border: solid 5px $buttonEraserOn;
+			background-color: $buttonEraserOn;			
+		}
+		
+	}
+
+	&__controlpanel {
+		background-color: $gamePanelColor;		
+		@include rounded($rightBorderRadius); 
+		float: left;
+		width: $paintareaWidth + 2*$paintareaMargin;
+		margin-left: 10px;
+		text-align: center;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		display: inline-block;
+	}	
+
 	&__header {
 		width: 30%;
 		height: 30px;
@@ -24,30 +64,13 @@
 		margin-bottom: 15px;
 	}
 
-	&__controlpanel {
-		background-color: $gamePanelColor;		
-		@include rounded($rightBorderRadius); 
-		float: left;
-		width: $paintareaWidth + 2*$paintareaMargin;
-		margin-left: 10px;
-		text-align: center;
-		box-shadow: 0 0 10px rgba(0,0,0,0.5);
-		display: inline-block;
-	}
-
 	&__paneltext {
 		color: white;
 	}
 
-	&__colorselect {
-		@extend .controlPanelElem;
-		vertical-align: bottom;	
-		background-color: $buttonColor;
-		border: solid 1px $buttonColor;
-	}
-
 	&__widthselect {
 		@extend .controlPanelElem;
+		max-width: $paintareaWidth * 0.2;
 		vertical-align: bottom;
 	}
 
@@ -57,21 +80,6 @@
 		margin-left: 20px;
 		text-align: center;
 	}
-
-	&__button {
-		@extend .controlPanelElem;
-		font-family: $font;
-		font-size: 12pt;
-		background-color: $buttonColor;
-		border-radius: 5px;
-		border: solid 5px $buttonColor;
-		box-shadow: 0 0 5px rgba(0,0,0,0.5);
-		
-		&:hover {
-			background-color: $buttonHoverColor;
-			border: solid 5px $buttonHoverColor;
-		}
-	}	
 
 	&__guessbutton {
 		@extend .controlPanelElem;

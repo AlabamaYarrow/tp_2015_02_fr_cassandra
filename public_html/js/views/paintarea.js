@@ -10,20 +10,41 @@ define([
 
         events: function () {
             return {
-                'mousedown .js-canvas': _.bind(this.onMousedown, this),
-                'mouseover .js-canvas': _.bind(this.onMouseover, this),                
+                'mousedown .js-paintarea': _.bind(this.onMousedown, this),
+                'mouseover .js-paintarea': _.bind(this.onMouseover, this),                
                 'click .js-buttonclear':  _.bind(this.onClear, this),
+                'click .js-eraser':  _.bind(this.onPressEraser, this),
                 'input .js-buttoncolor':  _.bind(this.onChangeColor, this),
-                'input .js-widthselect':  _.bind(this.onChangeWidth, this),
+                'input .js-widthselect':  _.bind(this.onChangeWidth, this)
             }; 
         },       
 
         onChangeWidth: function() {
             this.context.lineWidth = $('.js-widthselect').val();
+            this.cursorcontext.radius = this.context.lineWidth / 2;
         },        
 
         onChangeColor: function() {
             this.context.strokeStyle = $('.js-buttoncolor').val();
+        },
+
+        onClear: function () {
+            this.clear();
+            session.user.sendMessage('new_curve',{clear: true});
+        },
+
+        onPressEraser: function() {
+            if (!this.eraser) {
+                this.eraser = true;
+                this.context.strokeStyle = '#ffffff';
+                $('.js-eraser').addClass('game__eraser-on');
+            }
+            else {
+                this.eraser = false;
+                this.context.strokeStyle = $('.js-buttoncolor').val();
+                $('.js-eraser').removeClass('game__eraser-on');
+            }
+
         },
 
         initialize: function () {     
@@ -33,35 +54,57 @@ define([
             this.render();
         },
 
+        initializeCanvas: function() {
+            canvas = this.$('.js-canvas');
+            canvas.get(0).width = this.$('.paintarea').width();
+            canvas.get(0).height = this.$('.paintarea').height();
+            context = canvas.get(0).getContext('2d');
+            context.lineWidth = 25;            
+            this.$('.js-widthselect').val('25');
+            this.$('.js-buttoncolor').val('#000000');
+            context.lineJoin = "round";
+            context.lineCap = "round";
+            this.canvas = canvas;
+            this.context = context;  
+            this.paintarea = $('.js-paintarea');
+            if (session.user.get('role') == 'artist')  {
+                this.paintarea.on('mousemove', _.bind(this.onMousemove, this));    
+            }            
+        },
+
+        initializeCursorCanvas: function() {
+            cursorcanvas = this.$('.js-cursorcanvas');
+            cursorcanvas.get(0).width = this.$('.paintarea').width();
+            cursorcanvas.get(0).height = this.$('.paintarea').height();
+            cursorcontext = cursorcanvas.get(0).getContext('2d');
+            cursorcontext.radius = this.context.lineWidth / 2;
+            cursorcontext.fillStyle = '#ffffff';
+            cursorcontext.lineWidth = 2;            
+            if (session.user.get('role') == 'artist')  {
+                cursorcanvas.addClass('paintarea__canvas-artist');
+            }
+            else {
+                cursorcanvas.removeClass('paintarea__canvas-artist');
+            }
+            this.cursorcontext = cursorcontext;
+            this.cursorcanvas = cursorcanvas;
+        },
+
+
         calculateOffset: function () {
             var canvasRectangle = this.canvas.get(0).getBoundingClientRect();
             this.offsetLeft = canvasRectangle.left + window.scrollX;
             this.offsetTop = canvasRectangle.top + window.scrollY;
         },
 
-        onClear: function () {
-            this.clear();
-            session.user.sendMessage('new_curve',{clear: true});
-        },
-
         clear: function() {
-            this.context.fillStyle = '#FFFFFF';
+            this.context.fillStyle = '#ffffff';
             this.context.fillRect(0, 0, this.canvas.width(), this.canvas.height());            
         },
 
         render: function () {
-            canvas = this.$('.js-canvas');
-            canvas.get(0).width = this.$('.paintarea').width();
-            canvas.get(0).height = this.$('.paintarea').height();
-            context = canvas.get(0).getContext('2d');
-
-            context.lineWidth = 25;
-            this.$('.js-widthselect').val('25');
-            this.$('.js-buttoncolor').val('#000000');
-            context.lineJoin = "round";
-            context.lineCap = "round";
-            this.canvas = canvas;
-            this.context = context;           
+            this.initializeCanvas();
+            this.initializeCursorCanvas();
         },
 
         show: function () {
@@ -72,6 +115,7 @@ define([
 
         hide: function() {
             session.user.off('new_curve');  
+            this.paintarea.off('mousemove');
             this.$('.js-cassandra').off('mouseup');
             this.$('.js-cassandra').off('mousemove');
         },
@@ -79,8 +123,9 @@ define([
         onMousedown: function (e) {
             if (session.user.get('role') != 'artist')
                  return;
-            this.canvas.on('mousemove', _.bind(this.onMousemove, this));  
-            this.canvas.on('mouseleave', _.bind(this.onMouseleave, this));    
+            
+            this.paintarea.on('mouseleave', _.bind(this.onMouseleave, this)); 
+            this.mousedown = true;   
             $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
             $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );                     
             this.allowDraw = true;        
@@ -102,6 +147,7 @@ define([
         },
 
         onMouseup: function (e) {
+            this.mousedown = false;
             this.allowDraw = false;
             this.goOn = false;
             this.finish();
@@ -120,15 +166,25 @@ define([
                 var y = e.pageY - this.offsetTop;
                 this.context.moveTo(x, y);
                 this.context.beginPath();      
-                this.canvas.on('mousemove', _.bind(this.onMousemove, this));
                 this.goOn = false;
             }
         },
 
         onMousemove: function(e) {
             var x = e.pageX - this.offsetLeft;
-            var y = e.pageY - this.offsetTop;            
-            this.drawLine(x,y);            
+            var y = e.pageY - this.offsetTop; 
+
+            this.cursorcontext.clearRect(0, 0, 
+                 this.cursorcanvas.width(), this.cursorcanvas.height());
+            this.cursorcontext.beginPath();
+            this.cursorcontext.arc(x, y, this.cursorcontext.radius, 0, 2 * Math.PI, false);            
+            this.cursorcontext.stroke();
+
+            if (!this.mousedown) {
+                return;
+            }
+            
+            this.drawLine(x,y);           
 
             var line = {'x': x, 'y': y};
             this.curve.lines.push(line);
@@ -148,8 +204,7 @@ define([
         }, 
 
         finish: function() {   
-            this.canvas.off('mousemove');
-            this.canvas.off('mouseleave');                        
+            this.paintarea.off('mouseleave');                        
             if (! this.allowDraw ) {
                 $('.js-cassandra').off('mouseup');
                 $('.js-cassandra').off('mouseleave');
