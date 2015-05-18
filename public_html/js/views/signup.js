@@ -85,6 +85,7 @@ define([
             });
 
             if (json_data.password != json_data.password_confirmation) {
+                this.$('.signupbackground').height('auto');
                 $('.signup__errormsg').html('Passwords dot not match');
                 return;
             }
@@ -93,6 +94,7 @@ define([
             session.user.set(json_data);
             session.signup({
                 error: _.bind(function () {
+                    this.$('.signupbackground').height('auto');
                     $('.signup__errormsg').html('User already exists');
                 }, this) });
             localStorage.removeItem('signupData');

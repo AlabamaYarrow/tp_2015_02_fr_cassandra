@@ -78,7 +78,8 @@ define([
             session.user.set(json_data);
             session.login({
                 error: _.bind(function () {
-                    $('.login__errormsg').html('Incorrect email or password');
+                    this.$('.loginbackground').height('auto');
+                    $('.login__errormsg').html('Incorrect username or password');                    
                 }, this) });
             localStorage.removeItem('loginData');
         }
