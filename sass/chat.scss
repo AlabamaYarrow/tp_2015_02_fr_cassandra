@@ -12,6 +12,25 @@
 	margin: 10px 0px 10px 20px;
 }
 
+.userslist {
+	&__user {
+		margin-left: 10px;
+		color: white;
+		text-align: left;
+		font-size: 14pt;
+	}
+
+	&__artist {
+		color: #000033;
+		font-weight: bold;
+	}
+
+	&__cassandra {
+		color: #009900;
+		font-weight: bold;
+	}
+}
+
 .users {
 	font-size: 12pt; 
 	margin: 0 auto;
@@ -44,18 +63,34 @@
 	}
 
 	&__message {
-			margin: 0px;
-			font-size: 10pt;
-			font-style: italic;
-			color: #000000;
+		margin: 0px;
+		font-size: 10pt;
+		font-style: italic;
+		color: #000000;
 	}
 
 	&__sysmessage {
-			margin: 0px;
-			font-size: 10pt;
-			font-style: italic;
-			font-weight: bold;
-			color: #DB3838;
+		margin: 0px;
+		font-size: 10pt;
+		font-style: italic;
+		font-weight: bold;
+		color: #DB3838;
+	}
+
+	&__guessmessage {
+		margin: 0px;
+		font-size: 10pt;
+		font-style: italic;
+		font-weight: bold;
+		color: #327B44;
+	}
+
+	&__promptmessage {
+		margin: 0px;
+		font-size: 10pt;
+		font-style: italic;
+		font-weight: bold;
+		color: #4951A3;
 	}
 
 	&__input {

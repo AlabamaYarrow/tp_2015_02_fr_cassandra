@@ -6,7 +6,8 @@ define([
     'views/gameover',
     'collections/scores',
     'models/session',
-    'views/gauge'
+    'views/gauge',
+    'views/player'
 ], function(
     Backbone,
     tmpl,
@@ -15,7 +16,8 @@ define([
     gameoverView,
     scores,
     session,
-    gaugeView
+    gaugeView,
+    PlayerView
 ){
 
     var GameView = Backbone.View.extend({
@@ -28,34 +30,35 @@ define([
         initialize: function () {
             this.listenTo(session.user, 'change', this.render);
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
-            this.listenTo(session.user, 'user_come', this.onUserUserCome);
-            this.listenTo(session.user, 'user_gone', this.onUserUserGone);
+            this.listenTo(session.user, 'player_status', this.onUserPlayerStatus);
             this.render();
             this.hide();
         },
 
-        addUser: function (data) {
-            this.usersList.append('<li class="js-user-' + data.id + '">' + data.name + '</li>');
-        },
-
-        onUserUserCome: function (data) {
-            this.addUser(data);
-        },
-
-        onUserUserGone: function (data) {
-            this.removeUser(data);
+        onUserPlayerStatus: function (data) {               
+            this.usersList.append( new PlayerView({ 
+                    'name': session.user.get('name'), 
+                    'role': data.role }).el );         
+            
+            if (data.role == 'artist') {                
+                this.usersList.append( new PlayerView({ 
+                    'name': data.cassandra.name, 
+                    'role': 'cassandra' }).el );
+            } else {
+                this.usersList.append( new PlayerView({ 
+                    'name': data.artist.name, 
+                    'role': 'artist' }).el );
+            }
         },
 
         onUserViewerStatus: function (data) {
-            this.setUsers(data.viewers);
+            this.usersList.empty();
+
         },
 
         onGuessClick: function(event) {
+            // session.user.sendMessage('round_finished', 'something for body');
             gameoverView.show();
-        },
-
-        removeUser: function (data) {
-            this.$('.js-user-' + data.id).remove();
         },
 
         render: function () {            
@@ -72,11 +75,6 @@ define([
 
 
             this.usersList = this.$('.js-userslist');
-        },
-
-        setUsers: function (viewers) {
-            this.usersList.empty();
-            _.each(viewers, _.bind(this.addUser, this));
         },
 
         show: function () {

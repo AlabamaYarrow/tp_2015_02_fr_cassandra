@@ -1,0 +1,23 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+
+<p class="userslist__user">
+	<fest:value>json.name </fest:value>:
+	<fest:space/>
+	
+	<fest:if test="json.role == 'artist'">
+		<span class="userslist__artist">
+			<fest:value>json.role</fest:value>
+		</span>
+	</fest:if>
+
+	<fest:if test="json.role == 'cassandra'">
+		<span class="userslist__cassandra">
+			<fest:value>json.role</fest:value>
+		</span>
+	</fest:if>
+
+			
+
+</p>
+
+</fest:template>

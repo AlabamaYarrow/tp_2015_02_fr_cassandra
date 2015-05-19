@@ -4,15 +4,18 @@ define([
     'tmpl/chat',
     'views/gauge',
     'views/messages/msgchat',
-    'views/messages/msgsystem'
+    'views/messages/msgsystem',
+    'views/messages/msgprompt',
+    'views/messages/msgguess'
 ], function(
     Backbone,
     session,
     tmpl,
     gaugeView,
     MessageChatView,
-    MessageSysView
-
+    MessageSysView,
+    MessagePromptView,
+    MessageGuessView
 ){
 
     var ChatView = Backbone.View.extend({
@@ -50,8 +53,10 @@ define([
             }
         },
 
-        onUserChatMessage: function (data) {
-            this.showMessage(data.id, data.text);
+        onUserChatMessage: function (message) {            
+            data = message.body;
+            type = message.type;
+            this.showMessage(type, data.name, data.text);
         },
 
         onInputKeyup: function (event) {
@@ -68,8 +73,11 @@ define([
             gaugeView.show();
             setTimeout( _.bind(function () {
                 gaugeView.hide();
-                if (args['role'] == undefined)
-                    var message = 'You are spectator. Enjoy the game.'
+                if (args['role'] == undefined) {
+                    var message = 'You are spectator. Wait for another player.'
+                    
+                }
+                
                 else if (args['role'] == 'artist')
                     var message = 'You are the artist. Draw this: ' + args['secret'] + '.';
                 else
@@ -82,17 +90,25 @@ define([
         },
 
         sendMessage: function () {
-            var outgoingMessage = $('.js-chatinput').val();
-            if (outgoingMessage == '') {
+            var messageText = $('.js-chatinput').val();
+            if (messageText == '') {
                return;
             }
-            this.model.sendChatMessage(outgoingMessage);
+            var name = this.model.get('name');
+            var messageBody = {'name': name, 'text': messageText};
+            var type = this.model.sendChatMessage(messageBody);
             $('.js-chatinput').val('');
-            this.showMessage(this.model.get('name'), outgoingMessage);
+            this.showMessage(type, name, messageText);
         },
 
-        showMessage: function (id, text) {
-            this.chatarea.append(new MessageChatView({ 'name': id, 'text': text }).el );
+        showMessage: function (type, name, text) {
+            if (type == 'chat_message') {
+                this.chatarea.append(new MessageChatView({ 'name': name, 'text': text }).el );
+            } else if (type == 'prompt_status') {
+                this.chatarea.append(new MessagePromptView({ 'name': name, 'text': text }).el );                
+            } else if (type == 'cassandra_decided') {    
+                this.chatarea.append(new MessageGuessView({ 'name': name, 'text': text }).el );
+            }            
             var chatarea = this.chatarea[0];
             chatarea.scrollTop = chatarea.scrollHeight;
         },
