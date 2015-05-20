@@ -11,14 +11,14 @@
 }
 
 .background {
-	@include roundedBottom (20px);
+	@include roundedBottom (10px);
 	margin: 0 auto;
 	width: 400px;
 	background-color: $menuColor;	
 	overflow: auto;
 	color: $menuTextColor;
 	border: solid 1px 0px 1px 1px $menuTextColor;
-	box-shadow: 0 0 40px rgba(0,0,0,0.5);
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .controlPanelElem {

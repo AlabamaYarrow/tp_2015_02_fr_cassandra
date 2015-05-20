@@ -1,5 +1,8 @@
-$headerBackground: #6699FF;
-$rowBackground: #003399;
+//$headerBackground: #6699FF;
+$headerBackground: #9BA8C3;
+//$rowBackground: #003399;
+$rowBackground: #3A4E77;
+
 $rowTextColor: #002061;
 
 .scoretableItem {
@@ -14,8 +17,7 @@ $rowTextColor: #002061;
 }
 
 .scoretableBodyItem {
-	@extend .scoretableItem;
-	// min-height: 22px;
+	@extend .scoretableItem;	
 	background-color: $headerBackground;
 	color: $rowTextColor;
 }
