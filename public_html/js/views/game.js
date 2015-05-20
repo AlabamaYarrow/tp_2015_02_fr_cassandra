@@ -31,6 +31,7 @@ define([
             this.listenTo(session.user, 'change', this.render);
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
             this.listenTo(session.user, 'player_status', this.onUserPlayerStatus);
+            this.listenTo(session.user, 'round_finished', this.onRoundFinished);
             this.render();
             this.hide();
         },
@@ -57,7 +58,10 @@ define([
         },
 
         onGuessClick: function(event) {
-            // session.user.sendMessage('round_finished', 'something for body');
+            session.user.sendMessage('round_finished', {});            
+        },
+
+        onRoundFinished: function(event) {  
             gameoverView.show();
         },
 
@@ -72,7 +76,6 @@ define([
                 el: this.$('.userschat'),
                 model: session.user
             }); 
-
 
             this.usersList = this.$('.js-userslist');
         },

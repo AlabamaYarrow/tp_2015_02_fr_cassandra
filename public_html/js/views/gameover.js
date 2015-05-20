@@ -20,23 +20,31 @@ define([
             }; 
         },  
 
-
         template: template,
 
-        initialize: function () {
-            this.listenTo(session.user, 'change', this.render);
+        initialize: function (options) {
+            this.options = options;
+            this.listenTo(session.user, 'round_finished', this.render);            
             this.render();
-
+            this.hide();
         },
 
         render: function () {
-            this.$el.html( this.template( session.user.toJSON() ) );
-            this.hide();
+            this.$el.html(this.template({
+                'role': session.user.get('role')
+            }));
         },
 
         show: function () {
             this.trigger("show", this);
             this.$el.show();
+            var animateHeight = this.$('.gameover').height(); 
+            this.$el.hide();
+            this.$('.gameover').height(0);
+            this.$('.gameover').animate({
+                height: animateHeight
+            }, 450);
+            this.$el.show(); 
         },
 
         hide: function () {
@@ -72,5 +80,5 @@ define([
 
     });
 
-    return new GameOverView();
+    return new GameOverView;
 });

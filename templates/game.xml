@@ -22,9 +22,6 @@
 			<div class="js-paintarea paintarea">				
 				<canvas class="js-canvas paintarea__canvas"></canvas>
 				<canvas class="js-cursorcanvas paintarea__canvas"></canvas>
-				
-				
-				
 			</div>
 			<div class="userschat">
 			</div>

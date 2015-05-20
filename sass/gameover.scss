@@ -1,9 +1,9 @@
 .gameover {
-	margin: 0 auto;
-	width: 400px;
-	color: white;
+
+	@extend .background;
 
 	&__input {
+		visibility: hidden;
 		display: block;
 		margin: auto;
 		width: 50%;
@@ -14,6 +14,15 @@
 
 		&:hover {
 			@extend .submitHover;
+		}
+	}
+
+	&__menubutton {
+		@extend .returnbutton;	
+		margin-bottom: 20px;
+		
+		&:hover {
+			@extend .buttonHover;	
 		}
 	}
 
