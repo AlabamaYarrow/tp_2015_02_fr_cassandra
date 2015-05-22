@@ -116,7 +116,7 @@ define([
         },
 
         startGame: function () {
-            this.socket = new WebSocket("ws://localhost:8100/api/v1/game/");
+            this.socket = new WebSocket(this.get('gameWebSocketUrl'));
             this.socket.onerror = this.getOnSocketError(this);
             this.socket.onclose = this.getOnSocketClose(this);
             this.socket.onmessage = this.getOnSocketMessage(this);
