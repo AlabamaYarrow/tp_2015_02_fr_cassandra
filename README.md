@@ -28,3 +28,7 @@ If you want to disable browser caching by adding new attribute to every static f
 require.config({
     urlArgs: "_=" + (new Date()).getTime(),
 ```
+
+## Deploying
+
+    $ scp -r . g05@tp-demo1.tech-mail.ru:cassandra
