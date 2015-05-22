@@ -14,20 +14,22 @@ define([
             this.user = new User();
         },
 
-        checkAuth: function() {
-            this.user.fetch(
-                {
-                    success: _.bind( function() {
-                        this.user.set({ loggedIn: true });
-                    }, this),
+        configure: function() {
+            this.user.fetch({
+                success: _.bind( function() {
+                    this.user.set({ loggedIn: true });
+                }, this),
 
-                    error: _.bind( function() {
-                        this.user.clear();
-                        this.user.trigger('change');
-                    }, this)
-                },
-                'check'
-                )
+                error: _.bind( function() {
+                    this.user.clear();
+                    this.user.trigger('change');
+                }, this)
+            }, 'configuration')
+                .always(_.bind( function(xhr) {
+                    var gameWebSocketUrl = xhr.responseJSON.body.game_web_socket_url;
+                    this.user.set({ gameWebSocketUrl: gameWebSocketUrl })
+                }, this))
+            ;
         },
 
         /**

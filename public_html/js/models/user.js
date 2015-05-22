@@ -17,10 +17,10 @@ define([
         },
 
         urlMap: {
+            'configuration': '/api/v1/configuration/',
             'signin': '/api/v1/auth/signin/',
             'signup': '/api/v1/auth/signup/',
-            'signout': '/api/v1/auth/signout/',
-            'check': '/api/v1/auth/check/'
+            'signout': '/api/v1/auth/signout/'
         },
 
         initialize: function() {

@@ -13,7 +13,7 @@ define([
 
         initialize: function () {                          
             this.listenTo(session.user, 'change', this.render);
-            session.checkAuth();            
+            session.configure();
         },
 
         render: function () {            
