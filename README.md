@@ -31,4 +31,14 @@ require.config({
 
 ## Deploying
 
+Remote server's shell:
+
+    $ ssh -lg05 tp-demo1.tech-mail.ru
+
+Remote server's MySQL shell:
+
+    $ mysql -ujava_2015_02_g05 -p # password: java_2015_02_g05
+
+Copying current directory `.` to `~/cassandra` at remote host:
+
     $ scp -r . g05@tp-demo1.tech-mail.ru:cassandra
