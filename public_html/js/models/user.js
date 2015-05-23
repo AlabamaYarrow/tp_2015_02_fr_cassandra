@@ -73,14 +73,15 @@ define([
             };
         },
 
-        parse: function(resp, options) {
-            var parsedResp = {};
-            parsedResp.id = resp.body.id;
-            parsedResp.name = resp.body.name;
-            parsedResp.email = resp.body.email;
-            parsedResp.score = resp.body.score;
-
-            return parsedResp;
+        parse: function(response, options) {
+            response = response.body;
+            var user = response.user || response;
+            return {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                score: user.score
+            };
         },
 
         save: function (options, url) {

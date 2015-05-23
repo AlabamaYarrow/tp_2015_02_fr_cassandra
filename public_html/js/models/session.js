@@ -25,8 +25,14 @@ define([
                     this.user.trigger('change');
                 }, this)
             }, 'configuration')
-                .always(_.bind( function(xhr) {
-                    var gameWebSocketUrl = xhr.responseJSON.body.game_web_socket_url;
+                .always(_.bind( function(response) {
+                    /*
+                     * If request was failed, XHR is returned.
+                     */
+                    if (response.responseJSON) {
+                        response = response.responseJSON;
+                    }
+                    var gameWebSocketUrl = response.body.game_web_socket_url;
                     this.user.set({ gameWebSocketUrl: gameWebSocketUrl })
                 }, this))
             ;
