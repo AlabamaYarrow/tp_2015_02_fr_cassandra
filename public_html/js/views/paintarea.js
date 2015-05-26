@@ -116,6 +116,7 @@ define([
         hide: function() {
             session.user.off('new_curve');  
             this.paintarea.off('mousemove');
+            this.clear();
             this.$('.js-cassandra').off('mouseup');
             this.$('.js-cassandra').off('mousemove');
         },
