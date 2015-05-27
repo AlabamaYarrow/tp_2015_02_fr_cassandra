@@ -13,6 +13,20 @@
 			background-color: $buttonHoverColor;
 		}
 	}
+
+	&__hr {
+		margin: 20px auto;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid;
+		width: 75%;
+		border-color: #C8C8C8;
+	}
 }
 
 
+@media handheld {
+	.menu__desktop {
+		display: none;
+	}
+}

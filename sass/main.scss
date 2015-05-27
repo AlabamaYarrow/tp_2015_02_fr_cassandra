@@ -10,6 +10,7 @@
 @import 'signup';
 @import 'scoreboard';
 @import 'paintarea';
+@import 'mobile';
 
 
 h1 {
@@ -28,6 +29,9 @@ body,html {
 	height: 100%;
 	margin: 0;
 }
+
+
+
 
 .cassandra {
 	-webkit-user-select: none;
