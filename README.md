@@ -7,9 +7,9 @@
 1. Execute this from project directory:
 
         # npm install
-   
-    Or:     
-  
+
+    Or:
+
         # npm install -g grunt-cli  
         $ npm install grunt --save-dev  
         $ npm install grunt-shell --save-dev  
@@ -31,4 +31,15 @@ require.config({
 
 ## Deploying
 
+This copies current directory `.` to `~/cassandra` at remote host.
+
     $ scp -r . g05@tp-demo1.tech-mail.ru:cassandra
+
+Logging in to remote machine.
+
+    $ ssh -lg05 tp-demo1.tech-mail.ru
+
+Starting server.
+
+    $ cd cassandra
+    $ java -jar Cassandra.jar 9085
