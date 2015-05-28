@@ -1,5 +1,8 @@
 node_modules
-public_html/js/tmpl
-public_html/css
+public_html/css/
+public_html/js/build/
+public_html/js/tmpl/
+public_html/js/build.js
+public_html/js/build.min.js
 *.css
 .sass-cache
