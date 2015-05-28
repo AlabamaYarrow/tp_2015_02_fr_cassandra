@@ -15,18 +15,23 @@
 		</h2>		
 		<div class="menu__buttonpanel">
 			<span class="menu__desktop">
-			<a href="#scoreboard" class="menu__button">Scoreboard</a>			
-			<fest:if test="json.loggedIn == true">
-				<a href="#game" class="menu__button">Start game</a>
-				<a href="#logout" class="menu__button">Logout</a>
-			</fest:if>
-			<fest:if test="json.loggedIn == false">				
-				<a href="#login" class="menu__button">Login</a>		
-				<a href="#signup" class="menu__button">Sign up</a>
-			</fest:if>
-			<hr class="menu__hr"></hr>
+				<a href="#scoreboard" class="menu__button">Scoreboard</a>			
+				<fest:if test="json.loggedIn == true">
+					<a href="#game" class="menu__button">Start game</a>
+					<a href="#logout" class="menu__button">Logout</a>
+				</fest:if>
+				<fest:if test="json.loggedIn == false">									
+					<a href="#signup" class="menu__button">Sign up</a>
+				</fest:if>				
 			</span>
-			<a href="/mobile.html" class="menu__button">Epileptic joystick</a>
+
+			<fest:if test="json.loggedIn == false">
+				<a href="#login" class="menu__button">Login</a>		
+			</fest:if>
+
+			<span class="menu__mobile">
+				<a href="/mobile.html" class="js-joystick menu__button">Epileptic joystick</a>
+			</span>
 		</div>
 	</div>
 
