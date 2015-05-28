@@ -11,12 +11,6 @@ define([
     var View = Backbone.View.extend({
         template: template,
 
-        events: function () {
-            return {                              
-                'click .js-runjoystick':  _.bind(this.onRunJoystick, this)
-            }; 
-        },  
-
         initialize: function () {  
             this.listenTo(session.user, 'change', this.render);
             session.configure();
@@ -26,6 +20,7 @@ define([
             this.$el.html( this.template( session.user.toJSON() ) );
             this.hide();
             this.trigger('render', this);
+            this.coloredElements = this.$('.js-menu__header, .js-menu__title');
         },
 
         show: function () {
@@ -37,31 +32,35 @@ define([
             this.$('.menu').animate({
                 height: animateHeight
             }, 450);
-            this.$el.show();      
+            this.$el.show();
+            if (this.$('.js-desktop-menu').is(':visible')) {
+                this.openWebSocket();
+            }
         },
 
-        hide: function () {            
+        hide: function () {
             this.$el.hide();
+            this.closeWebSocket();
         },
 
-        onMessage: function(event) {
+        onMessage: function (event) {
             var data = JSON.parse(event.data);
-            console.log('mes', data);
-            this.header.css({
-                color: data.body.color
-            });
-            this.title.css({
+            this.coloredElements.css({
                 color: data.body.color
             });
         }, 
 
-        onRunJoystick: function() {
-            console.log('connecting from desktop');
+        openWebSocket: function () {
             var webSocketOrigin = 'ws://' + document.location.host;
             this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
-            this.header = this.$('.menu__header');
-            this.title = this.$('.menu__title');
             this.webSocket.onmessage = _.bind(this.onMessage, this);
+        }, 
+
+        closeWebSocket: function () {
+            if (this.webSocket) {
+                this.webSocket.close();
+                this.webSocket = undefined;
+            }
         }
     });
 

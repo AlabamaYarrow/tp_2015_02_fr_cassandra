@@ -2,29 +2,28 @@
 
 
 	<div class="menu">
-		<h1 class="menu__title">Cassandra</h1>				
-		<h2 class="menu__header">		
-			<span class="menu__desktop">	
+		<h1 class="js-menu__title menu__title">Cassandra</h1>				
+		<h2 class="js-menu__header menu__header">		
+			<div class="menu__desktop">	
 				<fest:if test="json.loggedIn == true">
 					Hello, <fest:space/> <fest:value>json.name</fest:value>! 
 				</fest:if>
 				<fest:if test="json.loggedIn == false">
 					Please login or signup
 				</fest:if>
-			</span>
+			</div>
 		</h2>		
 		<div class="menu__buttonpanel">
-			<span class="menu__desktop">
+			<div class="menu__desktop js-desktop-menu">
 				<a href="#scoreboard" class="menu__button">Scoreboard</a>			
 				<fest:if test="json.loggedIn == true">
-					<a class="js-runjoystick menu__button">Run joystick</a>
 					<a href="#game" class="menu__button">Start game</a>
 					<a href="#logout" class="menu__button">Logout</a>
 				</fest:if>
 				<fest:if test="json.loggedIn == false">									
 					<a href="#signup" class="menu__button">Sign up</a>
 				</fest:if>				
-			</span>
+			</div>
 
 			<fest:if test="json.loggedIn == false">
 				<a href="#login" class="menu__button">Login</a>		
