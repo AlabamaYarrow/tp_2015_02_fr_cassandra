@@ -12659,7 +12659,7 @@ define("backbone", ["underscore","jquery"], (function (global) {
     };
 }(this)));
 
-define('tmpl/main',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div class=\"menu\"><h1 class=\"menu__title\">Cassandra</h1><h2 class=\"menu__header\">");try{__fest_if=json.loggedIn == true}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("Hello, ");try{__fest_buf+=(__fest_escapeHTML(json.name))}catch(e){__fest_log_error(e.message + "7");}__fest_buf+=("!");}try{__fest_if=json.loggedIn == false}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("Please login or signup");}__fest_buf+=("</h2><div class=\"menu__buttonpanel\"><a href=\"#scoreboard\" class=\"menu__button\">Scoreboard</a>");try{__fest_if=json.loggedIn == true}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("<a href=\"#game\" class=\"menu__button\">Start game</a><a href=\"#logout\" class=\"menu__button\">Logout</a>");}try{__fest_if=json.loggedIn == false}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("<a href=\"#login\" class=\"menu__button\">Login</a><a href=\"#signup\" class=\"menu__button\">Sign up</a>");}__fest_buf+=("</div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/main',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var json=__fest_context;__fest_buf+=("<div class=\"menu\"><h1 class=\"menu__title\">Cassandra</h1><h2 class=\"menu__header\"><span class=\"menu__desktop\">");try{__fest_if=json.loggedIn == true}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("Hello, ");try{__fest_buf+=(__fest_escapeHTML(json.name))}catch(e){__fest_log_error(e.message + "8");}__fest_buf+=("!");}try{__fest_if=json.loggedIn == false}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("Please login or signup");}__fest_buf+=("</span></h2><div class=\"menu__buttonpanel\"><span class=\"menu__desktop\"><a href=\"#scoreboard\" class=\"menu__button\">Scoreboard</a>");try{__fest_if=json.loggedIn == true}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("<a class=\"js-runjoystick menu__button\">Run joystick</a><a href=\"#game\" class=\"menu__button\">Start game</a><a href=\"#logout\" class=\"menu__button\">Logout</a>");}try{__fest_if=json.loggedIn == false}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("<a href=\"#signup\" class=\"menu__button\">Sign up</a>");}__fest_buf+=("</span>");try{__fest_if=json.loggedIn == false}catch(e){__fest_if=false;__fest_log_error(e.message);}if(__fest_if){__fest_buf+=("<a href=\"#login\" class=\"menu__button\">Login</a>");}__fest_buf+=("<span class=\"menu__mobile\"><a href=\"\/mobile.html\" class=\"js-joystick menu__button\">Epileptic joystick</a></span></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 define('models/user',[
     'backbone'
 ], function(
@@ -12929,7 +12929,13 @@ define('views/main',[
     var View = Backbone.View.extend({
         template: template,
 
-        initialize: function () {                          
+        events: function () {
+            return {                              
+                'click .js-runjoystick':  _.bind(this.onRunJoystick, this)
+            }; 
+        },  
+
+        initialize: function () {  
             this.listenTo(session.user, 'change', this.render);
             session.configure();
         },
@@ -12949,11 +12955,31 @@ define('views/main',[
             this.$('.menu').animate({
                 height: animateHeight
             }, 450);
-            this.$el.show();
+            this.$el.show();      
         },
 
         hide: function () {            
             this.$el.hide();
+        },
+
+        onMessage: function(event) {
+            var data = JSON.parse(event.data);
+            console.log('mes', data);
+            this.header.css({
+                color: data.body.color
+            });
+            this.title.css({
+                color: data.body.color
+            });
+        }, 
+
+        onRunJoystick: function() {
+            console.log('connecting from desktop');
+            var webSocketOrigin = 'ws://' + document.location.host;
+            this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
+            this.header = this.$('.menu__header');
+            this.title = this.$('.menu__title');
+            this.webSocket.onmessage = _.bind(this.onMessage, this);
         }
     });
 

@@ -11,7 +11,13 @@ define([
     var View = Backbone.View.extend({
         template: template,
 
-        initialize: function () {                          
+        events: function () {
+            return {                              
+                'click .js-runjoystick':  _.bind(this.onRunJoystick, this)
+            }; 
+        },  
+
+        initialize: function () {  
             this.listenTo(session.user, 'change', this.render);
             session.configure();
         },
@@ -32,22 +38,6 @@ define([
                 height: animateHeight
             }, 450);
             this.$el.show();      
-
-            
-            if ( $('.menu__mobile').is(':visible')  )
-                console.log('mobile menu visible');
-
-
-            if ( true ) {
-                console.log('connecting from desktop');
-                var webSocketOrigin = 'ws://' + document.location.host;
-                this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
-                this.header = this.$('.menu__header');
-                this.title = this.$('.menu__title');
-                this.webSocket.onmessage = _.bind(this.onMessage, this);
-            }     
-
-
         },
 
         hide: function () {            
@@ -63,6 +53,15 @@ define([
             this.title.css({
                 color: data.body.color
             });
+        }, 
+
+        onRunJoystick: function() {
+            console.log('connecting from desktop');
+            var webSocketOrigin = 'ws://' + document.location.host;
+            this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
+            this.header = this.$('.menu__header');
+            this.title = this.$('.menu__title');
+            this.webSocket.onmessage = _.bind(this.onMessage, this);
         }
     });
 
