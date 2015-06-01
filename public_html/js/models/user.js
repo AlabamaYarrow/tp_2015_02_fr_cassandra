@@ -63,8 +63,8 @@ define([
         getOnSocketMessage: function (user) {
             return function (event) {            
                 message = JSON.parse(event.data);
-                // console.log('Recieved: ');
-                // console.log(message);
+                console.log('Recieved: ');
+                console.log(message);
                 if ((message.type == 'chat_message') || 
                     (message.type == 'prompt_status') ||
                     (message.type == 'cassandra_decided'))    
@@ -106,8 +106,8 @@ define([
                 type: type,
                 body: body
             };
-            // console.log('Sending: ');
-            // console.log(messageJSON);
+            console.log('Sending: ');
+            console.log(messageJSON);
             this.socket.send(JSON.stringify(messageJSON));
         },
 

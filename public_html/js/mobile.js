@@ -40,8 +40,7 @@ jQuery(function($) {
 		supported.append('Pointer ');
 	}
 
-	if (window.DeviceOrientationEvent) {
-		
+	if (window.DeviceOrientationEvent) {		
 		supported.append('DeviceOrientation ');
 	    
 	}

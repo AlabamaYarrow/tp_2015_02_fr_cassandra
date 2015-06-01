@@ -17,10 +17,7 @@ define([
             this.render();
             this.collection = scores;
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
-            this.collection.fetch({
-              success: _.bind(this.renderCollection, this)
-            });
-
+            this.collection.fetch();
             this.hide();
         },
 
@@ -47,12 +44,21 @@ define([
             });
             for(var j = 0; j < i; j++) {
                 that.scoreboard.append((new ScoreView()).el);
-            }
-
+            }            
         },
 
         show: function () {
             this.trigger("show", this);
+            this.renderCollection();            
+            this.animateDown();
+            this.$el.show();
+        },
+
+        hide: function () {
+            this.$el.hide();
+        },
+
+        animateDown: function () {
             this.$el.show();
             var animateHeight = this.$('.scoreboardbackground').height(); 
             this.$el.hide();
@@ -60,10 +66,6 @@ define([
             this.$('.scoreboardbackground').animate({
                 height: animateHeight
             }, 450);
-            this.$el.show();
-        },
-
-        hide: function () {
             this.$el.hide();
         }
     });

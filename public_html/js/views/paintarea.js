@@ -11,7 +11,7 @@ define([
         events: function () {
             return {
                 'mousedown .js-paintarea': _.bind(this.onMousedown, this),
-                'mouseover .js-paintarea': _.bind(this.onMouseover, this),                
+                'mouseover .js-paintarea': _.bind(this.onMouseover, this),                                
                 'click .js-buttonclear':  _.bind(this.onClear, this),
                 'click .js-eraser':  _.bind(this.onPressEraser, this),
                 'input .js-buttoncolor':  _.bind(this.onChangeColor, this),
@@ -33,6 +33,11 @@ define([
             session.user.sendMessage('new_curve',{clear: true});
         },
 
+        onCursorLeave: function () {
+            this.cursorcontext.clearRect(0, 0, 
+                this.cursorcanvas.width(), this.cursorcanvas.height());
+        },
+
         onPressEraser: function() {
             if (!this.eraser) {
                 this.eraser = true;
@@ -48,7 +53,9 @@ define([
         },
 
         initialize: function () {     
-            session.user.on('new_curve', _.bind(this.onNewCurve, this));                             
+            session.user.on('new_curve', _.bind(this.onNewCurve, this));   
+            this.defaultWidth = 10;
+            this.defaultColor = '#000000';                          
             this.allowDraw = false;
             this.goOn = false;
             this.render();
@@ -56,32 +63,34 @@ define([
 
         initializeCanvas: function() {
             canvas = this.$('.js-canvas');
-            canvas.get(0).width = this.$('.paintarea').width();
-            canvas.get(0).height = this.$('.paintarea').height();
+            this.cassandra = $('.js-cassandra');
+            this.paintarea = $('.js-paintarea');
+            canvas.get(0).width = this.paintarea.width();
+            canvas.get(0).height = this.paintarea.height();
             context = canvas.get(0).getContext('2d');
-            context.lineWidth = 25;            
-            this.$('.js-widthselect').val('25');
+            context.lineWidth = this.defaultWidth;            
+            this.$('.js-widthselect').val(this.defaultWidth.toString());
             this.$('.js-buttoncolor').val('#000000');
             context.lineJoin = "round";
             context.lineCap = "round";
             this.canvas = canvas;
-            this.context = context;  
-            this.paintarea = $('.js-paintarea');
+            this.context = context;              
             if (session.user.get('role') == 'artist')  {
-                this.paintarea.on('mousemove', _.bind(this.onMousemove, this));    
+                this.paintarea.on('mousemove', _.bind(this.onMousemove, this));                  
             }            
         },
 
         initializeCursorCanvas: function() {
             cursorcanvas = this.$('.js-cursorcanvas');
-            cursorcanvas.get(0).width = this.$('.paintarea').width();
-            cursorcanvas.get(0).height = this.$('.paintarea').height();
+            cursorcanvas.get(0).width = this.paintarea.width();
+            cursorcanvas.get(0).height = this.paintarea.height();
             cursorcontext = cursorcanvas.get(0).getContext('2d');
             cursorcontext.radius = this.context.lineWidth / 2;
             cursorcontext.fillStyle = '#ffffff';
             cursorcontext.lineWidth = 2;            
             if (session.user.get('role') == 'artist')  {
                 cursorcanvas.addClass('paintarea__canvas-artist');
+                this.paintarea.on('mouseleave', _.bind(this.onCursorLeave, this));  
             }
             else {
                 cursorcanvas.removeClass('paintarea__canvas-artist');
@@ -105,20 +114,21 @@ define([
         render: function () {
             this.initializeCanvas();
             this.initializeCursorCanvas();
+            this.calculateOffset();
         },
 
         show: function () {
             var gameDiv = $('.game').parent();
             gameDiv.removeAttr('style');
-            this.calculateOffset();           
+            this.calculateOffset();
         },
 
         hide: function() {
             session.user.off('new_curve');  
             this.paintarea.off('mousemove');
             this.clear();
-            this.$('.js-cassandra').off('mouseup');
-            this.$('.js-cassandra').off('mousemove');
+            this.cassandra.off('mouseup');
+            this.cassandra.off('mousemove');
         },
 
         onMousedown: function (e) {
@@ -127,8 +137,8 @@ define([
             
             this.paintarea.on('mouseleave', _.bind(this.onMouseleave, this)); 
             this.mousedown = true;   
-            $('.js-cassandra').on('mouseup', _.bind(this.onMouseup, this) );
-            $('.js-cassandra').on('mouseleave', _.bind(this.onMouseup, this)  );                     
+            this.cassandra.on('mouseup', _.bind(this.onMouseup, this) );
+            this.cassandra.on('mouseleave', _.bind(this.onMouseup, this)  );                     
             this.allowDraw = true;        
             this.calculateOffset();              
             var x = e.pageX - this.offsetLeft;
@@ -151,7 +161,7 @@ define([
             this.mousedown = false;
             this.allowDraw = false;
             this.goOn = false;
-            this.finish();
+            this.finish();            
         },
 
         onMouseleave: function (e) {  
@@ -161,7 +171,8 @@ define([
             this.finish();
         },
 
-        onMouseover: function (e) {             
+        onMouseover: function (e) {    
+            
             if (this.allowDraw) {        
                 var x = e.pageX - this.offsetLeft;
                 var y = e.pageY - this.offsetTop;
@@ -174,7 +185,7 @@ define([
         onMousemove: function(e) {
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop; 
-
+            
             this.cursorcontext.clearRect(0, 0, 
                  this.cursorcanvas.width(), this.cursorcanvas.height());
             this.cursorcontext.beginPath();
@@ -207,10 +218,10 @@ define([
         finish: function() {   
             this.paintarea.off('mouseleave');                        
             if (! this.allowDraw ) {
-                $('.js-cassandra').off('mouseup');
-                $('.js-cassandra').off('mouseleave');
+                this.cassandra.off('mouseup');
+                this.cassandra.off('mouseleave');
             }
-            this.context.closePath();
+            this.context.closePath();       
         },
 
         onNewCurve: function (data) {

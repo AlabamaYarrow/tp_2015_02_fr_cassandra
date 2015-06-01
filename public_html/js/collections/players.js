@@ -9,8 +9,6 @@ define([
         model: Score,
         
         create: function (attributes, options) {
-          
-
         },
 
         parse: function (response) {
