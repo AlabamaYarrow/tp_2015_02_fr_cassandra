@@ -74,14 +74,14 @@ define([
             setTimeout( _.bind(function () {
                 gaugeView.hide();
                 if (args['role'] == undefined) {
-                    var message = 'You are spectator. Wait for another player.'
+                    var message = 'Wait for second player to start.'
                     
                 }
                 
                 else if (args['role'] == 'artist')
-                    var message = 'You are the artist. Draw this: ' + args['secret'] + '.';
+                    var message = 'You play as artist. Draw this: ' + args['secret'] + '.';
                 else
-                    var message = 'You are Cassandra. Guess the word.'
+                    var message = 'You play as Cassandra. Guess the word and type it.'
                 
                 this.chatarea.append(new MessageSysView({ 'text': message }).el );
                 var chatarea = this.chatarea[0];

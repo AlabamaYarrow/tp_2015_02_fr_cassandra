@@ -54,7 +54,6 @@ define([
 
         onUserViewerStatus: function (data) {
             this.usersList.empty();
-
         },
 
         onGuessClick: function(event) {
@@ -86,8 +85,9 @@ define([
             gaugeView.show();
             setTimeout( _.bind(function() {
                 gaugeView.hide();
-                this.$el.show();                
-                this.paintarea.show();
+                this.$el.fadeTo(250,1, _.bind(function () {
+                    this.paintarea.show();
+                }, this)); 
                 this.chat.show();
             }, this), 1000);            
         },

@@ -112,7 +112,9 @@ define([
         },
 
         setStatus: function (event) {
-            this.set({ role: event['role'], secret: event['secret'] });
+            this.attributes['role'] = event['role'];
+            this.attributes['secret'] = event['secret'];
+            this.trigger('change');
             this.trigger('status_changed', {role: event['role'], secret: event['secret']});
         },
 
