@@ -1,5 +1,10 @@
 @import 'chat';
 
+@mixin game-panel() {
+	line-height: 60px;
+	text-align: center;
+}
+
 .game {
 	overflow: hidden;
 	width: 850px;
@@ -8,48 +13,46 @@
 	position: relative;	
 	background-color: #EEEEFF;
 	box-shadow: 0 0 40px rgba(0,0,0,0.5);
-	
-	@include roundedBottom(20px); 
+	@include roundedBottom(20px);
 
 
-
-	&__button {
+	&__clear {
 		@extend .controlButton;
+		vertical-align: middle;
 				
 		&:hover {
 			background-color: $buttonHoverColor;
-			border: solid 5px $buttonHoverColor;
 		}
 	}
 
 	&__colorselect {
 		@extend .controlPanelElem;
-		vertical-align: bottom;	
+		vertical-align: middle;
 		background-color: $buttonColor;
 		border: solid 1px $buttonColor;
 		border-radius: 5px;
+		margin: 0 .7em 0 0;
 	}
 
 	&__eraser {
 		@extend .controlButton;
+		vertical-align: middle;
+		margin: 0 .7em 0 0;
 		
-		&-on {
-			border: solid 5px $buttonEraserOn;
-			background-color: $buttonEraserOn;			
+		&_on {
+			background-color: $buttonEraserOn;
 		}
-		
 	}
 
 	&__controlpanel {
-		background-color: $gamePanelColor;		
-		@include rounded($rightBorderRadius); 
+		@include game-panel();
 		float: left;
-		width: $paintareaWidth + 2*$paintareaMargin;
+		width: $paintareaWidth + 2 * $paintareaMargin;
 		margin-left: 10px;
-		text-align: center;
+		@include rounded($rightBorderRadius); 
+		background-color: $gamePanelColor;
 		box-shadow: 0 0 10px rgba(0,0,0,0.5);
-		display: inline-block;
-	}	
+	}
 
 	&__header {
 		width: 30%;
@@ -60,45 +63,47 @@
 		background: $buttonHoverColor;
 	}
 
-	&__playground {		
+	&__playground {
 		overflow: hidden;
 		position: relative;
 		margin-bottom: 15px;
 	}
 
+	&__panels {
+		overflow: hidden;
+		padding: 11px 0;
+	}
+
 	&__paneltext {
 		color: white;
+		margin: 0 .7em 0 0;
 	}
 
 	&__widthselect {
 		@extend .controlPanelElem;
 		max-width: $paintareaWidth * 0.2;
-		vertical-align: bottom;
+		vertical-align: middle;
+		margin: 0 .7em 0 0;
 	}
 
-	&__guesspanel {			
-		display: inline-block;
+	&__guesspanel {
+		@include game-panel();
+		float: right;
 		width: $userschatWidth + 2*$userschatPadding;
-		margin-left: 20px;
-		text-align: center;
+		margin: 0 10px 0 0;
 	}
 
 	&__guessbutton {
-		@extend .controlPanelElem;
-		font-family: $font;
-		font-size: 12pt;
-		box-shadow: 0 0 5px rgba(0,0,0,0.5);
-		font-size: 12pt;
+		@extend .controlButton;
+		font-size: 15pt;
+		vertical-align: middle;
 		background-color: #43908D;
 		border-radius: 5px;
-		border: solid 5px #43908D;
+
 		&:hover {
-			background-color: #43908D;
-			border: solid 5px #43908D;
+			background-color: #326b69;
 		}
 	}
-
-	
 
 	&__menubutton {
 		@extend .returnbutton;
@@ -111,10 +116,3 @@
 	}
 	
 }
-
-
-
-
-
-
-

@@ -36,7 +36,8 @@
 	border: none;
 	box-shadow: 0 0 5px rgba(#000, 0.5);
 	cursor: pointer;
-	padding: 0 11px;
+	padding: 0 .7em;
+	transition: background-color .2s;
 
 	&:hover {
 		background-color: $buttonHoverColor;
@@ -72,6 +73,7 @@
 	text-align: center;
 	text-decoration: none;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	transition: background-color .2s;
 }
 
 .buttonHover {

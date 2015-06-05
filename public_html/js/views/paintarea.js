@@ -138,12 +138,12 @@ define([
             if (!this.eraser) {
                 this.eraser = true;
                 this.context.strokeStyle = '#ffffff';
-                $('.js-eraser').addClass('game__eraser-on');
+                $('.js-eraser').addClass('game__eraser_on');
             }
             else {
                 this.eraser = false;
                 this.context.strokeStyle = $('.js-buttoncolor').val();
-                $('.js-eraser').removeClass('game__eraser-on');
+                $('.js-eraser').removeClass('game__eraser_on');
             }
 
         },
