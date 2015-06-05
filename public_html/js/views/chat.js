@@ -72,16 +72,14 @@ define([
 
         onStatusChanged: function(args) {
             setTimeout( _.bind(function () {
+                var message;
                 if (args['role'] == undefined) {
-                    var message = 'Wait for second player to start.'
-                    
+                    message = 'Waiting for second player to start…'
+                } else if (args['role'] == 'artist') {
+                    message = 'You\'re playing as Artist. Draw this: ' + args['secret'] + '.';
+                } else {
+                    message = 'You\'re playing as Cassandra. Guess the word and type it.';
                 }
-                
-                else if (args['role'] == 'artist')
-                    var message = 'You play as artist. Draw this: ' + args['secret'] + '.';
-                else
-                    var message = 'You play as Cassandra. Guess the word and type it.'
-                
                 this.chatarea.append(new MessageSysView({ 'text': message }).el );
                 var chatarea = this.chatarea[0];
                 chatarea.scrollTop = chatarea.scrollHeight;

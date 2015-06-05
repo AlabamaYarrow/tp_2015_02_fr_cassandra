@@ -4,7 +4,7 @@
 		<fest:choose>
 		    <fest:when test="json.role == 'artist'">
 		        <h3 class="game__header">
-		        	Draw the word: <fest:space/> <fest:value>json.secret</fest:value>
+		        	Draw this: <fest:space/> <fest:value>json.secret</fest:value>
 		        </h3>
 
 		    </fest:when>
