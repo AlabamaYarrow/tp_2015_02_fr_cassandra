@@ -62,7 +62,8 @@ define([
             this.$('.loginbackground').animate({
                 height: animateHeight
             }, 450);
-            this.$el.show();            
+            this.$el.show();
+            this.$('.js-loginName').focus();
         },
 
         hide: function () {

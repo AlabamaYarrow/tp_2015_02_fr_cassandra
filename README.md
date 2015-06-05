@@ -35,6 +35,13 @@ This copies current directory `.` to `~/cassandra` at remote host.
 
     $ scp -r . g05@tp-demo1.tech-mail.ru:cassandra
 
+...or:
+
+    $ scp -r public_html/ g05@tp-demo1.tech-mail.ru:cassandra/public_html
+    $ scp Cassandra.jar g05@tp-demo1.tech-mail.ru:cassandra/Cassandra.jar
+
+...to upload most important files.
+
 Logging in to remote machine.
 
     $ ssh -lg05 tp-demo1.tech-mail.ru
@@ -43,3 +50,5 @@ Starting server.
 
     $ cd cassandra
     $ java -jar Cassandra.jar 9085
+
+After that you can go [here](http://g05.javaprojects.tp-dev.ru/) to browse our game.
