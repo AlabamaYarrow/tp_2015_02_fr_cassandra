@@ -88,8 +88,7 @@ define([
             gaugeView.show();            
             setTimeout( _.bind(function() {
                 gaugeView.hide();     
-                if ( $.cookie('greeted') != 'true' ) {   
-                    $.cookie('greeted', 'true');        
+                if (!greetingView.wasShown()) {
                     greetingView.show();
                 }
                 this.$el.fadeTo(250,1, _.bind(function () {

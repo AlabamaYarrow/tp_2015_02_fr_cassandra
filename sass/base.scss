@@ -28,13 +28,19 @@
 }
 
 .controlButton {
-	@extend .controlPanelElem;
+	color: white;
 	font-family: $font;
 	font-size: 12pt;
 	background-color: $buttonColor;
 	border-radius: 5px;
-	border: solid 5px $buttonColor;
-	box-shadow: 0 0 5px rgba(0,0,0,0.5);	
+	border: none;
+	box-shadow: 0 0 5px rgba(#000, 0.5);
+	cursor: pointer;
+	padding: 0 11px;
+
+	&:hover {
+		background-color: $buttonHoverColor;
+	}
 }
 
 .formInput {

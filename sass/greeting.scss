@@ -2,20 +2,33 @@ $greetingBackgroundColor: #8A8AAE;
 $greetingBorderColor: #1F3256;
 
 .greeting {
-	position: absolute;
-	width: 600px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(#000, .8);
+	z-index: 1000;
+	transition: opacity 650ms;
 
-	margin-left: -300px;
-	margin-top: -150px;	
-	top: -100%;
-	left: 50%;
+	&_hidden {
+		opacity: 0;
+	}
 
-	@include rounded (5px);	
-	border: 1px solid $greetingBorderColor;
+	&__window {
+		width: 600px;
+		padding: 25px 30px 30px;
+		margin: 90px auto 0;
+		@include rounded (5px);
+		border: 1px solid $greetingBorderColor;
+		background-color: $greetingBackgroundColor;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		transition: margin-top 650ms;
 
-	background-color: $greetingBackgroundColor;
-
-	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+		.greeting_hidden & {
+			margin-top: -600px;
+		}
+	}
 
 	&__header {
 		color: #fff;
@@ -23,18 +36,21 @@ $greetingBorderColor: #1F3256;
 
 	&__message {
 		text-align: justify;
-		margin: 15px;
+		font-family: arial,helvetica,sans-serif;
+		margin: 15px 0;
+		line-height: 1.3;
 	}
 
 	&__note {
 		font-size: 10pt;
-		margin: 2px 15px 2px 15px;
+		margin: 2px 0 0;
+		font-family: sans;
 	}
 
-	&__button {
+	&__ok {
 		@extend .controlButton;
 		display: block;
-		margin: 10px auto;
-
+		margin: 25px auto 0;
+		padding: 7px 15px;
 	}
 }
