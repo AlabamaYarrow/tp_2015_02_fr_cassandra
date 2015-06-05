@@ -1,0 +1,40 @@
+$greetingBackgroundColor: #8A8AAE;
+$greetingBorderColor: #1F3256;
+
+.greeting {
+	position: absolute;
+	width: 600px;
+
+	margin-left: -300px;
+	margin-top: -150px;	
+	top: -100%;
+	left: 50%;
+
+	@include rounded (5px);	
+	border: 1px solid $greetingBorderColor;
+
+	background-color: $greetingBackgroundColor;
+
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+	&__header {
+		color: #fff;
+	}
+
+	&__message {
+		text-align: justify;
+		margin: 15px;
+	}
+
+	&__note {
+		font-size: 10pt;
+		margin: 2px 15px 2px 15px;
+	}
+
+	&__button {
+		@extend .controlButton;
+		display: block;
+		margin: 10px auto;
+
+	}
+}

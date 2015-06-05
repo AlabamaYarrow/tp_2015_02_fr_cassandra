@@ -1,0 +1,12 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+
+	<div class="greeting">
+		<h1 class="greeting__header">Ho-ho-ho!</h1>		
+		<p class="greeting__message">Добро пожаловать в игру "Кассандра"! Это рисовалка по типу "Крокодила" ("Кассандра" означает "крокодил" на древнегреческом*). Правила игры: один игрок рисует слово, показанное в левом верхнем углу. Второй игрок должен угадать слово и написать в чат. Когда угадывающий угадывает, художник должен нажать на кнопку "Cassandra guessed!" внизу справа**. Удачи! 			
+		</p>
+		<p class="greeting__note">* Вранье.</p> 
+		<p class="greeting__note">** В принципе, он может нажать в любое время. Или написать ответ в чат. Но зачем?</p>
+		<button class="js-greetingbutton greeting__button">OK</button>
+	</div>
+	
+</fest:template>

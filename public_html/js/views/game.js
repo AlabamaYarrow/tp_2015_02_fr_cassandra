@@ -7,7 +7,8 @@ define([
     'collections/scores',
     'models/session',
     'views/gauge',
-    'views/player'
+    'views/player',
+    'views/greeting'
 ], function(
     Backbone,
     tmpl,
@@ -17,10 +18,12 @@ define([
     scores,
     session,
     gaugeView,
-    PlayerView
+    PlayerView,
+    greetingView
 ){
 
     var GameView = Backbone.View.extend({
+        
         events: {
             'click .js-buttonguess': 'onGuessClick'
         },
@@ -82,11 +85,15 @@ define([
         show: function () {
             this.trigger("show", this);
             session.user.startGame();            
-            gaugeView.show();
+            gaugeView.show();            
             setTimeout( _.bind(function() {
-                gaugeView.hide();
+                gaugeView.hide();     
+                if ( $.cookie('greeted') != 'true' ) {   
+                    $.cookie('greeted', 'true');        
+                    greetingView.show();
+                }
                 this.$el.fadeTo(250,1, _.bind(function () {
-                    this.paintarea.show();
+                    this.paintarea.show();                                        
                 }, this)); 
                 this.chat.show();
             }, this), 1000);            
@@ -94,8 +101,9 @@ define([
 
         hide: function () {
             session.user.stopGame();
-            this.paintarea.hide();
+            this.paintarea.hide();            
             this.chat.hide();
+            greetingView.hide(); 
             this.$el.hide();
         }
 

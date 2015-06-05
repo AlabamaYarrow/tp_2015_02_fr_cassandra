@@ -2,6 +2,7 @@ require.config({
     baseUrl: "js",
     paths: {
         jquery: "lib/jquery",
+        'jquery.cookie': "lib/jquery.cookie",
         underscore: "lib/underscore",
         backbone: "lib/backbone",
         backboneModal: "lib/backboneModal"
@@ -13,13 +14,17 @@ require.config({
         },
         'underscore': {
             exports: '_'
+        },
+        'jquery.cookie': {     
+            deps: ['jquery']
         }
     }
 });
 
 define([
     'backbone',
-    'router'
+    'router',
+    'jquery.cookie'
 ], function(
     Backbone,
     router

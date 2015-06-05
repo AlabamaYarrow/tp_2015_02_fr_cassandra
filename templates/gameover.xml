@@ -7,7 +7,7 @@
 		
 		<h3>Cassandra gets 1 point</h3>
 			
-		<a href="#scoreboard" class="gameover__menubutton">Go to scoreboard</a>	
+		<a href="#scoreboard" class="js-gameoverbutton gameover__menubutton">Go to scoreboard</a>	
 					
 	</div>
 </fest:template>

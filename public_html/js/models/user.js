@@ -1,10 +1,14 @@
 define([
-    'backbone'
+    'backbone',
+    'api/sync'
 ], function(
-    Backbone
+    Backbone,
+    sync
 ){
 
     var User = Backbone.Model.extend({
+
+        sync: sync,
 
         defaults: {
             id: 0,

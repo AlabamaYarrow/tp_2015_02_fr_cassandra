@@ -19,6 +19,7 @@ define([
 ){
 
     var ChatView = Backbone.View.extend({
+        
         events: {
             'click .js-chatsend': 'onSendClick',
             'keyup .js-chatinput': 'onInputKeyup'

@@ -1,12 +1,16 @@
 define([
-    'backbone'
+    'backbone',
+    'api/sync'
 ], function(
-    Backbone
+    Backbone,
+    sync
 ){
 
     var Score = Backbone.Model.extend({
-        initialize: function () {
 
+        sync: sync,
+    
+        initialize: function () {
         },
 
         parse: function (response) {

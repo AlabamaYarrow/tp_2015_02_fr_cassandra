@@ -15,7 +15,6 @@ define([
           delete attributes.user;
           attributes.score = Number(attributes.score);
           return Scores.__super__.create.call(this, attributes, options);
-
         },
 
         parse: function (response) {

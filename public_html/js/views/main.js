@@ -51,9 +51,9 @@ define([
         }, 
 
         openWebSocket: function () {
-            var webSocketOrigin = 'ws://' + document.location.host;
-            this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
-            this.webSocket.onmessage = _.bind(this.onMessage, this);
+            // var webSocketOrigin = 'ws://' + document.location.host;
+            // this.webSocket = new WebSocket(webSocketOrigin + '/api/v1/console/?init=1');
+            // this.webSocket.onmessage = _.bind(this.onMessage, this);
         }, 
 
         closeWebSocket: function () {

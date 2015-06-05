@@ -1,14 +1,18 @@
 define([
     'backbone',
-    'models/user'
+    'models/user',
+    'api/sync'
 ], function(
     Backbone,
-    User
+    User,
+    sync
 ){
 
     var sessionObject;
 
     var Session = Backbone.Model.extend({
+
+        sync: sync,
 
         initialize: function () {
             this.user = new User();

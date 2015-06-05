@@ -15,12 +15,19 @@ define([
     var GameOverView = Backbone.View.extend({
 
         events: function () {
-            return {
-                'submit .gameover__form': _.bind(this.submitForm, this),
+            return {                
+                'click .js-gameoverbutton': _.bind(this.onGameoverClick, this)
             }; 
-        },  
+        },          
 
         template: template,
+
+        onGameoverClick: function() {
+            if (session.user.get('role') == 'artist') {
+                this.submitScore();
+            }
+
+        },
 
         initialize: function (options) {
             this.options = options;
@@ -51,29 +58,24 @@ define([
             this.$el.hide();
         },
 
-        submitForm: function(event) {
-            event.preventDefault();
-            $(this.el).off('submit', '.gameover__form');
+        submitScore: function() {
+            $(this.el).off('click', '.js-gameoverbutton');
             gaugeView.show();
-            var fields = $('.gameover__form').serializeArray();
-            var data = {};
-            _.each(fields, function(field) {
-                data[field.name] = field.value;
-            });
+            
             scores.create({
                 user: session.user,
-                score: data.score
+                score: 1
             },
             {
                 success: _.bind(function () {
                     gaugeView.hide();
                     Backbone.history.navigate('#scoreboard', true);
-                    $(this.el).on('submit', '.gameover__form', this.submitForm);
+                    $(this.el).on('click', '.js-gameoverbutton', this.submitScore);
                 }, this),
                 error: _.bind(function () {
                     gaugeView.hide();
-                    alert('Failed to save.');
-                    $(this.el).on('submit', '.gameover__form', this.submitForm);
+                    alert('Failed to save score.');
+                    $(this.el).on('click', '.js-gameoverbutton', this.submitScore);
                 }, this) 
             });
         }
