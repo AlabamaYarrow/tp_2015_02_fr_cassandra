@@ -43,3 +43,5 @@ Starting server.
 
     $ cd cassandra
     $ java -jar Cassandra.jar 9085
+
+After that you can go [here](http://g05.javaprojects.tp-dev.ru/) to browse our game.
