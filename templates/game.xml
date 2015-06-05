@@ -21,7 +21,11 @@
 		<div class="js-gameplayground game__playground">
 			<div class="js-paintarea paintarea">				
 				<canvas class="js-canvas paintarea__canvas"></canvas>
-				<canvas class="js-cursorcanvas paintarea__canvas"></canvas>
+				<canvas class="js-textcanvas paintarea__canvas-text">
+				</canvas>
+				<canvas class="js-cursorcanvas paintarea__canvas">
+				</canvas>
+				<div class="js-paintareapreloader paintarea__preloader"></div>	
 			</div>
 			<div class="userschat">
 			</div>

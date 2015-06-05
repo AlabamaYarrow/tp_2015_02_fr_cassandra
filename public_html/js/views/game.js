@@ -40,6 +40,7 @@ define([
         },
 
         onUserPlayerStatus: function (data) {               
+            this.$('.js-paintareapreloader').hide();            
             this.usersList.append( new PlayerView({ 
                     'name': session.user.get('name'), 
                     'role': data.role }).el );         
@@ -56,6 +57,8 @@ define([
         },
 
         onUserViewerStatus: function (data) {
+            this.$('.js-paintareapreloader').show(); 
+            this.writeText();
             this.usersList.empty();
         },
 
@@ -87,7 +90,7 @@ define([
             session.user.startGame();            
             gaugeView.show();            
             setTimeout( _.bind(function() {
-                gaugeView.hide();     
+                gaugeView.hide();                     
                 if (!greetingView.wasShown()) {
                     greetingView.show();
                 }
@@ -104,7 +107,18 @@ define([
             this.chat.hide();
             greetingView.hide(); 
             this.$el.hide();
-        }
+        },
+
+        writeText: function () {
+            canvas = this.$('.js-textcanvas').get(0);
+            canvas.width = 550;
+            var context = canvas.getContext('2d');           
+            context.fillStyle = "#585886";
+            context.textAlign = 'center';
+            context.font = "italic 14pt Palatino Type";
+            context.fillText("В ожидании второго игрока можно посмотреть на эти кубики", 275, 50);
+        } 
+
 
     });
 

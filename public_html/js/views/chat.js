@@ -71,9 +71,7 @@ define([
         },
 
         onStatusChanged: function(args) {
-            gaugeView.show();
             setTimeout( _.bind(function () {
-                gaugeView.hide();
                 if (args['role'] == undefined) {
                     var message = 'Wait for second player to start.'
                     

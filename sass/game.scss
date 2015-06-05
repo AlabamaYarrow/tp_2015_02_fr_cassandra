@@ -3,10 +3,12 @@
 .game {
 	overflow: hidden;
 	width: 850px;
+	
 	margin: 0 auto;
 	position: relative;	
 	background-color: #EEEEFF;
 	box-shadow: 0 0 40px rgba(0,0,0,0.5);
+	
 	@include roundedBottom(20px); 
 
 
