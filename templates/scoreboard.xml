@@ -2,15 +2,15 @@
 	<div class="scoreboardbackground">
 	<div class="scoreboard">
 		<h1>Cassandra</h1>
-		<h2>Scoreboard</h2>		
+		<h2>Лучшие игроки</h2>		
 		<table class="scoretable">	
 			<thead  class="scoretablehead">	
 				<tr>					
 					<td class="scoretablehead__left">
-						User
+						Игрок
 					</td>
 					<td class="scoretablehead__right">
-						Score
+						Очки
 					</td>		
 				</tr>
 			</thead>
@@ -18,7 +18,7 @@
 
 			</tbody>
 		</table>
-		<a href="#" class="scoreboard__menubutton">Back</a>		
+		<a href="#" class="scoreboard__menubutton">Назад</a>		
 	</div>
 	</div>
 </fest:template>

@@ -2,12 +2,13 @@
 	<div class="gameover">
 		<h1>Cassandra</h1>
 		<h2>			
-			Game Over!
+			Игра окончена!
 		</h2>
 		
-		<h3>Cassandra gets 1 point</h3>
+		<h3>Кассандра получает 1 очко.</h3>
+		<h3>Художнику шиш.</h3>
 			
-		<a href="#scoreboard" class="js-gameoverbutton gameover__menubutton">Go to scoreboard</a>	
+		<a href="#scoreboard" class="js-gameoverbutton gameover__menubutton">Рейтинг</a>	
 					
 	</div>
 </fest:template>

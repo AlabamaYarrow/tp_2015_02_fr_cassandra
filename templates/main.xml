@@ -6,27 +6,27 @@
 		<h2 class="js-menu__header menu__header">		
 			<div class="menu__desktop">	
 				<fest:if test="json.loggedIn == true">
-					Hello, <fest:space/> <fest:value>json.name</fest:value>! 
+					Привет, <fest:space/> <fest:value>json.name</fest:value>! 
 				</fest:if>
 				<fest:if test="json.loggedIn == false">
-					Please login or signup
+					Добро пожаловать!
 				</fest:if>
 			</div>
 		</h2>		
 		<div class="menu__buttonpanel">
 			<div class="menu__desktop js-desktop-menu">
-				<a href="#scoreboard" class="menu__button">Scoreboard</a>			
+				<a href="#scoreboard" class="menu__button">Рейтинг игроков</a>			
 				<fest:if test="json.loggedIn == true">
-					<a href="#game" class="menu__button">Start game</a>
-					<a href="#logout" class="menu__button">Logout</a>
+					<a href="#game" class="menu__button">Начать игру</a>
+					<a href="#logout" class="menu__button">Выйти</a>
 				</fest:if>
 				<fest:if test="json.loggedIn == false">									
-					<a href="#signup" class="menu__button">Sign up</a>
+					<a href="#signup" class="menu__button">Регистрация</a>
 				</fest:if>				
 			</div>
 
 			<fest:if test="json.loggedIn == false">
-				<a href="#login" class="menu__button">Login</a>		
+				<a href="#login" class="menu__button">Войти</a>		
 			</fest:if>
 
 			<span class="menu__mobile">
