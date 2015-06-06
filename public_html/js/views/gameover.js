@@ -24,7 +24,7 @@ define([
 
         onGameoverClick: function() {
             if (session.user.get('role') == 'artist') {
-                this.submitScore();
+                //this.submitScore();
             }
 
         },

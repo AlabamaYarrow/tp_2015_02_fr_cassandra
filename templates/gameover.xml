@@ -8,7 +8,7 @@
 		<h3>Кассандра получает 1 очко.</h3>
 		<h3>Художнику шиш.</h3>
 			
-		<a href="#scoreboard" class="js-gameoverbutton gameover__menubutton">Рейтинг</a>	
+		<a href="#" class="js-gameoverbutton gameover__menubutton">Меню</a>	
 					
 	</div>
 </fest:template>
