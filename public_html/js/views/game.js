@@ -80,7 +80,7 @@ define([
         onSocketClosed: function(event) {
             if (this.shown) {
                 alert('Соединение с сервером было разорвано :( Игра стоит свитч! — попробуйте снова.');
-                this.hide();
+                Backbone.history.navigate('#', true);
             }
         },
 

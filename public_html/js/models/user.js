@@ -66,8 +66,6 @@ define([
         getOnSocketMessage: function (user) {
             return function (event) {
                 message = JSON.parse(event.data);
-                console.log('Recieved: ');
-                console.log(message);
                 if ((message.type == 'chat_message') || 
                     (message.type == 'prompt_status') ||
                     (message.type == 'cassandra_decided'))    
