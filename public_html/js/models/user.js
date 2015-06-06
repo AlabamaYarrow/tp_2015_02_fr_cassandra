@@ -51,28 +51,27 @@ define([
 
         getOnSocketError: function (user) {
             return function () {
-                console.log('socket error', this, arguments);
-                user.trigger('socketError');
+                user.socket = null;
+                user.trigger('socket_closed');
             };
         },
 
         getOnSocketClose: function (user) {
             return function () {
                 user.socket = null;
-                console.log('socket closed');
-                user.trigger('socketClose');
+                user.trigger('socket_closed');
             };
         },
 
         getOnSocketMessage: function (user) {
-            return function (event) {            
+            return function (event) {
                 message = JSON.parse(event.data);
                 console.log('Recieved: ');
                 console.log(message);
                 if ((message.type == 'chat_message') || 
                     (message.type == 'prompt_status') ||
                     (message.type == 'cassandra_decided'))    
-                    user.trigger('message', {'type': message.type, 'body': message.body});                
+                    user.trigger('message', {'type': message.type, 'body': message.body});
                 user.trigger(message.type, message.body);
             };
         },
@@ -97,22 +96,25 @@ define([
 
         sendChatMessage: function (messageBody) {
             var type = 'chat_message'
-            if (this.get('role') == 'artist')
-                type = 'prompt_status'
-            else if (this.get('role') == 'cassandra')
-                type = 'cassandra_decided'
+            if (this.get('role') == 'artist') {
+                type = 'prompt_status';
+            } else if (this.get('role') == 'cassandra') {
+                type = 'cassandra_decided';
+            }
             this.sendMessage(type, messageBody);
             return type;
         },
 
         sendMessage: function (type, body) {
-            var messageJSON = {
+            var message = {
                 type: type,
                 body: body
             };
-            console.log('Sending: ');
-            console.log(messageJSON);
-            this.socket.send(JSON.stringify(messageJSON));
+            if (this.socket) {
+                this.socket.send(JSON.stringify(message));
+            } else {
+                console.error('Trying to send message having no WebSocket.', message);
+            }
         },
 
         setStatus: function (event) {

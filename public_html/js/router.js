@@ -32,7 +32,8 @@ define([
 
         initialize: function () {
             this.viewManager = new ViewManager({
-                el: $('#page')
+                el: $('#page'),
+                router: this
             });
             this.viewManager
                 .addView(gameView)

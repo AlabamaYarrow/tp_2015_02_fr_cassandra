@@ -35,17 +35,18 @@ define([
             this.listenTo(session.user, 'viewer_status', this.onUserViewerStatus);
             this.listenTo(session.user, 'player_status', this.onUserPlayerStatus);
             this.listenTo(session.user, 'round_finished', this.onRoundFinished);
+            this.listenTo(session.user, 'socket_closed', this.onSocketClosed);
             this.render();
             this.hide();
         },
 
-        onUserPlayerStatus: function (data) {               
-            this.$('.js-paintareapreloader').hide();            
-            this.usersList.append( new PlayerView({ 
-                    'name': session.user.get('name'), 
-                    'role': data.role }).el );         
+        onUserPlayerStatus: function (data) {
+            this.$('.js-paintareapreloader').hide();
+            this.usersList.append( new PlayerView({
+                    'name': session.user.get('name'),
+                    'role': data.role }).el );
             
-            if (data.role == 'artist') {                
+            if (data.role == 'artist') {
                 this.usersList.append( new PlayerView({ 
                     'name': data.cassandra.name, 
                     'role': 'cassandra' }).el );
@@ -63,14 +64,21 @@ define([
         },
 
         onGuessClick: function(event) {
-            session.user.sendMessage('round_finished', {});            
+            session.user.sendMessage('round_finished', {});
         },
 
-        onRoundFinished: function(event) {  
+        onRoundFinished: function(event) {
             gameoverView.show();
         },
 
-        render: function () {            
+        onSocketClosed: function(event) {
+            if (this.shown) {
+                alert('Соединение с сервером было разорвано :( Игра стоит свитч! — попробуйте снова.');
+                this.hide();
+            }
+        },
+
+        render: function () {
             this.$el.html( this.template( session.user.toJSON() ) );
             
             this.paintarea = new PaintareaView({
@@ -86,24 +94,29 @@ define([
         },
 
         show: function () {
+            this.shown = true;
             this.trigger("show", this);
-            session.user.startGame();            
-            gaugeView.show();            
+            session.user.startGame();
+            gaugeView.show();
             setTimeout( _.bind(function() {
-                gaugeView.hide();                     
-                if (!greetingView.wasShown()) {
-                    greetingView.show();
+                gaugeView.hide();
+                if (this.shown) { // We need to check if this view was already hidden (during timeout).
+                    if (!greetingView.wasShown()) {
+                        greetingView.show();
+                    }
+                    this.$el.fadeTo(250,1, _.bind(function () {
+                        this.paintarea.show();
+                    }, this)); 
+                    this.chat.show();
                 }
-                this.$el.fadeTo(250,1, _.bind(function () {
-                    this.paintarea.show();                                        
-                }, this)); 
-                this.chat.show();
-            }, this), 1000);            
+            }, this), 1000);
         },
 
         hide: function () {
+            this.trigger('hide');
+            this.shown = false;
             session.user.stopGame();
-            this.paintarea.hide();            
+            this.paintarea.hide();
             this.chat.hide();
             greetingView.hide(); 
             this.$el.hide();
@@ -112,14 +125,12 @@ define([
         writeText: function () {
             canvas = this.$('.js-textcanvas').get(0);
             canvas.width = 550;
-            var context = canvas.getContext('2d');           
+            var context = canvas.getContext('2d');
             context.fillStyle = "#585886";
             context.textAlign = 'center';
             context.font = "italic 14pt Palatino Type";
             context.fillText("В ожидании второго игрока можно посмотреть на эти кубики", 275, 50);
-        } 
-
-
+        }
     });
 
     return new GameView();
