@@ -106,6 +106,9 @@
 	}
 
 	&__menubutton {
+		position: absolute;
+		top: 0px;
+		right: 7px;
 		@extend .returnbutton;
 		margin-top: 20px;
 		margin-bottom: 20px;

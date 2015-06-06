@@ -2,6 +2,6 @@
 	<div class="gauge">
 		<img class="gauge__palette" src="images/palette.svg" />
 		<img class="gauge__palette-colors" src="images/palette-colors.svg" />
-		<h2 class="gauge__title">Loading...</h2>
+		<h2 class="gauge__title">Загрузка...</h2>
 	</div>
 </fest:template>

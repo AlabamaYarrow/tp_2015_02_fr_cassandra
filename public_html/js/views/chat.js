@@ -74,11 +74,11 @@ define([
             setTimeout( _.bind(function () {
                 var message;
                 if (args['role'] == undefined) {
-                    message = 'Waiting for second player to start…'
+                    message = 'Ожидание второго игрока...'
                 } else if (args['role'] == 'artist') {
-                    message = 'You\'re playing as Artist. Draw this: ' + args['secret'] + '.';
+                    message = 'Вы играете за Художника. Нарисуйте это: ' + args['secret'] + '.';
                 } else {
-                    message = 'You\'re playing as Cassandra. Guess the word and type it.';
+                    message = 'Вы играете за Кассандру. Угадайте, что рисует художник, и напишите.';
                 }
                 this.chatarea.append(new MessageSysView({ 'text': message }).el );
                 var chatarea = this.chatarea[0];

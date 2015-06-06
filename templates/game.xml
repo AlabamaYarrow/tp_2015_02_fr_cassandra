@@ -4,17 +4,17 @@
 		<fest:choose>
 		    <fest:when test="json.role == 'artist'">
 		        <h3 class="game__header">
-		        	Draw this: <fest:space/> <fest:value>json.secret</fest:value>
+		        	Нарисуйте: <fest:space/> <fest:value>json.secret</fest:value>
 		        </h3>
 
 		    </fest:when>
 
 		    <fest:when test="json.role == 'cassandra'">
-		        <h3 class="game__header">Guess the word</h3>
+		        <h3 class="game__header">Угадайте слово</h3>
 		    </fest:when>
 
 		    <fest:otherwise>
-		       	<h3 class="game__header">Waiting for player</h3>
+		       	<h3 class="game__header">Ожидание...</h3>
 		    </fest:otherwise>
 		</fest:choose>
 		
@@ -34,17 +34,17 @@
 		<fest:if test="json.role == 'artist'">
 			<div class="game__panels">
 				<div class="game__controlpanel">
-					<button class="js-eraser game__eraser">Eraser</button>
-					<span class="game__paneltext">Color:</span>
+					<button class="js-eraser game__eraser">Ластик</button>
+					<span class="game__paneltext">Цвет:</span>
 					<input class="js-buttoncolor game__colorselect" type="color" name="favcolor" />
-					<span class="game__paneltext">Line width:</span>
+					<span class="game__paneltext">Толщина:</span>
 					<input class="js-widthselect game__widthselect" type="range" name="points" min="1" max="50" />
-					<button class="js-buttonclear game__clear">Clear all</button>
+					<button class="js-buttonclear game__clear">Очистить</button>
 				</div>
 				<div class="game__guesspanel">
 					<fest:choose>
 						<fest:when test="json.role == 'artist'">
-							<button class="js-buttonguess game__guessbutton">Cassandra guessed!</button>	
+							<button class="js-buttonguess game__guessbutton">Бинго!</button>	
 						</fest:when>
 						<fest:otherwise>
 						</fest:otherwise>
@@ -53,7 +53,7 @@
 			</div>
 		</fest:if>
 
-		<a href="#" class="game__menubutton">Back</a>
+		<a href="#" class="game__menubutton">Назад</a>
 
 	</div>
 </fest:template>

@@ -42,18 +42,24 @@ define([
 
         onUserPlayerStatus: function (data) {
             this.$('.js-paintareapreloader').hide();
+            if (data.role == 'artist') {
+                var role = 'Художник'
+            } else {
+                var role = 'Кассандра'
+            }
             this.usersList.append( new PlayerView({
-                    'name': session.user.get('name'),
-                    'role': data.role }).el );
+                'name': session.user.get('name'),
+                'role': role
+            }).el );
             
             if (data.role == 'artist') {
                 this.usersList.append( new PlayerView({ 
                     'name': data.cassandra.name, 
-                    'role': 'cassandra' }).el );
+                    'role': 'Кассандра' }).el );
             } else {
                 this.usersList.append( new PlayerView({ 
                     'name': data.artist.name, 
-                    'role': 'artist' }).el );
+                    'role': 'Художник' }).el );
             }
         },
 
@@ -129,8 +135,10 @@ define([
             context.fillStyle = "#585886";
             context.textAlign = 'center';
             context.font = "italic 14pt Palatino Type";
-            context.fillText("В ожидании второго игрока можно посмотреть на эти кубики", 275, 50);
-        }
+            context.fillText("В ожидании второго игрока", 275, 50);
+            context.fillText("можно посмотреть на эти кубики", 275, 75);
+        } 
+
     });
 
     return new GameView();

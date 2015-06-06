@@ -4,13 +4,13 @@
 	<fest:value>json.name </fest:value>:
 	<fest:space/>
 	
-	<fest:if test="json.role == 'artist'">
+	<fest:if test="json.role == 'художник'">
 		<span class="userslist__artist">
 			<fest:value>json.role</fest:value>
 		</span>
 	</fest:if>
 
-	<fest:if test="json.role == 'cassandra'">
+	<fest:if test="json.role == 'Кассандра'">
 		<span class="userslist__cassandra">
 			<fest:value>json.role</fest:value>
 		</span>

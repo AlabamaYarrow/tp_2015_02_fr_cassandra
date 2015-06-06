@@ -2,12 +2,12 @@
 	<div class="signupbackground">
 	<div class="signup">
 		<h1>Cassandra</h1>
-		<h2>Sign up</h2>
+		<h2>Регистрация</h2>
 		
 		<form id="1" class="signup__form" method="post">
 
 			<p>
-				<label  class="signup__label" for="name">Username:</label> 
+				<label  class="signup__label" for="name">Логин:</label> 
 				<input class="signup__input" type="text" 
 					id="nameIdSP" name="name" required="required"
 					pattern="^[A-z0-9]*$" title="No special characters" value="{json.name}">
@@ -20,22 +20,22 @@
 			</p>
 			
 			<p>
-				<label class="signup__label" for="password">Password:</label>
+				<label class="signup__label" for="password">Пароль:</label>
 				<input class="signup__input" type="password" name="password" id="passwordIdSP" required="required" value="{json.password}" ></input>
 			</p>
 			
 			<p>
-				<label class="signup__label" for="password_confirmation">Confirm:</label> 
+				<label class="signup__label" for="password_confirmation">Еще раз:</label> 
 				<input class="signup__input" type="password" name="password_confirmation" id="password_confirmationIdSP" required="required" value="{json.password_confirmation}"></input>
 			</p>
 
 			<p class="signup__errormsg">
 			</p>
 
-			<button type="submit" class="signup__submit">Submit</button>
+			<button type="submit" class="signup__submit">Отправить</button>
 		</form>
 
-		<a href="#" class="signup__menubutton">Back</a>
+		<a href="#" class="signup__menubutton">Назад</a>
 
 	</div>
 	</div>
